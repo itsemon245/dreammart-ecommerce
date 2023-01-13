@@ -7,6 +7,33 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Getting started
+-  [Install composer](https://getcomposer.org/download/)
+-  [Install NodeJs](https://nodejs.org/en/download/)
+-  [Install Git](https://git-scm.com/downloads)
+-  [Install Xampp](https://www.apachefriends.org/download.html)
+> #### Then clone the project using
+``` bash
+git clone https://github.com/bdemon245/final-project-empac/
+
+```
+> #### Then install dependencies
+``` bash
+npm install
+```
+``` bash
+php composer.phar install
+```
+> #### Start your local server
+``` bash
+npm run dev 
+``` 
+Open a new teminal and enter
+``` bash
+php artisan ser
+```
+### Your project shuould be running at localhost:8000/
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
