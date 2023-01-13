@@ -1,0 +1,13 @@
+//variables
+@import './_partials/variables';
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    .dropdown-items{
+        color: green;
+    }
+}
+
+

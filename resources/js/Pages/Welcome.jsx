@@ -1,30 +1,55 @@
 import { Link, Head } from '@inertiajs/inertia-react';
+import { NavLink } from '../Components';
+import route from '/vendor/tightenco/ziggy/src/js';
+import SearchBox from '../Components/SearchBox/SearchBox';
+
 
 export default function Welcome(props) {
     return (
         <>
             <Head title="Stylo" />
-            <div className="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-                <div className="fixed top-0 right-0 px-6 py-4 sm:block">
+            <div>
+                <nav>
+                    <NavLink className="app-logo" href={route('home')}>
+                        <img src="/assets/logo.svg" alt="app-logo" />
+                    </NavLink>
+                    <NavLink active={true} href={route('home')} >
+                        Home
+                    </NavLink>
+                    <NavLink href={route('dashboard')} >
+                        Explore
+                    </NavLink>
+                    <NavLink className="dropdown" href={route('dashboard')}
+                    >
+                        Browse
+                        <ul className='dropdown-items'>
+                            <li className='dropdown-item'>Featured</li>
+                            <li className='dropdown-item'>Shoes</li>
+                            <li className='dropdown-item'>Watches</li>
+                            <li className='dropdown-item'>All</li>
+                        </ul>
+                    </NavLink>
+                    <NavLink href={route('dashboard')} >
+                        Contact Us
+                    </NavLink>
+                    <SearchBox />
                     {props.auth.user ? (
-                        <Link href={route('dashboard')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                        <NavLink href={route('dashboard')} >
                             Dashboard
-                        </Link>
+                        </NavLink>
                     ) : (
                         <>
-                            <Link href={route('login')} className="text-sm text-gray-700 dark:text-gray-500 underline">
+                            <Link href={route('login')} >
                                 Log in
                             </Link>
 
                             <Link
-                                href={route('register')}
-                                className="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
-                            >
+                                href={route('register')}>
                                 Register
                             </Link>
                         </>
                     )}
-                </div>
+                </nav>
             </div>
         </>
     );

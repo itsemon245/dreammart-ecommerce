@@ -23,6 +23,11 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+})->name('home');
+
+//route for linking all the assets
+Route::get('assets/{path}', function ($path) {
+    return response()->file(resource_path("assets/$path"));
 });
 
 Route::get('/dashboard', function () {
@@ -35,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
