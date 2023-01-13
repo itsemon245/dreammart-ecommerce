@@ -2,8 +2,8 @@ import _ from 'lodash';
 
 import '../css/app.css';
 import '../scss/app.scss';
-import '/node_modules/bootstrap/dist/css/bootstrap.css'//importing bootstrap from node_modules
-import '/node_modules/bootstrap/dist/js/bootstrap.js'//importing bootstrap js
+import '/node_modules/bootstrap/dist/css/bootstrap.css'
+import '/node_modules/bootstrap/dist/js/bootstrap.js'
 window._ = _;
 
 /**

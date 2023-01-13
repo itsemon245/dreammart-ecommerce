@@ -1,5 +1,5 @@
 import { Link, Head } from '@inertiajs/inertia-react';
-import { NavLink } from '../Components';
+import { NavLink, NavDropdown } from '../Components/';
 import route from '/vendor/tightenco/ziggy/src/js';
 import SearchBox from '../Components/SearchBox/SearchBox';
 
@@ -16,19 +16,11 @@ export default function Welcome(props) {
                     <NavLink active={true} href={route('home')} >
                         Home
                     </NavLink>
+                    <NavDropdown />
                     <NavLink href={route('dashboard')} >
                         Explore
                     </NavLink>
-                    <NavLink className="dropdown" href={route('dashboard')}
-                    >
-                        Browse
-                        <ul className='dropdown-items'>
-                            <li className='dropdown-item'>Featured</li>
-                            <li className='dropdown-item'>Shoes</li>
-                            <li className='dropdown-item'>Watches</li>
-                            <li className='dropdown-item'>All</li>
-                        </ul>
-                    </NavLink>
+
                     <NavLink href={route('dashboard')} >
                         Contact Us
                     </NavLink>
@@ -39,11 +31,11 @@ export default function Welcome(props) {
                         </NavLink>
                     ) : (
                         <>
-                            <Link href={route('login')} >
+                            <Link id='link' href={route('login')} >
                                 Log in
                             </Link>
 
-                            <Link
+                            <Link id='link'
                                 href={route('register')}>
                                 Register
                             </Link>
