@@ -15,6 +15,7 @@
 > #### Then clone the project using
 ``` bash
 git clone https://github.com/bdemon245/final-project-empac/
+git checkout -b your-branch-name
 
 ```
 > #### Then install dependencies
