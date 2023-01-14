@@ -22,7 +22,8 @@ git clone https://github.com/bdemon245/final-project-empac/
 npm install
 ```
 ``` bash
-php composer.phar install
+composer install
+composer update
 ```
 > #### Start your local server
 ``` bash
