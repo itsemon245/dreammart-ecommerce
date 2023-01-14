@@ -42,6 +42,7 @@ export default function Welcome(props) {
                         </>
                     )}
                 </nav>
+                <h1>Commiting for testing</h1>
             </div>
         </>
     );
