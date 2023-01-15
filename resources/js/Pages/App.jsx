@@ -14,7 +14,7 @@ export default function App() {
                 <meta name="description" content="This is a e-commerce web application for 8th semester final project" />
             </Head>
             <div className='w-100' >
-                <nav className='flex gap-x-4 items-start'>
+                <nav className='flex gap-x-4 items-start font-'>
                     <NavLink className="app-logo" href={route('home')}>
                         <img src="/assets/logo.svg" alt="app-logo" />
                     </NavLink>

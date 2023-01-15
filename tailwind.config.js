@@ -43,7 +43,8 @@ module.exports = {
                 },
             },
         ],
-        prefix: "ds-"
+        prefix: "ds-",
+        darkMode: "light"
     },
 
 };
