@@ -17,13 +17,16 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return inertia('App');
 })->name('home');
+
+Route::get('/register', function () {
+    return inertia('Register');
+})->name('register');
+
+Route::get('/login', function () {
+    return inertia('Login');
+})->name('login');
 
 //route for linking all the assets
 Route::get('assets/{path}', function ($path) {

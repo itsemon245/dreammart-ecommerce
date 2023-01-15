@@ -12,9 +12,13 @@
 -  [Install NodeJs](https://nodejs.org/en/download/)
 -  [Install Git](https://git-scm.com/downloads)
 -  [Install Xampp](https://www.apachefriends.org/download.html)
+
+>
+> ### First of all fork this project copy the url from your repo 
 > #### Then clone the project using
 ``` bash
-git clone https://github.com/bdemon245/final-project-empac/
+git clone https://github.com/your-name/final-project-empac/
+git checkout -b your-branch-name
 
 ```
 > #### Then install dependencies
@@ -22,7 +26,8 @@ git clone https://github.com/bdemon245/final-project-empac/
 npm install
 ```
 ``` bash
-php composer.phar install
+composer install
+composer update
 ```
 > #### Start your local server
 ``` bash

@@ -1,0 +1,14 @@
+#search-product:focus{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+}
+#search-product{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: none;
+    padding: 0;
+}
