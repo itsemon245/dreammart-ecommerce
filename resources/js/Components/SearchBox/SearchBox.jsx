@@ -1,16 +1,21 @@
 import React from 'react'
-import './searchBox.scss';
+import { MagnifyingGlassIcon, FunnelIcon } from "@heroicons/react/24/outline";
+import './search-box.css';
+
 
 export default function SearchBox() {
+    
     return (
-        <div className='search-box'>
-            <img src="assets/search.svg" alt="" />
-            <input type="search"
-                className='search-field'
+
+        <div className='flex gap-6 border border-primary px-5 py-2.5 rounded-full items-center'>
+            
+            <MagnifyingGlassIcon className='w-6 h-6 text-neutral-content'></MagnifyingGlassIcon>
+            <input type="text"
+                className='bg-none border-0 outline-0'
                 name="search-product"
                 id="search-product"
                 placeholder='Search products' />
-            <img src="assets/filter.svg" alt="" />
+
         </div>
     )
 }

@@ -1,17 +1,6 @@
-//custom-variables
-@import '/resources/scss/_partials/variables';
-@import '/node_modules/bootstrap/scss/mixins';
-@import '/node_modules/bootstrap/scss/bootstrap-reboot.scss';
-@import '/resources/scss/_partials/custom_resets';
 
-.dropdown{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    .dropdown-items{
-        color: green;
-    }
+
+*:focus{
+    outline: none;
 }
-
 
