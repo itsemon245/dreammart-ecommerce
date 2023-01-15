@@ -4,30 +4,34 @@ import './scss/nav.scss';
 
 export default function NavDropdown() {
     return (
-        <div className='d-inline-flex'>
-            <button className='d-inline-flex dropdown'>
+        <div className=''>
+            <button className=' text-center dropdown'>
                 Browse
                 <ul className='
-                        d-flex
-                        flex-column
-                        m-0 p-0
+                mt-4 flex flex-col gap-10
+                p-0 mb-0 text-start
                         dropdown-items'>
-                    <NavLink href={route('home')} 
-                    className='
-                    dropdown-item 
-                    m-0 '>Featured</NavLink>
-                    <NavLink href={route('home')} 
-                    className='
-                    dropdown-item 
-                    m-0 '>Shoes</NavLink>
-                    <NavLink href={route('home')} 
-                    className='
-                    dropdown-item 
-                    m-0 '>Watches</NavLink>
-                    <NavLink href={route('home')} 
-                    className='
-                    dropdown-item 
-                    m-0 '>All</NavLink>
+
+                    <li>
+                        <NavLink href={route('home')}
+                            className='
+                    dropdown-item'>Featured</NavLink>
+                    </li>
+                    <li>
+                        <NavLink href={route('home')}
+                            className='
+                    dropdown-item'>Shoes</NavLink>
+                    </li>
+                    <li>
+                        <NavLink href={route('home')}
+                            className='
+                    dropdown-item'>Watches</NavLink>
+                    </li>
+                    <li>
+                        <NavLink href={route('home')}
+                            className='
+                    dropdown-item'>All</NavLink>
+                    </li>
                 </ul>
             </button>
         </div>
