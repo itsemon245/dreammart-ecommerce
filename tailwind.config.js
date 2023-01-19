@@ -23,7 +23,7 @@ module.exports = {
             {
                 light: {
 
-                    "primary": "#009393",
+                    "primary": "#06BEE1",
 
                     "secondary": "#91bde6",
 
@@ -31,7 +31,7 @@ module.exports = {
 
                     "neutral": "#191D24",
 
-                    "base-100": "#2A303C",
+                    "base-100": "#1A2232",
 
                     "info": "#3ABFF8",
 
@@ -43,7 +43,6 @@ module.exports = {
                 },
             },
         ],
-        prefix: "ds-",
         darkMode: "light"
     },
 
