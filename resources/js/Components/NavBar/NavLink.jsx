@@ -5,7 +5,7 @@ export default function NavLink({ href, active, children }) {
         <Link
             id='link'
             href={href}
-            className='d-inline-flex text-dark'
+            className='text-dark hover:bg-neutral px-5 py-3 rounded transition-all'
         >
             {children}
         </Link>
