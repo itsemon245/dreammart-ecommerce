@@ -1,2 +1,3 @@
 import { NavLink, NavDropdown} from './NavBar/';
-export { NavLink, NavDropdown}
+import Hero from './Hero/Hero';
+export { NavLink, NavDropdown, Hero}
