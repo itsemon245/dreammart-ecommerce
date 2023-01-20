@@ -2,4 +2,6 @@ import NavBar from './NavBar/NavBar';
 import Hero from './Hero/Hero';
 import Section from './Landing/Section'
 import SearchBox from './SearchBox/SearchBox'
-export { NavBar, Hero, Section, SearchBox }
+import ArrowLeft from './Icons/arrowLeft'
+import ArrowRight from './Icons/arrowRight';
+export { NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight }
