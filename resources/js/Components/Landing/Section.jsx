@@ -18,7 +18,7 @@ export default function Section({ landingProducts, heading, subTitle }) {
                 <div className='w-full carousel carousel-center'>
                     {
                         landingProducts.map((product, index) => (
-                            <div id={sectionName + index} key={index} className="carousel-item w-full mt-10 flex items-center justify-between lg:grid lg:grid-cols-7 lg:place-items-center">
+                            <div id={sectionName + index} key={index} className="carousel-item w-full mt-10 flex items-center justify-between lg:grid lg:grid-cols-7 lg:place-items-center ">
                                 <a className='lg:col-span-1'
                                     href={index !== 0 ? ("#" + sectionName + (index - 1)) : "#" + sectionName + lastIndex}><ArrowLeft></ArrowLeft></a>
                                 <div className='flex lg:gap-20 lg:col-span-5 flex-col lg:flex-row gap-4'>

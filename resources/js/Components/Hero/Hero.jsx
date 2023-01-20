@@ -1,5 +1,6 @@
 import React from 'react'
 import Carousel from './Carousel'
+import { SearchBox } from "../"
 
 export default function Hero({ carouselImages }) {
     return (
@@ -23,7 +24,12 @@ export default function Hero({ carouselImages }) {
                     <h1 className="font-bold xl:text-5xl md:text-2xl text-xl max-w-[18ch]  break-words">Quality, <span className='text-primary'>Style</span> &
                         Simplicity</h1>
                     <p className="lg:py-6 py-3 lg:max-w-[45ch] max-w-[32ch]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn sm:btn-md btn-sm capitalize 2xl:btn-lg btn-primary flex sm:gap-x-3 gap-x-1 items-center justify-center"><img loading='lazy' className='sm:w-5 sm:h-5 h-4 w-4' src="assets/explore-icon.svg" alt="" />Explore</button>
+                    <div className='flex gap-5'>
+                        <button className="btn sm:btn-md btn-sm capitalize 2xl:btn-lg btn-primary flex sm:gap-x-3 gap-x-1 items-center justify-center">
+                            <img loading='lazy' className='sm:w-5 sm:h-5 h-4 w-4' src="assets/explore-icon.svg" alt="" />Explore
+                        </button>
+                        <SearchBox></SearchBox>
+                    </div>
                 </div>
             </div>
         </div>
