@@ -24,7 +24,7 @@ export default function NavBar() {
         }
     }
     return (
-        <nav className="navbar lg:px-10 md:px-5">
+        <nav className="navbar lg:px-10 md:px-5 ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-sm btn-ghost lg:hidden">
