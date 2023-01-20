@@ -24,10 +24,10 @@ export default function NavBar() {
         }
     }
     return (
-        <nav className="navbar">
+        <nav className="navbar lg:px-10 md:px-5">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    <label tabIndex={0} className="btn btn-sm btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -46,9 +46,9 @@ export default function NavBar() {
                         </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl"><img src="assets/DreamMart.svg" alt="" /></a>
+                <a className=""><img src="assets/DreamMart.svg" alt="" /></a>
             </div>
-            <div className="mx-center hidden lg:flex">
+            <div className="lg:nav-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navLinks.map((link, index) => (
                         <li key={index}><Link href={route(link.route)}>{link.name}</Link></li>
@@ -66,12 +66,12 @@ export default function NavBar() {
                     </li>
                 </ul>
             </div>
-            <div className="navbar-end flex gap-5">
+            <div className="navbar-end flex lg:gap-x-10 md:gap-x-5 ml-auto gap-x-3">
                 <Link>
-                    <ShoppingCartIcon className='w-6 h-6 font-semibold text-white'></ShoppingCartIcon>
+                    <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white'></ShoppingCartIcon>
                 </Link>
                 <Link className="text-primary font-semibold capitalize">Login</Link>
-                <Link className="btn btn-primary font-medium capitalize">Register</Link>
+                <Link className="btn btn-sm text-sm btn-primary font-normal capitalize">Register</Link>
             </div>
 
         </nav>
