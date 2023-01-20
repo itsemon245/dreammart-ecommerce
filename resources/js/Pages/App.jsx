@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
-import { Hero } from '../Components/';
-import NavBar from '/resources/js/Components/NavBar/NavBar';
+import { NavBar, Hero, Section } from '../Components/';
 import { UserIcon } from '@heroicons/react/24/outline'
 
 
 export default function App() {
-   
+
 
     return (
         <>
@@ -17,6 +16,7 @@ export default function App() {
             <div className='w-100' >
                 <NavBar></NavBar>
                 <Hero className=""></Hero>
+                <Section></Section>
             </div>
         </>
     );
