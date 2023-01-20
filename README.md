@@ -29,11 +29,16 @@ npm install
 composer install
 composer update
 ```
-> #### Start your local server
+> Copy everything from `.env.example` and create a new `.env` file in root directory & paste what you have copied.
+Then generate a fresh laravel app key with this command:
+``` 
+php artisan key:generate
+```
+> #### Start your local server:
 ``` bash
 npm run dev 
 ``` 
-Open a new teminal and enter
+Open a new teminal and enter:
 ``` bash
 php artisan ser
 ```
