@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
 import { NavBar, Hero, Section } from '../Components/';
 import { UserIcon } from '@heroicons/react/24/outline'
+import Footer from '/resources/js/Components/Footer/Footer';
 
 
 export default function App() {
@@ -74,6 +75,7 @@ export default function App() {
                 <Section landingProducts={landingProducts.newArrivals} heading={"Live-Your-Dreams"} subTitle="New Arrivals"></Section>
                 <Section landingProducts={landingProducts.mostPopular} heading={"Chosen-By-People"} subTitle="Most Popular"></Section>
                 <Section landingProducts={landingProducts.spacialDeals} heading={"Our-Recommendation"} subTitle="Spacial Deals"></Section>
+                <Footer></Footer>
             </div>
         </>
     );
