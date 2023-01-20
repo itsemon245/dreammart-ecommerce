@@ -1,3 +1,3 @@
-import { NavLink, NavDropdown} from './NavBar/';
+import NavLink from './NavBar/NavLink';
 import Hero from './Hero/Hero';
-export { NavLink, NavDropdown, Hero}
+export { NavLink, Hero}
