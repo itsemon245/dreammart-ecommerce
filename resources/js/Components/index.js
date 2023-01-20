@@ -1,3 +1,4 @@
-import NavLink from './NavBar/NavLink';
+import NavBar from './NavBar/NavBar';
 import Hero from './Hero/Hero';
-export { NavLink, Hero}
+import Section from './Landing/Section'
+export { NavBar, Hero, Section }
