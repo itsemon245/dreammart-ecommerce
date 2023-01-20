@@ -11,6 +11,7 @@ export default function AboutUs() {
             </Head>
             <div className='w-100' >
                 <NavBar></NavBar>
+                <h1 className='text-[50px] text-red-500 bg-green-600'>this is a about page</h1>
             </div>
 
         </>
