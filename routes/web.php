@@ -19,6 +19,16 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return inertia('App');
 })->name('home');
+Route::get('/new-arrivals', function () {
+    return inertia('NewArrivals');
+})->name('newArrivals');
+Route::get('/exclusive', function () {
+    return inertia('Exclusive');
+})->name('exclusive');
+Route::get('/about-us', function () {
+    return inertia('AboutUs');
+})->name('aboutUs');
+
 
 Route::get('/register', function () {
     return inertia('Register');

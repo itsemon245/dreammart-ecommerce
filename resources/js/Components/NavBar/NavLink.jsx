@@ -1,13 +1,12 @@
 import { Link } from '@inertiajs/inertia-react';
+import route from '/vendor/tightenco/ziggy/src/js';
 
-export default function NavLink({ href, active, children }) {
+export default function NavLink({routeName, content, className }) {
+
     return (
-        <Link
-            id='link'
-            href={href}
-            className='text-dark hover:bg-neutral px-5 py-3 rounded transition-all'
-        >
-            {children}
-        </Link>
-    );
+            <Link  href={route(routeName)} className={className}>
+                {content.name}
+            </Link>
+    )
+
 }
