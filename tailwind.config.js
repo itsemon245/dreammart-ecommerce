@@ -14,6 +14,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+            screens: {
+                'mini-tab': "450px"
+            }
         },
     },
 
