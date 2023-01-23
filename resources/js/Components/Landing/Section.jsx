@@ -8,17 +8,18 @@ export default function Section({ landingProducts, heading, subTitle }) {
     let lastIndex = landingProducts.length - 1
     let sectionTitle = heading.split("-")
     let coloredTitle = sectionTitle.pop()
-    let sectionName = subTitle.replace(" ", "-").toLowerCase()
+    let subTitleArray = subTitle.split(" ")
+    let sectionName = subTitleArray.join("-").toLowerCase()
     console.log(sectionTitle);
     return (
         <div className='mb-20'>
             <h2 className='font-bold xl:text-3xl md:text-2xl text-xl text-center tracking-wide text-white'>{sectionTitle.join(" ") + " "}<span className='text-primary'>{coloredTitle}</span></h2>
             <div className="container-lg px-10">
-                <h3 className='font-medium xl:text-2xl md:text-xl tracking-wide mt-4 lg:mt-8 text-white'>{subTitle}</h3>
                 <div className='w-full carousel carousel-center'>
                     {
                         landingProducts.map((product, index) => (
                             <div id={sectionName + index} key={index} className="carousel-item w-full mt-10 flex items-center justify-between lg:grid lg:grid-cols-7 lg:place-items-center ">
+                                <h3 className='col-span-7 mr-auto font-medium xl:text-2xl md:text-xl tracking-wide mt-4 lg:mt-8 text-white'>{subTitleArray[0] + " "}<span className='text-primary'>{subTitleArray[1]}</span></h3>
                                 <a className='lg:col-span-1'
                                     href={index !== 0 ? ("#" + sectionName + (index - 1)) : "#" + sectionName + lastIndex}><ArrowLeft></ArrowLeft></a>
                                 <div className='flex lg:gap-20 lg:col-span-5 flex-col lg:flex-row gap-4'>

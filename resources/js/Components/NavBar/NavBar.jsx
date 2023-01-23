@@ -59,8 +59,8 @@ export default function NavBar() {
                             <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                         </a>
                         <ul className="p-2 bg-base-100 transition-all z-10 overflow-visible">
-                            {navLinks.map((link, index) => (
-                                <li key={index}><Link >{link.name}</Link></li>
+                            {category.browse.routes.map((link, index) => (
+                                <li className='transition-all' key={index}><Link >{link.name}</Link></li>
                             ))}
                         </ul>
                     </li>
@@ -71,7 +71,7 @@ export default function NavBar() {
                     <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white'></ShoppingCartIcon>
                 </Link>
                 <Link className="text-primary font-semibold capitalize">Login</Link>
-                <Link className="btn btn-sm text-sm btn-primary font-normal capitalize">Register</Link>
+                <Link className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize">Register</Link>
             </div>
 
         </nav>
