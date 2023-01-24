@@ -4,7 +4,7 @@ import { SearchBox } from "../"
 
 export default function Hero({ carouselImages }) {
     return (
-        <div className="hero min-h-screen lg:mt-20 sm:mt-5 z-[-1] text-white">
+        <div className="hero min-h-screen z-[-1] text-white">
             <div className="hero-content py-0 flex-col sm:flex-row-reverse xl:gap-x-32 lg:gap-x-16 md:gap-x-5 gap-x-2">
                 <div className="hero-images hidden sm:inline-grid grid-cols-2">
                     <div className="lg:w-52 sm:w-36  lg:translate-y-5 lg:-translate-x-5 aspect-square">

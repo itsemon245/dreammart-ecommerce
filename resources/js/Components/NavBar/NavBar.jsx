@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from '@inertiajs/inertia-react';
 import route from '/vendor/tightenco/ziggy/src/js';
-
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
+import NavAuthOption from './NavAuthOption';
 
 
 export default function NavBar() {
+    const [auth, setAuth] = useState(true)
     const navLinks = [
         { name: "Home", route: "home" },
         { name: "New Arrivals", route: "newArrivals" },
@@ -53,16 +54,19 @@ export default function NavBar() {
                     {navLinks.map((link, index) => (
                         <li key={index}><Link href={route(link.route)}>{link.name}</Link></li>
                     ))}
-                    <li tabIndex={0}>
-                        <a>
-                            Browse
-                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
-                        </a>
-                        <ul className="p-2 bg-base-100 transition-all z-10 overflow-visible">
-                            {category.browse.routes.map((link, index) => (
-                                <li className='transition-all' key={index}><Link >{link.name}</Link></li>
-                            ))}
-                        </ul>
+                    <li>
+                        <div className="dropdown dropdown-bottom dropdown-end">
+                            <label tabIndex={0} className='flex items-center cursor-pointer'>
+                                Browse
+                                <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                            </label>
+
+                            <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
+                                {category.browse.routes.map((link, index) => (
+                                    <li className='hover:text-primary block transition-all' key={index}><Link >{link.name}</Link></li>
+                                ))}
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -70,8 +74,17 @@ export default function NavBar() {
                 <Link>
                     <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white'></ShoppingCartIcon>
                 </Link>
-                <Link className="text-primary font-semibold capitalize">Login</Link>
-                <Link className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize">Register</Link>
+                {auth ? (
+                    <NavAuthOption></NavAuthOption>
+                ) : (
+                    <>
+                        <Link className="text-primary font-semibold capitalize">Login</Link>
+                        <Link className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize">Register</Link>
+                    </>
+                )}
+
+
+
             </div>
 
         </nav>
