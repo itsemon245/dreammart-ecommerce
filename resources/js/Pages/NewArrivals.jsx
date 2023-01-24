@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
 import NavBar from '/resources/js/Components/NavBar/NavBar';
+import ProductCard from '/resources/js/Components/Products/ProductCard';
 
 export default function NewArrivals() {
     return (
@@ -11,7 +12,11 @@ export default function NewArrivals() {
             </Head>
             <div className='w-100' >
                 <NavBar></NavBar>
+                <div className='mt-10'>
+                    <ProductCard></ProductCard>
+                </div>
             </div>
+
 
         </>
     )
