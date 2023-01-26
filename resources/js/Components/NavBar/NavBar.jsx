@@ -6,7 +6,6 @@ import NavAuthOption from './NavAuthOption';
 
 
 export default function NavBar({ auth }) {
-    console.log(auth.user)
     const navLinks = [
         { name: "Home", route: "home" },
         { name: "New Arrivals", route: "newArrivals" },

@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Link, Head } from '@inertiajs/inertia-react';
-import { NavBar, Hero, Section } from '../Components/';
+import { NavBar, Hero, Section, Alert } from '@/Components/';
 import { UserIcon } from '@heroicons/react/24/outline'
 import Footer from '/resources/js/Components/Footer/Footer';
+import { usePage } from '@inertiajs/inertia-react';
 
 
 export default function App(props) {
+    const { success, info } = usePage().props
     const carouselImages = [
         { name: "controller", src: "assets/carousel-img-controller.png" },
         { name: "watch", src: "assets/carousel-img-watch.png" },
@@ -71,6 +73,7 @@ export default function App(props) {
             </Head>
             <div className='w-100' >
                 <NavBar auth={props.auth}></NavBar>
+                <Alert type="info" message="You are logged in!"></Alert>
                 <Hero carouselImages={carouselImages}></Hero>
                 <Section landingProducts={landingProducts.newArrivals} heading={"Live-Your-Dreams"} subTitle="New Arrivals"></Section>
                 <Section landingProducts={landingProducts.mostPopular} heading={"Chosen-By-People"} subTitle="Most Popular"></Section>
