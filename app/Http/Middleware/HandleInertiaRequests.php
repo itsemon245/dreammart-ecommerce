@@ -45,7 +45,7 @@ class HandleInertiaRequests extends Middleware
             'warning' => [
                 'message' => session('warning')
             ],
-            'danger' => [
+            'error' => [
                 'message' => session('danger')
             ],
             'ziggy' => function () use ($request) {

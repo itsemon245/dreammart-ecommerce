@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Alert({ type, message }) {
+export function Alert({ type, message }) {
     return (
         <div className={`alert alert-${type} shadow-lg w-max float-right`}>
             <div>
@@ -11,3 +11,15 @@ export default function Alert({ type, message }) {
         </div>
     )
 }
+
+export default function Alerts({ messages: { success, info, warning, error } }) {
+    return (
+        <>
+            {success.message && <Alert type='success' message={success.message} />}
+            {info.message && <Alert type='info' message={info.message} />}
+            {warning.message && <Alert type='warning' message={warning.message} />}
+            {error.message && <Alert type='error' message={error.message} />}
+        </>
+    )
+}
+
