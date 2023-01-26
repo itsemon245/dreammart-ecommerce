@@ -5,7 +5,7 @@ import { UserIcon } from '@heroicons/react/24/outline'
 import Footer from '/resources/js/Components/Footer/Footer';
 
 
-export default function App() {
+export default function App(props) {
     const carouselImages = [
         { name: "controller", src: "assets/carousel-img-controller.png" },
         { name: "watch", src: "assets/carousel-img-watch.png" },
@@ -70,7 +70,7 @@ export default function App() {
                 <meta name="description" content="This is a e-commerce web application for 8th semester final project" />
             </Head>
             <div className='w-100' >
-                <NavBar></NavBar>
+                <NavBar auth={props.auth}></NavBar>
                 <Hero carouselImages={carouselImages}></Hero>
                 <Section landingProducts={landingProducts.newArrivals} heading={"Live-Your-Dreams"} subTitle="New Arrivals"></Section>
                 <Section landingProducts={landingProducts.mostPopular} heading={"Chosen-By-People"} subTitle="Most Popular"></Section>

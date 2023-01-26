@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +19,16 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return inertia('App');
+    return Inertia::render('App', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 })->name('home');
+
+Route::post('/create_user', [RegisteredUserController::class, 'store'] )->name('user.create');
+
 Route::get('/new-arrivals', function () {
     return inertia('NewArrivals');
 })->name('newArrivals');
@@ -29,15 +39,6 @@ Route::get('/about-us', function () {
     return inertia('AboutUs');
 })->name('aboutUs');
 
-
-Route::get('/register', function () {
-    return inertia('Register');
-})->name('register');
-
-Route::get('/login', function () {
-    return inertia('Login');
-})->name('login');
-
 //route for linking all the assets
 Route::get('assets/{path}', function ($path) {
     return response()->file(resource_path("assets/$path"));
@@ -46,6 +47,8 @@ Route::get('assets/{path}', function ($path) {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
