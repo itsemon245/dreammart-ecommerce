@@ -5,8 +5,8 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import NavAuthOption from './NavAuthOption';
 
 
-export default function NavBar() {
-    const [auth, setAuth] = useState(false)
+export default function NavBar({ auth }) {
+    console.log(auth.user)
     const navLinks = [
         { name: "Home", route: "home" },
         { name: "New Arrivals", route: "newArrivals" },
@@ -74,17 +74,22 @@ export default function NavBar() {
                 <Link>
                     <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white'></ShoppingCartIcon>
                 </Link>
-                {auth ? (
+                {auth.user !== null ? (
                     <NavAuthOption></NavAuthOption>
                 ) : (
                     <>
-                        <Link className="text-primary font-semibold capitalize">Login</Link>
-                        <Link className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize">Register</Link>
+                        <Link href={route('login')} className="text-primary font-semibold capitalize">
+                            Log in
+                        </Link>
+
+                        <Link
+                            href={route('register')}
+                            className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize"
+                        >
+                            Register
+                        </Link>
                     </>
                 )}
-
-
-
             </div>
 
         </nav>

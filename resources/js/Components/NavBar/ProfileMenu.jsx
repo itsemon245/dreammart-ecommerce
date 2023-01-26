@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
-import { UserIcon, ChevronDownIcon, HeartIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { UserIcon, ChevronDownIcon, HeartIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon, PowerIcon } from '@heroicons/react/24/outline'
 
 export default function ProfileMenu() {
     return (
@@ -28,6 +28,9 @@ export default function ProfileMenu() {
                     </li>
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link> <InformationCircleIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></InformationCircleIcon> Help Center</Link>
+                    </li>
+                    <li className='mt-5 transition-all group font-normal hover:text-primary'>
+                        <Link href={route('logout')}> <PowerIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></PowerIcon> Logout</Link>
                     </li>
                 </ul>
             </div>
