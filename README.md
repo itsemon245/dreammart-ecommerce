@@ -26,8 +26,10 @@ git checkout -b your-branch-name
 npm install
 ```
 ``` bash
-composer install
 composer update
+```
+if composer update gives you error try
+```composer update --ignore-platform-req=ext-fileinfo
 ```
 > Copy everything from `.env.example` and create a new `.env` file in root directory & paste what you have copied.
 Then generate a fresh laravel app key with this command:
