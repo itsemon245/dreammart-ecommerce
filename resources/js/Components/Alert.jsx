@@ -12,17 +12,21 @@ export function Alert({ type, message }) {
     )
 }
 
-export default function Alerts({ messages: { success, info, warning, error } }) {
-    if (success !== undefined) {
-        return (
-            <>
-                {success.message !== null ? <Alert type='success' message={success.message} /> : null}
-                {info.message !== null ? <Alert type='info' message={info.message} /> : null}
-                {warning.message !== null ? <Alert type='warning' message={warning.message} /> : null}
-                {error.message !== null ? <Alert type='error' message={error.message} /> : null}
-            </>
-        )
-    }
+export default function Alerts({ messages }) {
+
+    return (
+        <>
+            {messages && (<>
+                {messages.success.message && <Alert type='success' message={messages.success.message} />}
+                {messages.info.message && <Alert type='info' message={messages.info.message} />}
+                {messages.warning.message && <Alert type='warning' message={messages.warning.message} />}
+                {messages.error.message && <Alert type='error' message={messages.error.message} />}
+            </>)
+
+            }
+
+        </>
+    )
 
 }
 
