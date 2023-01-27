@@ -64,7 +64,7 @@ export default function App(props) {
 
 
     return (
-        <CommonLayout title="Home" auth={props.auth} messages={messages} alerts={<Alerts messages={messages}></Alerts>}>
+        <CommonLayout pageTitle="Home" auth={props.auth} messages={messages}>
             <Hero carouselImages={carouselImages}></Hero>
             <Section landingProducts={landingProducts.newArrivals} heading={"Live-Your-Dreams"} subTitle="New Arrivals"></Section>
             <Section landingProducts={landingProducts.mostPopular} heading={"Chosen-By-People"} subTitle="Most Popular"></Section>

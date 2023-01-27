@@ -29,7 +29,7 @@ export default function FilterMenu({ closeFilterMenu, showMenu }) {
         <FilterCloseBtn closeFilterMenu={closeFilterMenu} />
       </div>
       {Object.entries(topics).map(([topic, names]) => (
-        <FilterCheckBoxes topic={topic} names={names} />
+        <FilterCheckBoxes topic={topic} names={names} key={Math.random() * (100 - 10) + 10} />
       ))}
       {/* <FilterCheckBoxes topic="Brands" names={['Nike', 'Gorge']} /> */}
     </div>

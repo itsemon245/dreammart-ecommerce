@@ -19,7 +19,7 @@ export default function NewArrivals(props) {
     const { messages } = usePage().props
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return (
-        <CommonLayout title="New Arrivals" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="New Arrivals" auth={props.auth} messages={messages}>
             <h1 className='text-center mt-5 text-xl font-semibold text-primary'>Showing new arrived items</h1>
             {/* <div className={`${showMenu ? "translate-x-[-4%]" : "translate-x-[-100%]"} z-10 transition-all`}> */}
             <FilterMenu closeFilterMenu={closeFilterMenu} showMenu={showMenu} />
