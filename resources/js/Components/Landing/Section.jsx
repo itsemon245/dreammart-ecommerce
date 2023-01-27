@@ -10,7 +10,6 @@ export default function Section({ landingProducts, heading, subTitle }) {
     let coloredTitle = sectionTitle.pop()
     let subTitleArray = subTitle.split(" ")
     let sectionName = subTitleArray.join("-").toLowerCase()
-    console.log(sectionTitle);
     return (
         <div className='mb-20'>
             <h2 className='font-bold xl:text-3xl md:text-2xl text-xl text-center tracking-wide text-white'>{sectionTitle.join(" ") + " "}<span className='text-primary'>{coloredTitle}</span></h2>
