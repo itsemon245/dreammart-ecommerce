@@ -1,21 +1,11 @@
 import React from 'react'
 import { ProductCard, FilterBtn, FilterMenu, SortByBtn } from '@/Components/';
 import CommonLayout from '@/Layouts/CommonLayout';
+import ProductPageLayout from '@/Layouts/ProductPageLayout';
 import { usePage } from '@inertiajs/inertia-react';
-import { useState } from 'react';
 
 export default function NewArrivals(props) {
-    const [showMenu, setShowMenu] = useState(false)
-    const onClickHandler = () => {
-        let toggle = !showMenu
-        setShowMenu(toggle)
-        console.log(showMenu);
-    }
-    const closeFilterMenu = () => {
-        if (showMenu === true) {
-            setShowMenu(false)
-        }
-    }
+
     const { messages } = usePage().props
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const products = [
@@ -30,19 +20,7 @@ export default function NewArrivals(props) {
     ]
     return (
         <CommonLayout pageTitle="New Arrivals" auth={props.auth} messages={messages}>
-            <h1 className='text-center mt-5 text-xl font-semibold text-primary'>Showing new arrived items</h1>
-            {/* <div className={`${showMenu ? "translate-x-[-4%]" : "translate-x-[-100%]"} z-10 transition-all`}> */}
-            <FilterMenu closeFilterMenu={closeFilterMenu} showMenu={showMenu} />
-            {/* </div> */}
-            <div className="flex justify-end max-sm:justify-between">
-                <FilterBtn onClickHandler={onClickHandler}></FilterBtn>
-                <SortByBtn></SortByBtn>
-            </div>
-            <div className='grid gap-3 grid-cols-4 max-xs:grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
-                {products.map((product, i) => (
-                    <ProductCard product={product} key={i}></ProductCard>
-                ))}
-            </div>
+            <ProductPageLayout heading="Showing new arrivals" products={products} />
         </CommonLayout>
     )
 }
