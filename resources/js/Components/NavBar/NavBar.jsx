@@ -32,16 +32,17 @@ export default function NavBar({ auth }) {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {navLinks.map((link, index) => (
-                            <li key={index}><Link href={route(link.route)}>{link.name}</Link></li>
+                            <li className='hover:text-primary' key={index}><Link href={route(link.route)}>{link.name}</Link></li>
                         ))}
                         <li tabIndex={0}>
-                            <a className="justify-between">
-                                Parent
+                            <a className="justify-between hover:text-primary">
+                                Browse
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                             </a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
+                            <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
+                                {category.browse.routes.map((link, index) => (
+                                    <li className='hover:text-primary' key={index}><Link >{link.name}</Link></li>
+                                ))}
                             </ul>
                         </li>
                     </ul>
@@ -51,11 +52,11 @@ export default function NavBar({ auth }) {
             <div className="lg:nav-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {navLinks.map((link, index) => (
-                        <li key={index}><Link href={route(link.route)}>{link.name}</Link></li>
+                        <li className='hover:text-primary' key={index}><Link href={route(link.route)}>{link.name}</Link></li>
                     ))}
                     <li>
                         <div className="dropdown dropdown-bottom dropdown-end">
-                            <label tabIndex={0} className='flex items-center cursor-pointer'>
+                            <label tabIndex={0} className='hover:text-primary flex items-center cursor-pointer'>
                                 Browse
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
                             </label>
@@ -77,12 +78,12 @@ export default function NavBar({ auth }) {
                     <NavAuthOption></NavAuthOption>
                 ) : (
                     <>
-                        <Link href={route('login')} className="text-primary font-semibold capitalize">
+                        <Link href='/login' className="text-primary font-semibold capitalize">
                             Log in
                         </Link>
 
                         <Link
-                            href={route('register')}
+                            href='/register'
                             className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize"
                         >
                             Register
