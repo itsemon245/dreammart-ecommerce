@@ -41,7 +41,7 @@ export default function NavBar({ auth }) {
                             </a>
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
                                 {category.browse.routes.map((link, index) => (
-                                    <li className='hover:text-primary' key={index}><Link >{link.name}</Link></li>
+                                    <li className='hover:text-primary' key={index}><Link href={route(link.sub)}>{link.name}</Link></li>
                                 ))}
                             </ul>
                         </li>
@@ -63,7 +63,7 @@ export default function NavBar({ auth }) {
 
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
                                 {category.browse.routes.map((link, index) => (
-                                    <li className='hover:text-primary block transition-all' key={index}><Link >{link.name}</Link></li>
+                                    <li className='hover:text-primary block transition-all' key={index}><Link href={route(link.sub)} >{link.name}</Link></li>
                                 ))}
                             </ul>
                         </div>
