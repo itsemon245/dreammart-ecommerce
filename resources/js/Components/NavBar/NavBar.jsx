@@ -78,12 +78,12 @@ export default function NavBar({ auth }) {
                     <NavAuthOption></NavAuthOption>
                 ) : (
                     <>
-                        <Link href={route('login')} className="text-primary font-semibold capitalize">
+                        <Link href='/login' className="text-primary font-semibold capitalize">
                             Log in
                         </Link>
 
                         <Link
-                            href={route('register')}
+                            href='/register'
                             className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize"
                         >
                             Register
