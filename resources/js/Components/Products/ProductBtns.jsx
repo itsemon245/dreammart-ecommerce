@@ -3,16 +3,16 @@ import { HeartIcon, ShoppingCartIcon, ShoppingBagIcon } from '@heroicons/react/2
 
 export function CartBtn() {
     return (
-        <button class="btn md:btn-md sm:btn-sm btn-outline btn-primary max-sm:px-2 max-sm:py-2 group" type="button">
-            <ShoppingCartIcon className='text-primary group-hover:text-base-100 lg:w-8 lg:h-8 max-sm:w-6 max-sm:h-6  sm:w-4 sm:h-4 font-medium' ></ShoppingCartIcon>
+        <button class="btn max-sm:btn-sm btn-outline btn-primary group" type="button">
+            <ShoppingCartIcon className='text-primary group-hover:text-slate-900 w-6 h-6 max-sm:w-5 max-sm:h-5  font-medium' ></ShoppingCartIcon>
         </button>
 
     )
 }
 export function HeartBtn() {
     return (
-        <button class="btn md:btn-md  sm:btn-sm btn-outline btn-primary max-sm:px-2 max-sm:py-2 group" type="button">
-            <HeartIcon className='text-primary group-hover:text-base-100 lg:w-8 lg:h-8 max-sm:w-6 max-sm:h-6 sm:w-4 sm:h-4 font-medium' ></HeartIcon>
+        <button class="btn max-sm:btn-sm btn-outline btn-primary group" type="button">
+            <HeartIcon className='text-primary group-hover:text-slate-900 w-6 h-6 max-sm:w-5 max-sm:h-5 font-medium' ></HeartIcon>
         </button>
     )
 }

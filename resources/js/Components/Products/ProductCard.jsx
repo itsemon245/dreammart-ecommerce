@@ -6,9 +6,9 @@ import ProductInfo from './ProductInfo'
 
 export default function ProductCard({ product }) {
   return (
-    <div className="card w-full bg-base-200 shadow-xl">
-      <figure><img className='w-full aspect-square object-contain' src={product.image} alt={product.name} loading='lazy' /></figure>
-      <div className="card-body justify-between p-3 bg-base-300 rounded-b-2xl">
+    <div className="card w-full bg-slate-900 shadow-xl">
+      <figure><img className='w-[60%] scale-75 aspect-square object-contain' src={product.image} alt={product.name} loading='lazy' /></figure>
+      <div className="card-body justify-between p-3 bg-slate-900 rounded-b-2xl">
         <ProductInfo name={product.name} />
         <div class="flex text-sm font-medium">
           <div className='flex text-md items-center gap-1'>4.3 <StarIcon className='w-4 h-4 text-yellow-500'></StarIcon></div>
