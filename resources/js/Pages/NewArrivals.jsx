@@ -12,7 +12,9 @@ export default function NewArrivals(props) {
         console.log(showMenu);
     }
     const closeFilterMenu = () => {
-        console.log('closed')
+        if (showMenu === true) {
+            setShowMenu(false)
+        }
     }
     const { messages } = usePage().props
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
