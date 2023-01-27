@@ -4,7 +4,7 @@ import CommonLayout from '@/Layouts/CommonLayout';
 import ProductPageLayout from '@/Layouts/ProductPageLayout';
 import { usePage } from '@inertiajs/inertia-react';
 
-export default function Exclusives(props) {
+export default function Wearables(props) {
 
     const { messages } = usePage().props
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -19,8 +19,8 @@ export default function Exclusives(props) {
         { name: "watch black", image: "assets/carousel-img-watch-2.png" }
     ]
     return (
-        <CommonLayout pageTitle="Exclusives" auth={props.auth} messages={messages}>
-            <ProductPageLayout heading="Showing Exclusive Products" products={products} />
+        <CommonLayout pageTitle="Wearables" auth={props.auth} messages={messages}>
+            <ProductPageLayout heading="Showing Wearables " products={products} />
         </CommonLayout>
     )
 }
