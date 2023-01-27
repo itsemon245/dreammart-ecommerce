@@ -5,4 +5,5 @@ import SearchBox from './SearchBox/SearchBox'
 import ArrowLeft from './Icons/arrowLeft'
 import ArrowRight from './Icons/arrowRight';
 import Alerts from './Alert';
-export { NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight, Alerts }
+import Footer from './Footer/Footer';
+export { NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight, Alerts, Footer }

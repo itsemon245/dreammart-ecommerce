@@ -13,13 +13,16 @@ export function Alert({ type, message }) {
 }
 
 export default function Alerts({ messages: { success, info, warning, error } }) {
-    return (
-        <>
-            {success.message && <Alert type='success' message={success.message} />}
-            {info.message && <Alert type='info' message={info.message} />}
-            {warning.message && <Alert type='warning' message={warning.message} />}
-            {error.message && <Alert type='error' message={error.message} />}
-        </>
-    )
+    if (success !== undefined) {
+        return (
+            <>
+                {success.message !== null ? <Alert type='success' message={success.message} /> : null}
+                {info.message !== null ? <Alert type='info' message={info.message} /> : null}
+                {warning.message !== null ? <Alert type='warning' message={warning.message} /> : null}
+                {error.message !== null ? <Alert type='error' message={error.message} /> : null}
+            </>
+        )
+    }
+
 }
 
