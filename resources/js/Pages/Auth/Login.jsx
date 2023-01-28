@@ -9,18 +9,17 @@ import { usePage, Link, useForm } from '@inertiajs/inertia-react';
 // import route from '/vendor/tightenco/ziggy/src/js';
 
 export default function Login({ status, canResetPassword, auth }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, reset } = useForm({
         email: '',
         password: '',
         remember: '',
     });
-    const { messages } = usePage().props
+    const { messages, errors } = usePage().props
     useEffect(() => {
         return () => {
             reset('password');
         };
     }, []);
-
     const onHandleChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };

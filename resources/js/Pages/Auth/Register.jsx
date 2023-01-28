@@ -8,14 +8,13 @@ import TextInput from '@/Components/TextInput';
 import { usePage ,Link, useForm  } from '@inertiajs/inertia-react';
 
 export default function Register({ auth }) {
-  const { data, setData, post, processing, errors, reset } = useForm({
+  const { data, setData, post, processing, reset } = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
   });
-  const { messages } = usePage().props
-  console.log(errors)
+  const { messages, errors } = usePage().props
   useEffect(() => {
     return () => {
       reset('password', 'password_confirmation');
