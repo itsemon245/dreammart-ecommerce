@@ -19,7 +19,7 @@ export default function Shoes(props) {
         { name: "watch black", image: "assets/carousel-img-watch-2.png" }
     ]
     return (
-        <CommonLayout pageTitle="Shoes" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="Shoes" auth={props.auth}>
             <ProductPageLayout heading="Showing Shoes" products={products} />
         </CommonLayout>
     )

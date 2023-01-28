@@ -1,13 +1,8 @@
 import React from 'react'
-import { ProductCard, FilterBtn, FilterMenu, SortByBtn } from '@/Components/';
 import CommonLayout from '@/Layouts/CommonLayout';
 import ProductPageLayout from '@/Layouts/ProductPageLayout';
-import { usePage } from '@inertiajs/inertia-react';
 
 export default function NewArrivals(props) {
-
-    const { messages } = usePage().props
-    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const products = [
         { name: "controller", image: "assets/carousel-img-controller.png" },
         { name: "watch", image: "assets/carousel-img-watch.png" },
@@ -19,7 +14,7 @@ export default function NewArrivals(props) {
         { name: "watch black", image: "assets/carousel-img-watch-2.png" }
     ]
     return (
-        <CommonLayout pageTitle="New Arrivals" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="New Arrivals" auth={props.auth}>
             <ProductPageLayout heading="Showing new arrivals" products={products} />
         </CommonLayout>
     )

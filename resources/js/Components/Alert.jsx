@@ -1,4 +1,5 @@
 import React from 'react'
+import { usePage } from '@inertiajs/inertia-react'
 
 export function Alert({ type, message }) {
     return (
@@ -12,19 +13,14 @@ export function Alert({ type, message }) {
     )
 }
 
-export default function Alerts({ messages }) {
-
+export default function Alerts(props) {
+    const { success, info, warning, error } = usePage().props
+    const messages = { success, info, warning, error }
     return (
         <>
-            {messages && (<>
-                {messages.success.message && <Alert type='success' message={messages.success.message} />}
-                {messages.info.message && <Alert type='info' message={messages.info.message} />}
-                {messages.warning.message && <Alert type='warning' message={messages.warning.message} />}
-                {messages.error.message && <Alert type='error' message={messages.error.message} />}
-            </>)
-
-            }
-
+            {Object.entries(messages).map(([type, value]) => (
+                value.message && <Alert type={type} message={value.message} key={Math.random() * (100 - 10) + 10} />
+            ))}
         </>
     )
 

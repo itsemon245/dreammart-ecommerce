@@ -1,11 +1,9 @@
 import React from 'react'
-import { Hero, Section, Alerts } from '@/Components/';
+import { Hero, Section} from '@/Components/';
 import CommonLayout from '@/Layouts/CommonLayout'
-import { usePage } from '@inertiajs/inertia-react';
 
 
 export default function App(props) {
-    const { messages } = usePage().props
     const carouselImages = [
         { name: "controller", src: "assets/carousel-img-controller.png" },
         { name: "watch", src: "assets/carousel-img-watch.png" },
@@ -64,7 +62,7 @@ export default function App(props) {
 
 
     return (
-        <CommonLayout pageTitle="Home" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="Home" auth={props.auth}>
             <Hero carouselImages={carouselImages}></Hero>
             <Section landingProducts={landingProducts.newArrivals} heading={"Live-Your-Dreams"} subTitle="New Arrivals"></Section>
             <Section landingProducts={landingProducts.mostPopular} heading={"Chosen-By-People"} subTitle="Most Popular"></Section>
