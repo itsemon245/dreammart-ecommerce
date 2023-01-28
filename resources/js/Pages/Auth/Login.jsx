@@ -5,8 +5,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import { Link, useForm } from '@inertiajs/react';
-import { usePage } from '@inertiajs/inertia-react';
+import { usePage, Link, useForm } from '@inertiajs/inertia-react';
 // import route from '/vendor/tightenco/ziggy/src/js';
 
 export default function Login({ status, canResetPassword, auth }) {
