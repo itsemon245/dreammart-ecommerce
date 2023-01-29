@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BackendDashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -74,14 +75,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
-
-Route::get('/auth/callback', function () {
-    $user = Socialite::driver('google')->user();
-
-    // $user->token
-});
+Route::get('/backend', [BackendDashboardController::class, 'index']);
 
 require __DIR__ . '/auth.php';
