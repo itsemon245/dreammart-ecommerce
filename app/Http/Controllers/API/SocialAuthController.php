@@ -20,20 +20,23 @@ class SocialAuthController extends Controller
     {
         try {
             $googleUser = Socialite::driver('google')->user();
+            // dd($googleUser);
+            $user = User::updateOrCreate([
+                'google_id' => $googleUser->id,
+            ], [
+                'name' => $googleUser->name,
+                'email' => $googleUser->email,
+                'google_token' => $googleUser->token,
+                'google_refresh_token' => $googleUser->refreshToken,
+                //** TODO: add avater */
+            ]);
+
+            Auth::login($user);
+
+            return redirect('/')->with('success', "Logged in with google");
         } catch (\Exception $e) {
-            return redirect('/login');
+            dd($e);
         }
-
-        $user = User::updateOrCreate([
-            'google_id' => $googleUser->id,
-        ], [
-            'name' => $googleUser->name,
-            'email' => $googleUser->email,
-            'google_token' => $googleUser->token,
-            'google_refresh_token' => $googleUser->refreshToken,
-        ]);
-
-        Auth::login($user);
 
         return redirect('/')->with('success', "You are logged in");
     }
