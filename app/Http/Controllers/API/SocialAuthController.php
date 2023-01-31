@@ -20,7 +20,7 @@ class SocialAuthController extends Controller
     {
         try {
             $googleUser = Socialite::driver('google')->user();
-            // dd($googleUser->token);
+            // dd($googleUser);
             $user = User::updateOrCreate([
                 // 'google_id' => $googleUser->id,
                 'email' => $googleUser->email

@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/inertia-react';
 import route from '/vendor/tightenco/ziggy/src/js';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import NavAuthOption from './NavAuthOption';
+import CartProduct from '../Cart/CartProduct';
 
 
 export default function NavBar({ auth }) {
@@ -71,9 +72,18 @@ export default function NavBar({ auth }) {
                 </ul>
             </div>
             <div className="navbar-end flex lg:gap-x-10 md:gap-x-5 ml-auto gap-x-3">
-                <Link>
-                    <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white'></ShoppingCartIcon>
-                </Link>
+                <div className="dropdown dropdown-bottom dropdown-end">
+                    <label tabIndex={0} className="btn m-1">
+                        <ShoppingCartIcon className='w-6 h-6 mini-tab:block hidden font-semibold text-white' /></label>
+                    <div tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <div className="flex flex-col">
+                            <ul className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <CartProduct></CartProduct>
+                            </ul>
+                            <button className='btn btn-primary'>Checkout</button>
+                        </div>
+                    </div>
+                </div>
                 {auth.user !== null ? (
                     <NavAuthOption></NavAuthOption>
                 ) : (
