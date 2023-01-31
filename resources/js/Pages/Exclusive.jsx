@@ -19,7 +19,7 @@ export default function Exclusives(props) {
         { name: "watch black", image: "assets/carousel-img-watch-2.png" }
     ]
     return (
-        <CommonLayout pageTitle="Exclusives" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="Exclusives" auth={props.auth}>
             <ProductPageLayout heading="Showing Exclusive Products" products={products} />
         </CommonLayout>
     )

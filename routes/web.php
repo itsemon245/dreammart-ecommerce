@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BackendDashboardController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +29,7 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::post('/create_user', [RegisteredUserController::class, 'store'] )->name('user.create');
+Route::post('/create_user', [RegisteredUserController::class, 'store'])->name('user.create');
 
 Route::get('/new-arrivals', function () {
     return inertia('NewArrivals');
@@ -39,19 +41,19 @@ Route::get('/about-us', function () {
     return inertia('AboutUs');
 })->name('aboutUs');
 
-Route::get('/all_products', function (){
+Route::get('/all_products', function () {
     return inertia('Categories/All');
 })->name('browse.all');
-Route::get('/accessories', function (){
+Route::get('/accessories', function () {
     return inertia('Categories/Accessories');
 })->name('browse.accessories');
-Route::get('/brands', function (){
+Route::get('/brands', function () {
     return inertia('Categories/Brands');
 })->name('browse.brands');
-Route::get('/shoes', function (){
+Route::get('/shoes', function () {
     return inertia('Categories/Shoes');
 })->name('browse.shoes');
-Route::get('/wearables', function (){
+Route::get('/wearables', function () {
     return inertia('Categories/Wearables');
 })->name('browse.wearables');
 
@@ -71,5 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::get('/backend', [BackendDashboardController::class, 'index']);
 
 require __DIR__ . '/auth.php';

@@ -10,7 +10,8 @@ import ProductCard from './Products/ProductCard';
 import FilterBtn from './Filter/FilterBtn';
 import FilterMenu from './Filter/FilterMenu';
 import SortByBtn from './Filter/SortByBtn';
+import SocialMedia from './Form/SocialMedia';
 export {
     NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight, Alerts, Footer,
-    ProductCard, FilterBtn, FilterMenu, SortByBtn
+    ProductCard, FilterBtn, FilterMenu, SortByBtn, SocialMedia
 }

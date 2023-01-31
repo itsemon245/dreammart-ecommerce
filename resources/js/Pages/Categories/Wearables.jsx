@@ -19,7 +19,7 @@ export default function Wearables(props) {
         { name: "watch black", image: "assets/carousel-img-watch-2.png" }
     ]
     return (
-        <CommonLayout pageTitle="Wearables" auth={props.auth} messages={messages}>
+        <CommonLayout pageTitle="Wearables" auth={props.auth}>
             <ProductPageLayout heading="Showing Wearables " products={products} />
         </CommonLayout>
     )
