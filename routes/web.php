@@ -3,9 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\BackendDashboardController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -75,6 +73,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/backend', [BackendDashboardController::class, 'index']);
+
 
 require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
