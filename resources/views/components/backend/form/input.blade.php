@@ -5,6 +5,12 @@
         placeholder="{{$placeholder}}"
     @endif 
     />
+    @error($name)
+    <div id="{{$name. "-error"}}" class="text-danger form-text">
+      {{$message}}
+    </div>
+    @enderror
+    
     
     @if ($note!=='')
     <div id="{{$name. "-note"}}" class="form-text">

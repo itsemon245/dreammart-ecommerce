@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -15,5 +16,8 @@ Route::prefix('admin')->group(function () {
         Route::get('login', 'redirectToLogin')->name("login");
         Route::get('profile', 'profile')->name('profile');
         Route::get('register', 'redirectToRegister')->name("register");
+    });
+    Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
+        Route::post('create-user', 'store')->name('create');
     });
 });
