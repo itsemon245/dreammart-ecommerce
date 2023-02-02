@@ -26,7 +26,7 @@ class input extends Component
      * @var string
      */
     public $label;
-    
+
     /**
      * The input note.
      *
@@ -40,7 +40,7 @@ class input extends Component
      * @var string
      */
     public $placeholder;
-    
+
     /**
      * Create the component instance.
      *
@@ -51,9 +51,9 @@ class input extends Component
      * @param  string  $placeholder
      * @return void
      */
-    public function __construct($type, $name, $label, $note, $placeholder)
+    public function __construct($type, $name, $label, $note = '', $placeholder = '')
     {
-        
+
         $this->type = $type;
         $this->name = $name;
         $this->label = $label;
