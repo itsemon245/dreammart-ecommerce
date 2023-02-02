@@ -19,13 +19,16 @@
             <form action="" method="post">
                 <x-backend.form.input type="text" name="name" label="Full Name" placeholder="Full Name" note='' />
                 <x-backend.form.input type="text" name="username" label="username" placeholder="johndoe23" note='' />
-                <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='Password must include letters, numbers & symbols' />
-                <x-backend.form.input type="password" name="confirm_password" label="confirm password" placeholder="Confirm Password" note='Password must include letters, numbers & symbols' />
+                
+                <div class="d-flex gap-5">
+                    <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='Password must include letters, numbers & symbols' />
+                    <x-backend.form.input type="password" name="confirm_password" label="confirm password" placeholder="Confirm Password" note='Password must include letters, numbers & symbols' />
+                </div>
                 
                 <x-backend.form.input type="file" name="avatar" label="Select Profile Picture" />
                 
                 <button type="submit" class="btn btn-primary">Register</button>
-                <a type="submit" class="btn btn-outline-primary">Login</a>
+                <a href="{{route('admin.login')}}" class="btn ms-2 text-primary text-bold">Login</a>
             </form>
             </div>
         </div>

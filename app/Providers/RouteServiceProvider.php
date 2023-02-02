@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
+     * The path to the "admin" route for your application.
+     *
+     * Typically, admins are redirected here after authentication.
+     *
+     * @var string
+     */
+
+    public const ADMIN_HOME = '/admin';
+    /**
      * The path to the "home" route for your application.
      *
      * Typically, users are redirected here after authentication.
