@@ -12,4 +12,5 @@ Route::prefix('admin')->group(function () {
         Route::get('add-product', [ProductController::class, 'addProduct'])->name('add');
         Route::get('view-product', [ProductController::class, 'viewProduct'])->name('view');
     });
+    Route::name('admin.')->get('profile', [DashboardController::class, 'profile'])->name('profile');
 });
