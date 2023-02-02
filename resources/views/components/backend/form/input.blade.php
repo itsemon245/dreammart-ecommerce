@@ -1,13 +1,9 @@
-<div>
-    <label for="defaultFormControlInput" class="form-label">Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="defaultFormControlInput"
-      placeholder="John Doe"
-      aria-describedby="defaultFormControlHelp"
-    />
-    <div id="defaultFormControlHelp" class="form-text">
-      We'll never share your details with anyone else.
+<div class="mb-3">
+    <label class="form-label" for="username">{{$label}}</label>
+    <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" placeholder="{{$placeholder}}">
+    @if ($note!=='')
+    <div id="{{$name. "-note"}}" class="form-text">
+      {{$note}}
     </div>
+    @endif
 </div>

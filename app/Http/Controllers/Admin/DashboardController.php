@@ -15,4 +15,8 @@ class DashboardController extends Controller
     {
         return view('backend.views.profile');
     }
+    public function redirectToLogin()
+    {
+        return view('backend.auth.login');
+    }
 }
