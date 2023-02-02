@@ -19,4 +19,8 @@ class DashboardController extends Controller
     {
         return view('backend.auth.login');
     }
+    public function redirectToRegister()
+    {
+        return view('backend.auth.register');
+    }
 }

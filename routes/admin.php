@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/admin', [DashboardController::class, 'index'])->name("admin.dashboard");
 Route::get('/admin-login', [DashboardController::class, 'redirectToLogin'])->name("admin.login");
+Route::get('/admin-register', [DashboardController::class, 'redirectToRegister'])->name("admin.register");
 
 Route::prefix('admin')->group(function () {
     Route::name('product.')->group(function () {
