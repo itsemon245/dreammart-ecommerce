@@ -25,7 +25,11 @@
                     <x-backend.form.input type="password" name="confirm_password" label="confirm password" placeholder="Confirm Password" note='Password must include letters, numbers & symbols' />
                 </div>
                 
-                <x-backend.form.input type="file" name="avatar" label="Select Profile Picture" />
+                <div class="d-flex gap-3 align-items-center">
+                    <x-backend.form.input type="file" name="avatar" label="Select Profile Picture" />
+                    <div class="mx-3 mt-3">OR</div>
+                    <x-backend.form.select-avater />
+                </div>
                 
                 <button type="submit" class="btn btn-primary">Register</button>
                 <a href="{{route('admin.login')}}" class="btn ms-2 text-primary text-bold">Login</a>
