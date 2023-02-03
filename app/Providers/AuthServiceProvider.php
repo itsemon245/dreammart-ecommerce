@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -25,6 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Password::defaults(function () {
+            $rule = Password::min(6);
+
+            // return $this->app->isProduction() ? $rule->mixedCase()->uncompromised()
+            //     : $rule;
+            
+            return $rule; // TODO fix rule before production
+        });
     }
 }

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 
 class AdminAuthenticationController extends Controller
@@ -21,39 +22,39 @@ class AdminAuthenticationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // dd($request->profile_image);
+        if ($request->profile_image !== null) {
+            $ext = $request->profile_image->extension();
+            $fileName = "$request->username.$ext";
+            $path = $request->profile_image->storeAs('avaters/admin',$fileName);
+            // dd($path);
+            $avater = $request->input('avater', $path);
+        } else {
+            $avater = $request->avater;
+        }
         $request->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:admins,username',
-            'email' => 'required|string|email|max:255|unique:admins,email',
-            'password' => [
-                'required', 'confirmed', 'same:confirm_password',
-                Password::min(8)
-                    ->letters()
-                    ->mixedCase()
-                    ->numbers()
-            ],
-            'confirm_password' => 'required|same:password',
-            'profile_image' => 'image|size:1024',
-            'role' => 'min:2'
+            'name' => 'bail|required|string|max:255',
+            'username' => 'bail|required|string|max:255|unique:admins,username',
+            'email' => 'bail|required|string|email|max:255|unique:admins,email',
+            'password' => ['bail', 'required', Password::defaults()],
+            'confirm_password' => 'bail|required|same:password',
+            'profile_image' => 'bail|required_without:avater|image|max:1024',
+            'role' => 'bail|required|min:1'
         ], [
             'role.min' => 'Unspecified Role'
         ]);
 
-        $user = Admin::create([
+        $admin = Admin::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
-            'avater' => $request->avater
-
-
+            'avater' => $avater
         ]);
 
-        event(new Registered($user));
+        event(new Registered($admin));
 
-        Auth::login($user);
+        Auth::login($admin);
 
         return redirect(RouteServiceProvider::ADMIN_HOME)->with('success', "Registered Successfully");
     }
