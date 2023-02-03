@@ -28,12 +28,14 @@
                 <div class="col-md">
                     <small class="text-light fw-semibold d-block">Select Role</small>
                     <div class="form-check form-check-inline mt-3">
+                      <label class="form-check-label" for="inlineRadio1">
                       <input class="form-check-input" type="radio" name="role" id="inlineRadio1" value="2">
-                      <label class="form-check-label" for="inlineRadio1">Admin</label>
+                      Admin</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="role" id="inlineRadio2" value="1">
-                      <label class="form-check-label" for="inlineRadio2">Editor</label>
+                      <label class="form-check-label" for="inlineRadio2">
+                      <input class="form-check-input" type="radio" name="role" id="inlineRadio2" value="3">
+                      Editor</label>
                     </div>
                     @error('role')
     <div id="role-error" class="text-danger form-text">

@@ -25,8 +25,7 @@ class AdminAuthenticationController extends Controller
         if ($request->profile_image !== null) {
             $ext = $request->profile_image->extension();
             $fileName = "$request->username.$ext";
-            $path = $request->profile_image->storeAs('avaters/admin',$fileName);
-            // dd($path);
+            $path = $request->profile_image->storeAs('avaters/admin', $fileName);
             $avater = $request->input('avater', $path);
         } else {
             $avater = $request->avater;
@@ -38,19 +37,18 @@ class AdminAuthenticationController extends Controller
             'password' => ['bail', 'required', Password::defaults()],
             'confirm_password' => 'bail|required|same:password',
             'profile_image' => 'bail|required_without:avater|image|max:1024',
-            'role' => 'bail|required|min:1'
-        ], [
-            'role.min' => 'Unspecified Role'
+            'role' => 'bail|required'
         ]);
 
-        $admin = Admin::create([
-            'name' => $request->name,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'avater' => $avater
-        ]);
+        $admin = new Admin();
+
+        $admin->name = $request->name;
+        $admin->username = $request->username;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+        $admin->role = $request->role;
+        $admin->avater = $avater;
+        $admin->save();
 
         event(new Registered($admin));
 
