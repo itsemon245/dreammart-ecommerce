@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword, auth }) {
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <div className="flex justify-center mt-10 p-5">
+            <div className="flex flex-col items-center justify-center mt-10 p-5">
                 <div className="card max-w-5xl shadow-lg bg-base-300">
                     <div className="grid md:grid-cols-3 grid-cols-2 items-center justify-center">
                         <form onSubmit={submit} className='col-span-2 px-14 py-8'>
@@ -104,7 +104,8 @@ export default function Login({ status, canResetPassword, auth }) {
                             <img src="assets/login.png" alt="" className='' />
                         </div>
                     </div>
-
+                </div>
+                <div className=' mt-5 capitalize font-semibold link'><a href="/admin-login">Are you an admin?</a>
                 </div>
             </div>
 
