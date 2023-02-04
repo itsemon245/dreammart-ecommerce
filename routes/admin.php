@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
 
 Route::prefix('admin')->group(function () {
     Route::name('product.')->group(function () {

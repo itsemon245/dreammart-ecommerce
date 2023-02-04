@@ -37,9 +37,9 @@
           </li>
           <!-- Categories -->
           <li class="menu-item">
-            <a href="{{route('product.categories')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-category-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+            <a href="{{route('categories.view')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-category-alt"></i>
+                <div data-i18n="Analytics">View Categories</div>
               </a>
           </li>
       
