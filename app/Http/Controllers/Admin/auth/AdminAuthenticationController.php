@@ -22,10 +22,10 @@ class AdminAuthenticationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if ($request->profile_image !== null) {
+        if ($request->has('profile_image')) {
             $ext = $request->profile_image->extension();
             $fileName = "$request->username.$ext";
-            $path = $request->profile_image->storeAs('avaters/admin', $fileName);
+            $path = $request->profile_image->storeAs('public/avaters/admin', $fileName);
             $avater = $request->input('avater', $path);
         } else {
             $avater = $request->avater;
