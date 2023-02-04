@@ -54,53 +54,34 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Slug</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
+                                @foreach ($categories as $key=>$category)
                                 <tr>
-                                <td>
-                                    <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>1</strong>
-                                </td>
-                                <td>Fashion</td>
-                                <td>
-                                fashion
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                                    </div>
-                                    </div>
-                                </td>
+                                    <td>
+                                        <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{++$key}}</strong>
+                                    </td>
+                                    <td>{{Str::headline($category->name)}}</td>
+                                    <td>
+                                    {{$category->slug}}
+                                    </td>
+                                    {{-- <td><span class="badge bg-label-primary me-1">Active</span></td> --}}
+                                    <td>
+                                        <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                            <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                        </div>
+                                        </div>
+                                    </td>
                                 </tr>
-                                <tr>
-                                <td>
-                                    <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>1</strong>
-                                </td>
-                                <td>Fashion</td>
-                                <td>
-                                fashion
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                                    </div>
-                                    </div>
-                                </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                             </table>
                         </div> 
