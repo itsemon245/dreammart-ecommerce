@@ -19,6 +19,7 @@
             <form action="{{route('admin.create')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <x-backend.form.input type="text" name="name" label="Full Name" placeholder="Full Name" note='' />
+                <x-backend.form.input type="email" name="email" label="email" placeholder="example@gmail.com" note='' />
                 <x-backend.form.input type="text" name="username" label="username" placeholder="johndoe23" note='' />
                 
                 <div class="d-flex gap-5">
