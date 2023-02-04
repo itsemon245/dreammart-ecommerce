@@ -1,6 +1,6 @@
-<div class="mb-3">
+<div>
     <label class="form-label" for="{{$name}}">{{$label}}</label>
-    <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" value="{{old($name)}}" placeholder="{{Str::headline($placeholder)}}"/>
+    <textarea class="form-control" placeholder="{{Str::headline($placeholder)}}" id="{{$name}}" name="{{$name}}" rows="3">{{old($name)}}</textarea>
     @error($name)
     <div id="{{$name. "-error"}}" class="text-danger form-text">
       {{$message}}

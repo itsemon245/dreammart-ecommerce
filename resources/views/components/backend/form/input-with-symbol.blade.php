@@ -1,6 +1,9 @@
-<div class="mb-3">
+<div class="{{$class}}">
     <label class="form-label" for="{{$name}}">{{$label}}</label>
-    <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" value="{{old($name)}}" placeholder="{{Str::headline($placeholder)}}"/>
+    <div class="input-group input-group-merge">
+        <span class="input-group-text">{{$symbol}}</span>
+        <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" value="{{old($name)}}" placeholder="{{Str::headline($placeholder)}}"/>
+    </div>
     @error($name)
     <div id="{{$name. "-error"}}" class="text-danger form-text">
       {{$message}}
