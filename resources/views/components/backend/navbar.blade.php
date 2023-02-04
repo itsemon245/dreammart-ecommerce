@@ -106,7 +106,7 @@ id="layout-navbar">
           <form class="dropdown-item" method="post" action="{{route('admin.logout')}}">
             @csrf
             <i class="bx bx-power-off me-2"></i>
-            <button type="submit" class="align-middle border-none bg-none">Log Out</button>
+            <button type="submit" class="align-middle border-0" style="background:none;">Log Out</button>
           </form>
         </li>
       </ul>

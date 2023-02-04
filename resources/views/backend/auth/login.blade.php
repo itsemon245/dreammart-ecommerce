@@ -20,8 +20,14 @@
                 @csrf
                 <x-backend.form.input type="text" name="username" label="username" placeholder="johndoe23" note='' />
                 <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='' />
+                <div class="form-check mb-3">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="true" id="defaultCheck1" name="remember_me">
+                    Remember me</label>
+                </div>
                 
                 <button type="submit" class="btn btn-primary">Log in</button>
+                <a href="{{route('admin.register')}}" class="text-primary ms-3"><strong>Register</strong></a>
             </form>
             </div>
         </div>

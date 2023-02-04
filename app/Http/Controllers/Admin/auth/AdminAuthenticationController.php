@@ -76,6 +76,7 @@ class AdminAuthenticationController extends Controller
      */
     public function login(Request $request): RedirectResponse
     {
+        // dd($request);
         $request->validate([
             'username' => 'required|exists:admins,username',
             'password' => 'required'
@@ -83,8 +84,9 @@ class AdminAuthenticationController extends Controller
         $user = Admin::where('username', $request->username)
             ->get()->first();
         // dd($user->password);
+        $remeber = $request->remember_me ? true : false;
         if (Hash::check($request->password, $user->password)) {
-            Auth::login($user);
+            Auth::login($user, $remeber);
             return redirect(RouteServiceProvider::ADMIN_HOME)->with('success', "Logged in Successfully");
         } else {
             return redirect('/admin/login')->with('error', 'Credentials didn\'t match');
