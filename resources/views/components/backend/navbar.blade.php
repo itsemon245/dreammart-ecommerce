@@ -1,3 +1,14 @@
+@php
+    // collect user info
+   if(auth()->user()->role == 1) $role = "Admin" ;
+          elseif (auth()->user()->role == 2) $role ='Moderator';
+          elseif (auth()->user()->role == 3) $role ='Editor';
+          else $role ='Unauthorised';
+   $name = auth()->user()->name;
+   $avater = Str::is('https://', auth()->user()->avater) 
+              ? auth()->user()->avater
+              : asset("storage/". auth()->user()->avater) ;
+@endphp
 <div>
     <!-- Navbar -->
 
@@ -43,7 +54,7 @@ id="layout-navbar">
     <li class="nav-item navbar-dropdown dropdown-user dropdown">
       <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-          <img src="{{auth()->user()->avater}}" alt class="w-px-40 h-auto rounded-circle" />
+          <img src="{{$avater}}" alt class="w-px-40 h-auto rounded-circle" />
         </div>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -52,14 +63,14 @@ id="layout-navbar">
             <div class="d-flex">
               <div class="flex-shrink-0 me-3">
                 <div class="avatar avatar-online">
-                  <img src="{{auth()->user()->avater}}" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="{{$avater}}" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </div>
               <div class="flex-grow-1">
                 
                 <span class="fw-semibold d-block">
-                  {{auth()->user()->name}}</span>
-                <small class="text-muted">{{auth()->user()->role <= 2 ? "Admin" : "Editor"}}</small>
+                  {{$name}}</span>
+                <small class="text-muted">{{$role}}</small>
               </div>
             </div>
           </a>

@@ -25,7 +25,7 @@ class AdminAuthenticationController extends Controller
         if ($request->has('profile_image')) {
             $ext = $request->profile_image->extension();
             $fileName = "$request->username.$ext";
-            $path = $request->profile_image->storeAs('public/avaters/admin', $fileName);
+            $path = $request->profile_image->storeAs('uploads/avaters/admin', $fileName, 'public');
             $avater = $request->input('avater', $path);
         } else {
             $avater = $request->avater;
