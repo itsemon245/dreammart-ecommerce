@@ -70,4 +70,26 @@ class AdminAuthenticationController extends Controller
 
         return redirect('/admin/login')->with('info', 'Logged Out!');
     }
+
+    /**
+     * Login an existing user
+     */
+    public function login(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'username' => 'required|exists:admins,username',
+            'password' => 'required'
+        ]);
+        $user = Admin::where('username', $request->username)
+            ->get()->first();
+        // dd($user->password);
+        if (Hash::check($request->password, $user->password)) {
+            Auth::login($user);
+            return redirect(RouteServiceProvider::ADMIN_HOME)->with('success', "Logged in Successfully");
+        } else {
+            return redirect('/admin/login')->with('error', 'Credentials didn\'t match');
+        }
+
+        
+    }
 }

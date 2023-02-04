@@ -23,10 +23,9 @@ Route::prefix('admin')->group(function () {
         Route::get('profile', 'profile')->name('profile');
         Route::get('register', 'redirectToRegister')->name("register");
     });
-    Route::middleware('auth')->group(function () {
         Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
             Route::post('create-user', 'store')->name('create');
             Route::post('logout', 'destroy')->name("logout");
+            Route::post('auth/login', 'login')->name("auth.login");
         });
-    });
 });

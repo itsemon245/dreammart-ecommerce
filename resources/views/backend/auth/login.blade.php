@@ -16,7 +16,8 @@
             <h5 class="mb-0">Log in</h5>
             </div>
             <div class="card-body">
-            <form action="" method="post">
+            <form action="{{route('admin.auth.login')}}" method="post">
+                @csrf
                 <x-backend.form.input type="text" name="username" label="username" placeholder="johndoe23" note='' />
                 <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='' />
                 
