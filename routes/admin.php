@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -13,7 +13,8 @@ Route::prefix('admin')->group(function () {
         Route::get('view-product', [ProductController::class, 'viewProduct'])->name('view');
     });
     Route::name('categories.')->group(function () {
-        Route::post('add-category', [CategoriesController::class, 'addCategory'])->name('add');
+        Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
+        Route::post('store-brand', [CategoriesController::class, 'storeBrand'])->name('brand.store');
         Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
     });
     Route::name('admin.')->controller(DashboardController::class)->group(function () {
