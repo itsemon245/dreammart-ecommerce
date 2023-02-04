@@ -23,7 +23,10 @@ Route::prefix('admin')->group(function () {
         Route::get('profile', 'profile')->name('profile');
         Route::get('register', 'redirectToRegister')->name("register");
     });
-    Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
-        Route::post('create-user', 'store')->name('create');
+    Route::middleware('auth')->group(function () {
+        Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
+            Route::post('create-user', 'store')->name('create');
+            Route::post('logout', 'destroy')->name("logout");
+        });
     });
 });
