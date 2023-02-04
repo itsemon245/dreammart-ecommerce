@@ -1,7 +1,7 @@
 <div class="{{$class}}">
     <label class="form-label" for="{{$name}}">{{$label}}</label>
     <div class="input-group input-group-merge">
-        <span class="input-group-text">{{$symbol}}</span>
+        <span class="input-group-text">{!!$symbol!!}</span>
         <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" value="{{old($name)}}" placeholder="{{Str::headline($placeholder)}}"/>
     </div>
     @error($name)
