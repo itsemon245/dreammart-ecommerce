@@ -1,6 +1,11 @@
 <div class="mb-3">
     <label class="form-label" for="{{$name}}">{{$label}}</label>
-    <input type="{{$type}}" class="form-control" name="{{$name}}" id="{{$name}}" value="{{old($name)}}" placeholder="{{ Str::is('*@*.com', $placeholder) ? Str::lower($placeholder) : Str::headline($placeholder)}}"/>
+    <select class="form-select" id="{{$name}}" aria-label="{{$placeholder}}">
+      <option selected disabled>{{Str::headline($placeholder)}}</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
     @error($name)
     <div id="{{$name. "-error"}}" class="text-danger form-text">
       {{$message}}
@@ -13,4 +18,4 @@
       {{$note}}
     </div>
     @endif
-</div>
+  </div>

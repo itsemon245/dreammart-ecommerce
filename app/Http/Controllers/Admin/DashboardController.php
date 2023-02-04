@@ -9,10 +9,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('backend.views.index');
+        if (auth()->user()) {
+            return view('backend.views.index');
+        } else {
+            return redirect()->route('admin.login');
+        }
     }
     public function profile()
     {
+        // dd(auth()->user());
         return view('backend.views.profile');
     }
     public function redirectToLogin()

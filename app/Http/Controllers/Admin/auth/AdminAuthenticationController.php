@@ -52,8 +52,22 @@ class AdminAuthenticationController extends Controller
 
         event(new Registered($admin));
 
-        Auth::login($admin);
+        Auth::login($admin, true);
 
         return redirect(RouteServiceProvider::ADMIN_HOME)->with('success', "Registered Successfully");
+    }
+
+    /**
+     * Destroy an authenticated session.
+     */
+    public function destroy(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/admin/login')->with('info', 'Logged Out!');
     }
 }
