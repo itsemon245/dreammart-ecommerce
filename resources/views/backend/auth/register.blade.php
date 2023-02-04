@@ -22,7 +22,6 @@
                 <x-backend.form.input type="text" name="name" label="Full Name" placeholder="Full Name" note='' />
                 <x-backend.form.input type="email" name="email" label="email" placeholder="example@gmail.com" note='' />
                 <x-backend.form.input type="text" name="username" label="username" placeholder="johndoe23" note='' />
-                <x-backend.form.input type="email" name="email" label="email" placeholder="something@example.com" note='' />
 
                 <div class="d-flex gap-5">
                     <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='Password must include letters, numbers & symbols' />
