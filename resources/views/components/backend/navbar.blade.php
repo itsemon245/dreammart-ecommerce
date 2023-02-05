@@ -5,10 +5,9 @@
           elseif (auth()->user()->role == 3) $role ='Editor';
           else $role ='Unauthorised';
    $name = auth()->user()->name;
-   $avater = Str::is('https://', auth()->user()->avater) 
+   $avater = Str::is('*dicebear*', auth()->user()->avater)
               ? auth()->user()->avater
-              : asset("storage/". auth()->user()->avater) ;
-              
+              : asset("storage/". auth()->user()->avater);  
 @endphp
 <div style="z-index: 1;">
     <!-- Navbar -->
