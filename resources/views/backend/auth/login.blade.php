@@ -32,5 +32,7 @@
             </div>
         </div>
 
+
+        <x-backend.scripts />
     </body>
 </html>
