@@ -46,7 +46,18 @@ class CategoriesController extends Controller
         $category->save();
         return back()->with('success', 'Category Added');
     }
-    public function destroyCategory($id){
+    public function updateCategory(Request $request)
+    {
+        $request->validate([
+            'category' => 'required|max:20'
+        ]);
+        $category = Category::where('id', $request->id)
+            ->update(['name' => $request->category]);
+        return back()->with('success', 'Category Updated');
+    }
+
+    public function destroyCategory($id)
+    {
         $category = Category::find($id);
         $category->delete();
 

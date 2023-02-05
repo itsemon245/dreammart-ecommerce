@@ -15,6 +15,7 @@ Route::prefix('admin')->group(function () {
     Route::name('categories.')->group(function () {
         Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
         Route::get('destroy-category/{id}', [CategoriesController::class, 'destroyCategory'])->name('destroy');
+        Route::post('update-category/', [CategoriesController::class, 'updateCategory'])->name('update');
         Route::post('store-brand', [CategoriesController::class, 'storeBrand'])->name('brand.store');
         Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
     });

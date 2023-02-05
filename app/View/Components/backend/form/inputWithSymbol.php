@@ -57,6 +57,13 @@ class inputWithSymbol extends Component
     public $class;
 
     /**
+     * The input value.
+     *
+     * @var string
+     */
+    public $value;
+
+    /**
      * Create the component instance.
      *
      * @param  string  $type
@@ -66,9 +73,10 @@ class inputWithSymbol extends Component
      * @param  string  $note
      * @param  string  $placeholder
      * @param  string  $class
+     * @param  string  $value
      * @return void
      */
-    public function __construct($type, $name, $label, $note = '', $placeholder = '', $class = '', $symbol = '')
+    public function __construct($type, $name, $label, $note = '', $placeholder = '', $class = '', $symbol = '', $value='')
     {
 
         $this->type = $type;
@@ -78,6 +86,7 @@ class inputWithSymbol extends Component
         $this->placeholder = $placeholder;
         $this->class = $class;
         $this->symbol = $symbol;
+        $this->value = $value;
     }
 
     /**
