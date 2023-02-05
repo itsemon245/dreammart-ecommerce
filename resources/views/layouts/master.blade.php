@@ -24,6 +24,10 @@
             {{-- NavBar  --}}
             <x-backend.navbar />
            {{-- /NavBar --}}
+
+           {{-- Alerts --}}
+           <x-backend.alert />
+           {{-- /Alerts --}}
            
             <!-- Content wrapper -->
             <div class="content-wrapper">

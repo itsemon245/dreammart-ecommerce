@@ -8,8 +8,9 @@
    $avater = Str::is('https://', auth()->user()->avater) 
               ? auth()->user()->avater
               : asset("storage/". auth()->user()->avater) ;
+              
 @endphp
-<div>
+<div style="z-index: 1;">
     <!-- Navbar -->
 
 <nav
