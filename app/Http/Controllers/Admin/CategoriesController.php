@@ -46,6 +46,12 @@ class CategoriesController extends Controller
         $category->save();
         return back()->with('success', 'Category Added');
     }
+    public function destroyCategory($id){
+        $category = Category::find($id);
+        $category->delete();
+
+        return back()->with('info', 'Category Deleted');
+    }
 
     public function storeBrand()
     {
