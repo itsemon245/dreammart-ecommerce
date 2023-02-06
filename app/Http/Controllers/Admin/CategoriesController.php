@@ -42,22 +42,31 @@ class CategoriesController extends Controller
             'category' => 'required|max:20'
         ]);
         $slug = $this->uniSlug($request->category);
-
-
-        $category = new Category();
-        $category->name = $request->category;
-        $category->slug = $slug;
-        $category->save();
-        return back()->with('success', 'New Category Added');
+        $category = Category::where('name', $request->category)->first();
+        if ($category === null) {
+            $category = Category::create([
+                'name' => $request->category,
+                'slug' => $slug
+            ]);
+            return back()->with('success', 'New Category Added');
+        } else {
+            return back()->with('error', 'Category already exists');
+        }
     }
     public function updateCategory(Request $request)
     {
         $request->validate([
             'category' => 'required|max:20'
         ]);
-        $category = Category::where('id', $request->id)
-            ->update(['name' => $request->category]);
-        return back()->with('success', 'Category Updated');
+        $category = Category::where('id', $request->id)->first();
+        $category->name = $request->category;
+        $category->slug = $this->uniSlug($request->category);
+        $category->update();
+        if (!$category->wasChanged('name')) {
+            return back()->with('error', 'Category already exists');
+        } else {
+            return back()->with('success', 'Category Updated');
+        }
     }
 
     public function destroyCategory($id)
@@ -100,7 +109,7 @@ class CategoriesController extends Controller
         if ($request->hasFile('logo')) {
             $ext = $request->logo->extension();
             $fileName = "$request->brand.$ext";
-            $deleted = File::delete(asset('storage/'.$request->old_logo));
+            $deleted = File::delete(asset('storage/' . $request->old_logo));
             $path = $request->logo->storeAs('uploads/brands', $fileName, 'public');
             $brand->logo = $path;
         }

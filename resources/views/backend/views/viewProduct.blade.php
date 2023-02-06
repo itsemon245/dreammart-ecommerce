@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', "View Product")
 @section('content')
-
+{{-- {{dd($products[0]->category->name)}} --}}
 <div class="container-md">
     <div class="card mt-3">
         <h5 class="card-header text-center">All Products</h5>
@@ -47,7 +47,7 @@
                 </td>
                 <td>
                     <div style="width: 150px;">
-                        <img src="../assets/img/avatars/5.png" alt="{{$product->name}}" class="rounded-3 w-100">
+                        <img src="{{asset('storage/'.$product->image)}}" alt="{{$product->name}}" class="rounded-3 w-100">
                     </div>
                 </td>
                 <td>

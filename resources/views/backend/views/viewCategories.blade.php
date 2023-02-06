@@ -65,7 +65,7 @@
                             <tbody class="table-border-bottom-0">
                                 @foreach ($categories as $key=>$category)
                                 <!-- Edit category modal -->
-                                <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                                <div class="modal fade" id="{{'category'.$category->id}}" tabindex="-1" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -111,7 +111,7 @@
                                                 <!-- Button trigger modal -->
                                                 <button class="dropdown-item"
                                                 style="border: none; background: none;"
-                                                type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                                                type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="{{'#category'.$category->id}}">
                                                     <i class="bx bx-edit-alt me-1" ></i>Edit
                                                 </button>
                                             </div>
@@ -188,7 +188,7 @@
                             <tbody class="table-border-bottom-0">
                                 @foreach ($brands as $key=>$brand)
                                 <!-- edit modal -->
-                                <div class="modal fade" id="editBrandModal" tabindex="-1" aria-hidden="true" style="display: none;">
+                                <div class="modal fade" id="{{'brand'.$brand->id}}" tabindex="-1" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -234,7 +234,7 @@
                                                 <!-- Button trigger modal -->
                                                 <button class="dropdown-item"
                                                 style="border: none; background: none;"
-                                                type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBrandModal">
+                                                type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="{{'#brand'.$brand->id}}">
                                                     <i class="bx bx-edit-alt me-1" ></i>Edit
                                                 </button>
                                             </div>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->foreignId('category_id');
-            $table->foreignId('brand_id');
+            $table->foreignId('brand_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->float('price');
             $table->string('image');
             $table->integer('discount');
