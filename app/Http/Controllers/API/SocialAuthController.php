@@ -21,13 +21,19 @@ class SocialAuthController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
             // dd($googleUser->token);
+
+            //extract username
+            $username = explode('@', $googleUser->email)[0];
+            // dd($username);
             $user = User::updateOrCreate([
                 'google_id' => $googleUser->id,
                 // 'email' => $googleUser->email
             ], [
                 'name' => $googleUser->name,
                 'email' => $googleUser->email,
+                'username' => $username,
                 'google_id' => $googleUser->id,
+                'avater' => $googleUser->avater,
                 'google_token' => $googleUser->token,
                 'google_refresh_token' => $googleUser->refreshToken,
                 //** TODO: add avater */

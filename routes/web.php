@@ -27,8 +27,6 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::post('/create_user', [RegisteredUserController::class, 'store'])->name('user.create');
-
 Route::get('/new-arrivals', function () {
     return inertia('NewArrivals');
 })->name('newArrivals');

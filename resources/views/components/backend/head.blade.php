@@ -12,6 +12,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="" />
+    @stack('customCSS')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
