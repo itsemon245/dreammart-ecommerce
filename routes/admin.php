@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
 Route::prefix('admin')->group(function () {
     Route::name('product.')->group(function () {
         Route::get('add-product', [ProductController::class, 'addProduct'])->name('add');
+        Route::post('store-product', [ProductController::class, 'storeProduct'])->name('store');
         Route::get('view-product', [ProductController::class, 'viewProduct'])->name('view');
     });
     Route::name('categories.')->group(function () {
