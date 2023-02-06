@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
+    use HasFactory;
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -16,6 +21,4 @@ class Brand extends Model
         'name',
         'logo',
     ];
-
-    use HasFactory;
 }
