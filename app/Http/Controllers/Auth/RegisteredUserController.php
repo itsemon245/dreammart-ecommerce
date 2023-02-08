@@ -22,6 +22,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        // return Inertia::render('Auth/Register');
         return view('backend.auth.register');
     }
 
@@ -43,11 +44,10 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:' . User::class,
-            'password' => ['required', 'confirmed', Password::defaults()],
-            'username' => 'bail|required|string|max:255|unique:' . User::class,
+            'password' => ['required', Password::defaults()],
+            'username' => 'bail|required|string|max:255|unique:users,username',
             'confirm_password' => 'bail|required|same:password',
             'profile_image' => 'bail|required_without:avater|image|max:1024',
-            'role' => 'bail|required'
         ]);
 
         $user = User::create([
@@ -55,15 +55,12 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'role' => $request->role,
             'avater' => $avater
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
-
-        dd($user);
         return redirect(RouteServiceProvider::HOME)->with('success', "Registered Successfully");
     }
 }
