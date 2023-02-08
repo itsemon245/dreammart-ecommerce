@@ -37,7 +37,6 @@ class AdminAuthenticationController extends Controller
             'password' => ['bail', 'required', Password::defaults()],
             'confirm_password' => 'bail|required|same:password',
             'profile_image' => 'bail|required_without:avater|image|max:1024',
-            'role' => 'bail|required'
         ]);
 
         $admin = new Admin();
@@ -46,7 +45,6 @@ class AdminAuthenticationController extends Controller
         $admin->username = $request->username;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
-        $admin->role = $request->role;
         $admin->avater = $avater;
         $admin->save();
 
@@ -78,10 +76,10 @@ class AdminAuthenticationController extends Controller
     {
         // dd($request);
         $request->validate([
-            'username' => 'required|exists:admins,username',
+            'email' => 'required|exists:admins,email',
             'password' => 'required'
         ]);
-        $user = Admin::where('username', $request->username)
+        $user = Admin::where('email', $request->email)
             ->get()->first();
         // dd($user->password);
         $remeber = $request->remember_me ? true : false;

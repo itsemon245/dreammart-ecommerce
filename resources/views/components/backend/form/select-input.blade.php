@@ -7,9 +7,7 @@
       <option value="{{$option->id}}">{{$option->name}}</option>
       @endforeach
       @else
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option>Null</option>
       @endif
     </select>
     @error($name)

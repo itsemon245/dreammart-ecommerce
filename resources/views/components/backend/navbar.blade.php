@@ -2,8 +2,7 @@
     // collect user info
    if(auth()->user()->role == 1) $role = "Admin" ;
           elseif (auth()->user()->role == 2) $role ='Moderator';
-          elseif (auth()->user()->role == 3) $role ='Editor';
-          else $role ='Unauthorised';
+          elseif (auth()->user()->role == 3) $role ='User';
    $name = auth()->user()->name;
    $avater = Str::is('*dicebear*', auth()->user()->avater)
               ? auth()->user()->avater

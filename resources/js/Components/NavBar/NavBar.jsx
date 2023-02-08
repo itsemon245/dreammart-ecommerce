@@ -18,7 +18,6 @@ export default function NavBar({ auth }) {
         browse: {
             routes: [
                 { name: "All", sub: "browse.all" },
-                { name: "Brands", sub: "browse.brands" },
                 { name: "Shoes", sub: "browse.shoes" },
                 { name: "Wearables", sub: "browse.wearables" },
                 { name: "Accessories", sub: "browse.accessories" }

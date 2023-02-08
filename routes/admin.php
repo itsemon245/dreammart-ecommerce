@@ -34,5 +34,6 @@ Route::prefix('admin')->group(function () {
         Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
             Route::post('create-user', 'store')->name('create');
             Route::post('logout', 'destroy')->name("logout");
+            Route::post('admin-login', 'login')->name("login");
         });
 });

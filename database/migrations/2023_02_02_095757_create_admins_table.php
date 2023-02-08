@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('role');
+            $table->integer('role')->default(3);
             $table->string('avater');
             $table->rememberToken();
             $table->timestamps();

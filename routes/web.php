@@ -37,21 +37,6 @@ Route::get('/about-us', function () {
     return inertia('AboutUs');
 })->name('aboutUs');
 
-Route::get('/all_products', function () {
-    return inertia('Categories/All');
-})->name('browse.all');
-Route::get('/accessories', function () {
-    return inertia('Categories/Accessories');
-})->name('browse.accessories');
-Route::get('/brands', function () {
-    return inertia('Categories/Brands');
-})->name('browse.brands');
-Route::get('/shoes', function () {
-    return inertia('Categories/Shoes');
-})->name('browse.shoes');
-Route::get('/wearables', function () {
-    return inertia('Categories/Wearables');
-})->name('browse.wearables');
 
 //route for linking all the assets
 Route::get('assets/{path}', function ($path) {
@@ -75,3 +60,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
+require __DIR__ . '/category.php';
