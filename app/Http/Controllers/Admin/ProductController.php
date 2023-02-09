@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 
 class ProductController extends Controller
 {
@@ -31,8 +32,9 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $brands = Brand::get();
+        $events = Event::get();
         // dd($categories);
-        return view('backend.views.addProduct', compact('brands', 'categories'));
+        return view('backend.views.addProduct', compact('brands', 'categories', 'events'));
     }
 
     public function storeProduct(Request $request)

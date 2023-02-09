@@ -53,6 +53,10 @@
                                     <div class="flex-grow-1">
                                         <x-backend.form.select-input name='product_brand' label='Brand' :options="$brands" placeholder="Select brand" />
                                     </div>
+                                    {{-- events --}}
+                                    <div class="flex-grow-1">
+                                        <x-backend.form.select-input name='product_event' label='Event' :options="$events" placeholder="Select event" />
+                                    </div>
                                 </div>
         
                                 {{-- product detail --}}

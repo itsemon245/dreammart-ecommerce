@@ -19,6 +19,7 @@ class Product extends Model
         'slug',
         'category_id',
         'brand_id',
+        'event_id',
         'price',
         'discount',
         'detail',
@@ -35,5 +36,10 @@ class Product extends Model
     public function brand()
     {
        return $this->belongsTo(Brand::class);
+    }
+
+    public function event()
+    {
+       return $this->belongsTo(Event::class);
     }
 }
