@@ -22,7 +22,7 @@ class SocialAuthController extends Controller
     {
         try {
             $googleUser = Socialite::driver('google')->user();
-            // dd($googleUser);
+            dd($googleUser);
 
             //extract username
             $username = explode('@', $googleUser->email)[0];
@@ -38,14 +38,13 @@ class SocialAuthController extends Controller
                 'avater' => $googleUser->avatar,
                 'google_token' => $googleUser->token,
                 'google_refresh_token' => $googleUser->refreshToken,
-                //** TODO: add avater */
             ]);
 
             event(new Registered($user));
 
             Auth::login($user, true);
     
-            return redirect(RouteServiceProvider::HOME)->with('success', "Registered Successfully");
+            return redirect()->intended('/')->with('success', "Registered Successfully");
         } catch (\Exception $e) {
             dd($e);
         }

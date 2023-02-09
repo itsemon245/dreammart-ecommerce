@@ -88,7 +88,7 @@ export default function NavBar({ auth }) {
                     <NavAuthOption></NavAuthOption>
                 ) : (
                     <>
-                        <a href={route('admin.login')} className="text-primary font-semibold capitalize">
+                        <a href={route('admin.redirect.login')} className="text-primary font-semibold capitalize">
                             Log in
                         </a>
 

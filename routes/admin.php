@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function () {
     });
     Route::name('admin.')->controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name("dashboard");
-        Route::get('login', 'redirectToLogin')->name("login");
+        Route::get('login', 'redirectToLogin')->name("redirect.login");
         Route::get('profile', 'profile')->name('profile');
         Route::get('register', 'redirectToRegister')->name("register");
     });

@@ -89,7 +89,6 @@ class AdminAuthenticationController extends Controller
         } else {
             return redirect('/admin/login')->with('error', 'Credentials didn\'t match');
         }
-
-        
+  
     }
 }
