@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('App', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/new-arrivals', function () {
     return inertia('NewArrivals');

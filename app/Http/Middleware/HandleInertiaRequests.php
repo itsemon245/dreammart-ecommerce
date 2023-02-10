@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
