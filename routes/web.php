@@ -30,6 +30,9 @@ Route::get('/exclusive', function () {
 Route::get('/about-us', function () {
     return inertia('AboutUs');
 })->name('aboutUs');
+Route::get('/cart', function () {
+    return inertia('Orders/Cart');
+})->name('cart');
 
 
 //route for linking all the assets
