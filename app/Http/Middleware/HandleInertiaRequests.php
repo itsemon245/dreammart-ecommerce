@@ -2,7 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
 
@@ -34,7 +37,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'auth' => [
-                'user' => $request->user(),
+                'user' => auth()->user(),
             ],
             'success' => [
                 'message' => session('success')

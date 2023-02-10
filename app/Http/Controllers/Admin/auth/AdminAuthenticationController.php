@@ -25,7 +25,7 @@ class AdminAuthenticationController extends Controller
         if ($request->has('profile_image')) {
             $ext = $request->profile_image->extension();
             $fileName = "$request->username.$ext";
-            $path = $request->profile_image->storeAs('public/avaters/admin', $fileName);
+            $path = $request->profile_image->storeAs('uploads/avaters/admin', $fileName, 'public');
             $avater = $request->input('avater', $path);
         } else {
             $avater = $request->avater;
@@ -37,7 +37,6 @@ class AdminAuthenticationController extends Controller
             'password' => ['bail', 'required', Password::defaults()],
             'confirm_password' => 'bail|required|same:password',
             'profile_image' => 'bail|required_without:avater|image|max:1024',
-            'role' => 'bail|required'
         ]);
 
         $admin = new Admin();
@@ -46,7 +45,6 @@ class AdminAuthenticationController extends Controller
         $admin->username = $request->username;
         $admin->email = $request->email;
         $admin->password = Hash::make($request->password);
-        $admin->role = $request->role;
         $admin->avater = $avater;
         $admin->save();
 
@@ -69,5 +67,28 @@ class AdminAuthenticationController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/admin/login')->with('info', 'Logged Out!');
+    }
+
+    /**
+     * Login an existing user
+     */
+    public function login(Request $request): RedirectResponse
+    {
+        // dd($request);
+        $request->validate([
+            'email' => 'required|exists:admins,email',
+            'password' => 'required'
+        ]);
+        $user = Admin::where('email', $request->email)
+            ->get()->first();
+        // dd($user->password);
+        $remeber = $request->remember_me ? true : false;
+        if (Hash::check($request->password, $user->password)) {
+            Auth::login($user, $remeber);
+            return redirect(RouteServiceProvider::ADMIN_HOME)->with('success', "Logged in Successfully");
+        } else {
+            return redirect('/admin/login')->with('error', 'Credentials didn\'t match');
+        }
+  
     }
 }

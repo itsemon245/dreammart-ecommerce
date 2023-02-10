@@ -36,20 +36,29 @@ class selectInput extends Component
     public $placeholder;
 
     /**
+     * The input options.
+     *
+     * @var array
+     */
+    public $options;
+
+    /**
      * Create the component instance.
      *
      * @param  string  $name
      * @param  string  $label
      * @param  string  $note
      * @param  string  $placeholder
+     * @param  array   $options
      * @return void
      */
-    public function __construct( $name, $label, $note = '', $placeholder = '')
+    public function __construct( $name, $label, $note = '', $placeholder = '', $options = [])
     {
         $this->name = $name;
         $this->label = $label;
         $this->note = $note;
         $this->placeholder = $placeholder;
+        $this->options = $options;
     }
 
     /**

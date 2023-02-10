@@ -12,6 +12,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="" />
+    @stack('customCSS')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,6 +39,11 @@
 
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
+{{-- jquery-3 --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    
+    {{-- sweetalert2 --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->

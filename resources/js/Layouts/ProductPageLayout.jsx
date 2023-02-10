@@ -2,7 +2,7 @@ import React from 'react'
 import { ProductCard, FilterBtn, FilterMenu, SortByBtn } from '@/Components/';
 import { useState } from 'react';
 
-export default function ProductPageLayout({ heading, products }) {
+export default function ProductPageLayout({ heading, products, check }) {
     const [showMenu, setShowMenu] = useState(false)
     const onClickHandler = () => {
         let toggle = !showMenu
@@ -17,7 +17,7 @@ export default function ProductPageLayout({ heading, products }) {
     return (
         <>
             <h1 className='text-center mt-5 text-xl font-semibold text-primary'>{heading}</h1>
-            <FilterMenu closeFilterMenuToggler={closeFilterMenuToggler} showMenu={showMenu} />
+            <FilterMenu check={check} closeFilterMenuToggler={closeFilterMenuToggler} showMenu={showMenu} />
             <div className="flex justify-end max-sm:justify-between">
                 <FilterBtn onClickHandler={onClickHandler}></FilterBtn>
                 <SortByBtn></SortByBtn>

@@ -1,4 +1,14 @@
-<div>
+@php
+    // collect user info
+   if(auth()->user()->role == 1) $role = "Admin" ;
+          elseif (auth()->user()->role == 2) $role ='Moderator';
+          elseif (auth()->user()->role == 3) $role ='User';
+   $name = auth()->user()->name;
+   $avater = Str::is('*dicebear*', auth()->user()->avater)
+              ? auth()->user()->avater
+              : asset("storage/". auth()->user()->avater);  
+@endphp
+<div style="z-index: 1;">
     <!-- Navbar -->
 
 <nav
@@ -26,24 +36,13 @@ id="layout-navbar">
   <!-- /Search -->
 
   <ul class="navbar-nav flex-row align-items-center ms-auto">
-    <!-- Place this tag where you want the button to render. -->
-    <li class="nav-item lh-1 me-3">
-      <a
-        class="github-button"
-        href="https://github.com/themeselection/sneat-html-admin-template-free"
-        data-icon="octicon-star"
-        data-size="large"
-        data-show-count="true"
-        aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
-        >Star</a
-      >
-    </li>
+    
 
     <!-- User -->
     <li class="nav-item navbar-dropdown dropdown-user dropdown">
       <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
         <div class="avatar avatar-online">
-          <img src="{{auth()->user()->avater}}" alt class="w-px-40 h-auto rounded-circle" />
+          <img src="{{$avater}}" alt class="w-px-40 h-auto rounded-circle" />
         </div>
       </a>
       <ul class="dropdown-menu dropdown-menu-end">
@@ -52,14 +51,14 @@ id="layout-navbar">
             <div class="d-flex">
               <div class="flex-shrink-0 me-3">
                 <div class="avatar avatar-online">
-                  <img src="{{auth()->user()->avater}}" alt class="w-px-40 h-auto rounded-circle" />
+                  <img src="{{$avater}}" alt class="w-px-40 h-auto rounded-circle" />
                 </div>
               </div>
               <div class="flex-grow-1">
                 
                 <span class="fw-semibold d-block">
-                  {{auth()->user()->name}}</span>
-                <small class="text-muted">{{auth()->user()->role <= 2 ? "Admin" : "Editor"}}</small>
+                  {{$name}}</span>
+                <small class="text-muted">{{$role}}</small>
               </div>
             </div>
           </a>
@@ -95,7 +94,7 @@ id="layout-navbar">
           <form class="dropdown-item" method="post" action="{{route('admin.logout')}}">
             @csrf
             <i class="bx bx-power-off me-2"></i>
-            <button type="submit" class="align-middle border-none bg-none">Log Out</button>
+            <button type="submit" class="align-middle border-0" style="background:none;">Log Out</button>
           </form>
         </li>
       </ul>

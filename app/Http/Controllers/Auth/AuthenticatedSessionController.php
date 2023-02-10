@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Route;
+use App\Providers\RouteServiceProvider;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -25,16 +26,29 @@ class AuthenticatedSessionController extends Controller
         ]);
     }
 
-    /**
-     * Handle an incoming authentication request.
+     /**
+     * Login an existing user
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $request->authenticate();
+        // dd($request);
+        $request->validate([
+            'email' => 'required|exists:users,email',
+            'password' => 'required'
+        ]);
+        $user = User::where('email', $request->email)
+            ->get()->first();
+        // dd($user->password);
+        $remeber = $request->remember_me ? true : false;
 
-        $request->session()->regenerate();
+        if (Hash::check($request->password, $user->password)) {
+            Auth::login($user, $remeber);
+            return redirect(RouteServiceProvider::HOME)->with('success', "Logged in Successfully");
+        } else {
+            return redirect('/')->with('error', 'Credentials didn\'t match');
+        }
 
-        return redirect()->intended(RouteServiceProvider::HOME)->with('success', 'You are logged in!');
+        
     }
 
     /**
