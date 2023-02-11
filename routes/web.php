@@ -33,6 +33,9 @@ Route::get('/about-us', function () {
 Route::get('/cart', function () {
     return inertia('Orders/Cart');
 })->name('cart');
+Route::get('/orders', function () {
+    return inertia('Orders/Track');
+})->name('orders');
 
 
 //route for linking all the assets

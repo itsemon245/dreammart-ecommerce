@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
 import route from '/vendor/tightenco/ziggy/src/js'
-import { UserIcon, ChevronDownIcon, HeartIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon, PowerIcon } from '@heroicons/react/24/outline'
+import { UserIcon, ChevronDownIcon, ClipboardDocumentListIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon, PowerIcon } from '@heroicons/react/24/outline'
 
 export default function ProfileMenu() {
     return (
@@ -15,12 +15,15 @@ export default function ProfileMenu() {
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link> <UserIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></UserIcon> Account</Link>
                     </li>
-                    <li className='transition-all group font-normal hover:text-primary'>
-                        <Link> <HeartIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></HeartIcon> Favorites</Link>
-                    </li>
+                    
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link href={route('cart')}> <ShoppingCartIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ShoppingCartIcon> Cart</Link>
                     </li>
+
+                    <li className='transition-all group font-normal hover:text-primary'>
+                        <Link href={route('orders')}> <ClipboardDocumentListIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ClipboardDocumentListIcon> Orders</Link>
+                    </li>
+
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link> <MapPinIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></MapPinIcon> Addresses</Link>
                     </li>
