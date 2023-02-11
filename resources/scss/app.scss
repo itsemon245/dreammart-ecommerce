@@ -1,6 +1,7 @@
-
-
-*:focus{
-    outline: none;
+.info-icon{
+    transition: width 1s ease;
 }
-
+.info-icon:hover{
+    width: 100%;
+    height: 100%;
+}

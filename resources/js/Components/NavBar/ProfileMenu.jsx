@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
 import route from '/vendor/tightenco/ziggy/src/js'
-import { UserIcon, ChevronDownIcon, ClipboardDocumentListIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon, PowerIcon } from '@heroicons/react/24/outline'
+import { UserIcon, ChevronDownIcon, CubeIcon, MapPinIcon, Cog6ToothIcon, InformationCircleIcon, ShoppingCartIcon, PowerIcon } from '@heroicons/react/24/outline'
 
 export default function ProfileMenu() {
     return (
@@ -21,7 +21,7 @@ export default function ProfileMenu() {
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>
-                        <Link href={route('orders')}> <ClipboardDocumentListIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ClipboardDocumentListIcon> Orders</Link>
+                        <Link href={route('orders')}> <CubeIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></CubeIcon> Orders</Link>
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>

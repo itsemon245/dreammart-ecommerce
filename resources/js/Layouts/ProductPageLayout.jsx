@@ -22,7 +22,7 @@ export default function ProductPageLayout({ heading, products, check }) {
                 <FilterBtn onClickHandler={onClickHandler}></FilterBtn>
                 <SortByBtn></SortByBtn>
             </div>
-            <div className='grid gap-3 grid-cols-4 max-xs:grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5'>
+            <div className='grid gap-x-4 gap-y-6 grid-cols-3 max-xs:grid-cols-1 max-sm:grid-cols-2 max-md:grid-cols-4 lg:grid-cols-5 2xl:grid-cols-6'>
                 {products.map((product, i) => (
                     <ProductCard product={product} key={i}></ProductCard>
                 ))}
