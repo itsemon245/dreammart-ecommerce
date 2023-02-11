@@ -12,6 +12,9 @@ Route::prefix('admin')->group(function () {
         Route::get('add-product', [ProductController::class, 'addProduct'])->name('add');
         Route::post('store-product', [ProductController::class, 'storeProduct'])->name('store');
         Route::get('view-product', [ProductController::class, 'viewProduct'])->name('view');
+        Route::delete('delete-product', [ProductController::class, 'deleteProduct'])->name('delete');
+        Route::get('update-product/{id}', [ProductController::class, 'updateProductView'])->name('update.view');
+        Route::put('update-product', [ProductController::class, 'updateProduct'])->name('update');
     });
     Route::name('categories.')->group(function () {
         //routes for category

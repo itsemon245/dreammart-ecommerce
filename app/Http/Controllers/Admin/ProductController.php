@@ -68,6 +68,22 @@ class ProductController extends Controller
         return back()->with('success', 'New Product Added');
     }
 
+    public function updateProductView($id)
+    {
+        $product = Product::find($id);
+        $categories = Category::get();
+        $brands = Brand::get();
+        $events = Event::get();
+        return view('backend.views.updateProduct', compact('product', 'brands', 'categories', 'events'));
+    }
+
+    public function deleteProduct(Request $request)
+    {
+        $product = Product::find($request->id);
+        $product->delete();
+        return back()->with('success', 'Product deleted');
+    }
+
     public function viewProduct()
     {
         $products = Product::with(['category', 'brand'])->latest()->get();
