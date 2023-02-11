@@ -13,7 +13,7 @@ export default function CommonLayout({ pageTitle, auth, messages, children }) {
                     <Alerts messages={messages}></Alerts>
                 </header>
                 <article>{children}</article>
-                <Footer></Footer>
+                {/* <Footer></Footer> */}
             </main>
 
         </>
