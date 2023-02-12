@@ -30,13 +30,9 @@ Route::prefix('admin')->group(function () {
     });
     Route::name('admin.')->controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name("dashboard");
-        Route::get('login', 'redirectToLogin')->name("redirect.login");
         Route::get('profile', 'profile')->name('profile');
-        Route::get('register', 'redirectToRegister')->name("register");
     });
         Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
-            Route::post('create-user', 'store')->name('create');
             Route::post('logout', 'destroy')->name("logout");
-            Route::post('admin-login', 'login')->name("login");
         });
 });

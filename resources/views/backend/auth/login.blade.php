@@ -16,7 +16,7 @@
             <h5 class="mb-0">Log in</h5>
             </div>
             <div class="card-body">
-            <form action="{{route('admin.login')}}" method="post">
+            <form action="{{route('user.login')}}" method="post">
                 @csrf
                 <x-backend.form.input type="email" name="email" label="email" placeholder="example@email.com" note='' />
                 <x-backend.form.input type="password" name="password" label="password" placeholder="Password" note='' />
@@ -27,7 +27,7 @@
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Log in</button>
-                <a href="{{route('admin.register')}}" class="text-primary ms-3"><strong>Register</strong></a>
+                <a href="{{route('register')}}" class="text-primary ms-3"><strong>Register</strong></a>
             </form>
             </div>
         </div>
