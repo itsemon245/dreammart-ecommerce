@@ -8,13 +8,13 @@ export default function Hero({ carouselImages }) {
             <div className="hero-content py-0 flex-col sm:flex-row-reverse xl:gap-x-32 lg:gap-x-16 md:gap-x-5 gap-x-2">
                 <div className="hero-images hidden sm:inline-grid grid-cols-2">
                     <div className="lg:w-52 sm:w-36  lg:translate-y-5 lg:-translate-x-5 aspect-square">
-                        <img loading='lazy' src="assets/hero-controller.png" alt="Hero Controller" className='w-100 aspect-square' />
+                        <img loading='lazy' src="assets/img/hero/hero-controller.png" alt="Hero Controller" className='w-100 aspect-square' />
                     </div>
                     <div className="sm:w-32  lg:w-48 lg:translate-y-5 lg:translate-x-5 aspect-square">
-                        <img loading='lazy' src="assets/hero-watch.png" alt="Hero Watch" className='w-100 aspect-square' />
+                        <img loading='lazy' src="assets/img/hero/hero-watch.png" alt="Hero Watch" className='w-100 aspect-square' />
                     </div>
                     <div className="sm:w-44 lg:w-80 lg:-translate-y-12 -translate-y-5 aspect-square col-span-2 -rotate-12 mx-auto">
-                        <img loading='lazy' src="assets/hero-shoe.png" alt="Hero Shoe" className='w-100 aspect-square' />
+                        <img loading='lazy' src="assets/img/hero/hero-shoe.png" alt="Hero Shoe" className='w-100 aspect-square' />
                     </div>
                 </div>
                 <div className=" block sm:hidden">

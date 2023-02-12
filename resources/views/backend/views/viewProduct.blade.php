@@ -19,6 +19,7 @@
             </thead>
             <tbody class="table-border-bottom-0">
              @foreach ($products as $key=>$product)
+             
              <tr>
                 <td><strong>1</strong></td>
                 <td>
@@ -66,8 +67,12 @@
                       <i class="bx bx-dots-vertical-rounded"></i>
                     </button>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                      <a class="dropdown-item" href="{{route('product.update.view', $product->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                      <form action="{{route('product.delete')}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" name="id" value="{{$product->id}}">
+                        <button type="submit" class="dropdown-item" href="{{}}"><i class="bx bx-trash me-1"></i> Delete</button></form>
                     </div>
                   </div>
                 </td>

@@ -36,6 +36,13 @@ class selectInput extends Component
     public $placeholder;
 
     /**
+     * The input value.
+     *
+     * @var int
+     */
+    public $value;
+
+    /**
      * The input options.
      *
      * @var array
@@ -49,15 +56,17 @@ class selectInput extends Component
      * @param  string  $label
      * @param  string  $note
      * @param  string  $placeholder
+     * @param  int $value
      * @param  array   $options
      * @return void
      */
-    public function __construct( $name, $label, $note = '', $placeholder = '', $options = [])
+    public function __construct( $name, $label, $note = '', $placeholder = '',$value='', $options = [])
     {
         $this->name = $name;
         $this->label = $label;
         $this->note = $note;
         $this->placeholder = $placeholder;
+        $this->value = $value;
         $this->options = $options;
     }
 

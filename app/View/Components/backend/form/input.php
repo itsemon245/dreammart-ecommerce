@@ -42,6 +42,13 @@ class input extends Component
     public $placeholder;
 
     /**
+     * The input value.
+     *
+     * @var string
+     */
+    public $value;
+
+    /**
      * Create the component instance.
      *
      * @param  string  $type
@@ -49,9 +56,10 @@ class input extends Component
      * @param  string  $label
      * @param  string  $note
      * @param  string  $placeholder
+     * @param  string  $value
      * @return void
      */
-    public function __construct($type, $name, $label, $note = '', $placeholder = '')
+    public function __construct($type, $name, $label, $note = '', $placeholder = '', $value = '')
     {
 
         $this->type = $type;
@@ -59,6 +67,7 @@ class input extends Component
         $this->label = $label;
         $this->note = $note;
         $this->placeholder = $placeholder;
+        $this->value = $value;
     }
 
     /**

@@ -39,7 +39,7 @@
                   <div class="bg-secondary" style="width: 100%; height:2px; border-radius: 50px"></div>
                 </div>
               </div>
-            <form action="{{route('admin.create')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('user.create')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="col-lg-6"><x-backend.form.input type="text" name="name" label="Full Name" placeholder="Full Name" note='' />

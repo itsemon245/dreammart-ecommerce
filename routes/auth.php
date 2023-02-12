@@ -19,7 +19,8 @@ Route::middleware('guest')->group(function () {
 
     Route::post('create-user', [RegisteredUserController::class, 'store'])->name('user.create');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('login');
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('user.login');
 
     //routes for google log in
     Route::get('/auth/redirect', [SocialAuthController::class, 'redirectToProvider'])->name('google.login');

@@ -12,7 +12,7 @@ class DashboardController extends Controller
         if (auth()->user()) {
             return view('backend.views.index');
         } else {
-            return redirect()->route('admin.redirect.login');
+            return redirect()->route('login');
         }
     }
     public function profile()

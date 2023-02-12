@@ -33,11 +33,14 @@ Route::get('/about-us', function () {
 Route::get('/cart', function () {
     return inertia('Orders/Cart');
 })->name('cart');
+Route::get('/orders', function () {
+    return inertia('Orders/Track');
+})->name('orders');
 
 
 //route for linking all the assets
 Route::get('assets/{path}', function ($path) {
-    return response()->file(resource_path("assets/$path"));
+    return response()->file(public_path("assets/$path"));
 });
 
 Route::get('/dashboard', function () {
@@ -56,5 +59,5 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/admin.php';
-require __DIR__ . '/category.php';
+require __DIR__ . '/backend.php';
+require __DIR__ . '/frontend.php';

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\Product;
 use Inertia\Inertia;
@@ -13,25 +15,19 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $newArrivals = Event::where('name', 'New Arrivals')->first();
-        $newArrivals = Product::with(['category', 'brand'])->where('event_id', $newArrivals->id)->get();
-
-        $mostPopular = Event::where('name', 'Most Popular')->first();
-        $mostPopular = Product::with(['category', 'brand'])->where('event_id', $mostPopular->id)->get();
-
-        $exclusive = Event::where('name', 'Exclusive')->first();
-        $exclusive = Product::with(['category', 'brand'])->where('event_id', $exclusive->id)->get();
+        $events = Event::get();
+        $landingProducts = [];
+        foreach ($events as $event) {
+            $products = Product::with(['category', 'brand', 'event'])->where('event_id', $event->id)->get();
+            array_push($landingProducts, $products);
+        }
 
         return Inertia::render('App', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'landingProducts' => [
-                'mostPopular' => $mostPopular,
-                'newArrivals' => $newArrivals,
-                'exclusive' => $exclusive
-            ]
+            'landingProducts' => $landingProducts
         ]);
     }
 }

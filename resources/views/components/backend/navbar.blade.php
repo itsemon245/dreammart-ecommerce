@@ -91,7 +91,7 @@ id="layout-navbar">
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <form class="dropdown-item" method="post" action="{{route('admin.logout')}}">
+          <form class="dropdown-item" method="post" action="{{route('logout')}}">
             @csrf
             <i class="bx bx-power-off me-2"></i>
             <button type="submit" class="align-middle border-0" style="background:none;">Log Out</button>
