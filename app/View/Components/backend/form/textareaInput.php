@@ -35,19 +35,28 @@ class textareaInput extends Component
     public $placeholder;
 
     /**
+     * The input value.
+     *
+     * @var string
+     */
+    public $value;
+
+    /**
      * Create the component instance.
      *
      * @param  string  $name
      * @param  string  $label
      * @param  string  $note
+     * @param  string  $value
      * @param  string  $placeholder
      * @return void
      */
-    public function __construct($name, $label, $note = '', $placeholder = '')
+    public function __construct($name, $label, $note = '', $placeholder = '', $value = '')
     {
         $this->name = $name;
         $this->label = $label;
         $this->note = $note;
+        $this->value = $value;
         $this->placeholder = $placeholder;
     }
 

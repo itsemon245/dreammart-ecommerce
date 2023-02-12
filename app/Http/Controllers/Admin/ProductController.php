@@ -75,7 +75,47 @@ class ProductController extends Controller
         $categories = Category::get();
         $brands = Brand::get();
         $events = Event::get();
-        return view('backend.views.index', compact('product', 'brands', 'categories', 'events'));
+        return view('backend.views.updateProduct', compact('product', 'brands', 'categories', 'events'));
+    }
+    public function updateProduct(Request $request, $id)
+    {
+        $old_product = Product::find($id);
+        $request->validate([
+            'product_name' => 'required|min:5',
+            'product_price' => 'required',
+            'product_discount' => 'required',
+            'product_category' => 'required',
+            'product_brand' => 'required',
+            'product_detail' => 'required',
+            'product_in_stock' => 'required',
+        ]);
+
+        $slug = $this->uniSlug($request->product_name);
+        if ($request->hasFile('product_image')) {
+            $ext = $request->product_image->extension();
+            $fileName = "$slug.$ext";
+            $path = $request->product_image->storeAs('uploads/products', $fileName, 'public');
+
+            //deleting old image
+            $file_path = storage_path('app/public/' . $old_product->image);
+            if (File::exists($file_path)) {
+                File::delete($file_path);
+            }
+        } else {
+            $path = $old_product->image;
+        }
+        $product = Product::where('id', $id)->update([
+            'name' => $request->product_name,
+            'slug' => $slug,
+            'price' => $request->product_price,
+            'discount' => $request->product_discount,
+            'in_stock' => $request->product_in_stock,
+            'category_id' => $request->product_category,
+            'brand_id' => $request->product_brand,
+            'detail' => $request->product_detail,
+            'image' => $path,
+        ]);
+        return back()->with('success', 'Product Updated');
     }
 
     public function deleteProduct(Request $request)

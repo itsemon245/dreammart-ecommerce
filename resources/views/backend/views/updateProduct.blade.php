@@ -5,7 +5,7 @@
     <div class="card rounded-4">
         <div class="card-title h3 bg-primary text-white text-center rounded-top rounded-4 p-2">Edit Product</div>
         <div class="card-body p-3 pb-5">
-            <form class="d-flex gap-5 " action="{{route('product.update')}}" method="post" enctype="multipart/form-data">
+            <form class="d-flex gap-5 " action="{{route('product.update', $product->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                     <div class="row align-items-center justify-content-center">
@@ -48,15 +48,15 @@
                                     
                                     {{-- categories --}}
                                     <div class="flex-grow-1">
-                                        <x-backend.form.select-input name='product_category' label='Category' :options="$categories" placeholder="Select category" />
+                                        <x-backend.form.select-input name='product_category' label='Category' :options="$categories" :value="$product->category_id" placeholder="Select category" />
                                     </div>
                                     {{-- brands --}}
                                     <div class="flex-grow-1">
-                                        <x-backend.form.select-input name='product_brand' label='Brand' :options="$brands" placeholder="Select brand" />
+                                        <x-backend.form.select-input name='product_brand' label='Brand' :options="$brands" :value="$product->brand_id" placeholder="Select brand" />
                                     </div>
                                     {{-- events --}}
                                     <div class="flex-grow-1">
-                                        <x-backend.form.select-input name='product_event' label='Event' :options="$events" placeholder="Select event" />
+                                        <x-backend.form.select-input name='product_event' label='Event' :options="$events" :value="$product->event_id" placeholder="Select event" />
                                     </div>
                                 </div>
         

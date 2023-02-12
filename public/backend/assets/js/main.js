@@ -2,7 +2,6 @@
  * Main
  */
 
-import pexxalert from 'pexxalert';
 'use strict';
 
 let menu, animate;
