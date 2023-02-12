@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         // $authAttempt = Auth::attempt(['email' => $user->email, 'password' => $user->password]);
-        $authUser =  Auth::login($user);
+        Auth::login($user);
         // dd($authAttempt);
         return redirect(RouteServiceProvider::HOME)->with('success', "Registered Successfully");
     }
