@@ -22,8 +22,8 @@ export default function Section({ eventProducts, heading, subTitle }) {
                                 <a className='lg:col-span-1'
                                     href={index !== 0 ? ("#" + sectionName + (index - 1)) : "#" + sectionName + lastIndex}><ArrowLeft></ArrowLeft></a>
                                 <div className='flex lg:gap-20 lg:col-span-5 flex-col lg:flex-row gap-4'>
-                                    <div className={`bg-[url(assets/landing-product-frame.svg)] w-72 aspect-square bg-no-repeat bg-contain flex place-items-center`}>
-                                        <img className='w-full' loading='lazy' src={'/storage/'+product.image} alt={product.name} />
+                                    <div className={`w-80 aspect-square bg-no-repeat bg-contain flex items-center justify-center`}>
+                                        <img className='w-full rounded-xl shadow-lg shadow-gray-900 hover:shadow-black hover:scale-105 transition-all' loading='lazy' src={'/storage/'+product.image} alt={product.name} />
                                     </div>
                                     <div className='text-white'>
                                         <h2 className='font-semibold xl:text-3xl md:text-2xl text-xl max-w-xs'>{product.name}</h2>

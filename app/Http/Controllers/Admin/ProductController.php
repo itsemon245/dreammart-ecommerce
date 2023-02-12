@@ -115,7 +115,7 @@ class ProductController extends Controller
             'detail' => $request->product_detail,
             'image' => $path,
         ]);
-        return back()->with('success', 'Product Updated');
+        return redirect(route('product.view'))->with('success', 'Product Updated');
     }
 
     public function deleteProduct(Request $request)

@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 1,
                 'brand_id' => 1,
                 'event_id' => 1,
-                'image' => 'uploads/products/default-product-1.png'
+                'image' => 'uploads/products/default-product-1-1.jpg'
             ],
             [
                 'name' => 'Default Product 2',
@@ -36,7 +36,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 2,
                 'brand_id' => 2,
                 'event_id' => 2,
-                'image' => 'uploads/products/default-product-2.png'
+                'image' => 'uploads/products/default-product-2-1.jpg'
             ],
             [
                 'name' => 'Default Product 3',
@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 3,
                 'brand_id' => 3,
                 'event_id' => 3,
-                'image' => 'uploads/products/default-product-3.png'
+                'image' => 'uploads/products/default-product-3-1.jpg'
             ],
             [
                 'name' => 'Default Product 4',
@@ -58,7 +58,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 4,
                 'brand_id' => 1,
                 'event_id' => 1,
-                'image' => 'uploads/products/default-product-4.png'
+                'image' => 'uploads/products/default-product-4-1.jpg'
             ],
             [
                 'name' => 'Default Product 5',
@@ -69,7 +69,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 2,
                 'brand_id' => 2,
                 'event_id' => 2,
-                'image' => 'uploads/products/default-product-5.png'
+                'image' => 'uploads/products/default-product-5-1.jpg'
             ],
             [
                 'name' => 'Default Product 6',
@@ -80,7 +80,7 @@ class ProductSeeder extends Seeder
                 'category_id' => 3,
                 'brand_id' => 3,
                 'event_id' => 3,
-                'image' => 'uploads/products/default-product-6.png'
+                'image' => 'uploads/products/default-product-6-1.jpg'
             ],
         ];
         foreach ($products as $product) {
