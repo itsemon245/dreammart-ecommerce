@@ -6,23 +6,13 @@ import NavAuthOption from './NavAuthOption';
 import CartProduct from '../Cart/CartProduct';
 
 
-export default function NavBar({ auth }) {
+export default function NavBar({ auth, categories }) {
     const navLinks = [
         { name: "Home", route: "home" },
         { name: "New Arrivals", route: "newArrivals" },
         { name: "Exclusive", route: "exclusive" },
         { name: "About us", route: "aboutUs" }
     ]
-    const category = {
-        browse: {
-            routes: [
-                { name: "All", sub: "browse.all" },
-                { name: "Shoes", sub: "browse.shoes" },
-                { name: "Wearables", sub: "browse.wearables" },
-                { name: "Accessories", sub: "browse.accessories" }
-            ]
-        }
-    }
     return (
         <nav className="navbar lg:px-10 md:px-5 ">
             <div className="navbar-start">
@@ -40,8 +30,8 @@ export default function NavBar({ auth }) {
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                             </a>
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
-                                {category.browse.routes.map((link, index) => (
-                                    <li className='hover:text-primary' key={index}><Link href={route(link.sub)}>{link.name}</Link></li>
+                                {categories.map((category, index) => (
+                                    <li className='hover:text-primary' key={index}><Link href={route('browse.category', category.id)}>{category.name}</Link></li>
                                 ))}
                             </ul>
                         </li>
@@ -62,8 +52,8 @@ export default function NavBar({ auth }) {
                             </label>
 
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
-                                {category.browse.routes.map((link, index) => (
-                                    <li className='hover:text-primary block transition-all' key={index}><Link href={route(link.sub)} >{link.name}</Link></li>
+                                {categories.map((category, index) => (
+                                    <li className='hover:text-primary block transition-all' key={index}><Link href={route('browse.category', category.id)}>{category.name}</Link></li>
                                 ))}
                             </ul>
                         </div>

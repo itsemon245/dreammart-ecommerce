@@ -11,17 +11,6 @@ use Illuminate\Http\Request;
 class CategoryPageController extends Controller
 {
 
-    /**
-     * Fetch products for the specified model
-     * @return array
-     */
-    public function fetchProducts($category)
-    {
-        $category = Category::where('name', $category)->first();
-        $products = Product::with('category', 'brand')->where('category_id', $category->id)->where('status', 1)->get();
-        return $products;
-    }
-
     public function All()
     {
 
@@ -30,33 +19,14 @@ class CategoryPageController extends Controller
             'products' => $products
         ]);
     }
-    public function Accessories()
+    public function viewCategory($id)
     {
 
-        $products = $this->fetchProducts('Accessories');
+        $products = Product::with(['category', 'brand'])->where('category_id', $id)->get();
 
-        return inertia('Categories/Accessories',[
+        return inertia('Categories/Category',[
             'products' => $products
         ]);
     }
 
-
-    public function Shoes()
-    {
-
-        $products = $this->fetchProducts('Shoes');
-        return inertia('Categories/Shoes',[
-            'products' => $products
-        ]);
-    }
-
-
-    public function Wearables()
-    {
-
-        $products = $this->fetchProducts('Wearables');
-        return inertia('Categories/Wearables',[
-            'products' => $products
-        ]);
-    }
 }

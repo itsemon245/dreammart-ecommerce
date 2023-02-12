@@ -51,6 +51,8 @@ class HandleInertiaRequests extends Middleware
             'error' => [
                 'message' => session('danger')
             ],
+            'categories' => Category::get(),
+            'brands' => Brand::get(),
             'ziggy' => function () use ($request) {
                 return array_merge((new Ziggy)->toArray(), [
                     'location' => $request->url(),
