@@ -15,7 +15,7 @@ class Brand extends Model
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int>
+     * @var array<string>
      */
     protected $fillable = [
         'name',
