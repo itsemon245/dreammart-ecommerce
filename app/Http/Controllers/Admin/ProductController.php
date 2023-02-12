@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
+use App\Models\Event;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Event;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -74,12 +75,16 @@ class ProductController extends Controller
         $categories = Category::get();
         $brands = Brand::get();
         $events = Event::get();
-        return view('backend.views.updateProduct', compact('product', 'brands', 'categories', 'events'));
+        return view('backend.views.index', compact('product', 'brands', 'categories', 'events'));
     }
 
     public function deleteProduct(Request $request)
     {
         $product = Product::find($request->id);
+        $file_path = storage_path('app/public/' . $product->image);
+        if (File::exists($file_path)) {
+            File::delete($file_path);
+        }
         $product->delete();
         return back()->with('success', 'Product deleted');
     }

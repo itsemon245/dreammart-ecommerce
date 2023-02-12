@@ -120,8 +120,12 @@ class CategoriesController extends Controller
 
     public function destroyBrand($id)
     {
-        $brand = Brand::find($id)->delete();
-
+        $brand = Brand::find($id);
+        $file_path = storage_path('app/public/' . $brand->logo);
+        if (File::exists($file_path)) {
+            File::delete($file_path);
+        }
+        $brand->delete();
         return back()->with('info', 'Brand Deleted');
     }
 }
