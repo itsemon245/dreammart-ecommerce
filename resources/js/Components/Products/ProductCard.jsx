@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
         <div className="w-54">
           <img className='w-full aspect-square rounded-t-xl' src={`/storage/${product.image}`} alt={product.name} />
         </div>
-        <div className='absolute pr-2 top-0 left-0 rounded-r-full badge-primary'>
+        <div className='absolute text-sm font-light pr-2 top-0 left-0 rounded-r-full badge-primary'>
           {"Discount: " + product.discount + "%"}
         </div>
         <div className='peer absolute top-0 right-0 bg-slate-800 p-3 rounded-tr-lg z-10' style={{ borderBottomLeftRadius: '50%' }}>
