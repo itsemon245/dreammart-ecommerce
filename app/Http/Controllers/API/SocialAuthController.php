@@ -22,7 +22,6 @@ class SocialAuthController extends Controller
     {
         try {
             $googleUser = Socialite::driver('google')->user();
-            dd($googleUser);
 
             //extract username
             $username = explode('@', $googleUser->email)[0];

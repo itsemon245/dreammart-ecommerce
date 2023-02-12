@@ -7,7 +7,6 @@ import CartProduct from '../Cart/CartProduct';
 
 
 export default function NavBar({ auth }) {
-    console.log(auth.user)
     const navLinks = [
         { name: "Home", route: "home" },
         { name: "New Arrivals", route: "newArrivals" },
@@ -88,12 +87,12 @@ export default function NavBar({ auth }) {
                     <NavAuthOption></NavAuthOption>
                 ) : (
                     <>
-                        <a href={route('admin.redirect.login')} className="text-primary font-semibold capitalize">
+                        <a href={route('login')} className="text-primary font-semibold capitalize">
                             Log in
                         </a>
 
                         <a
-                            href='/register'
+                            href={route('register')}
                             className="btn max-sm:btn-sm max-sm:text-sm btn-primary max-sm:font-normal capitalize"
                         >
                             Register

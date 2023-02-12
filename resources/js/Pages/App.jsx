@@ -10,15 +10,12 @@ export default function App({ auth, landingProducts }) {
         { name: "shoe", src: "assets/carousel-img-shoe.png" },
         { name: "watch2", src: "assets/carousel-img-watch-2.png" }
     ]
-    landingProducts.map((products, index) =>{
-        console.log(products)
-    })
 
     return (
         <CommonLayout pageTitle="Home" auth={auth}>
             <Hero carouselImages={carouselImages}></Hero>
             {landingProducts.map((products, index) => (
-                <Section eventProducts={products} heading={products[0].event.tagline} subTitle={products[0].event.name}></Section>
+                <Section key={index} eventProducts={products} heading={products[0].event.tagline} subTitle={products[0].event.name}></Section>
             ))}
 
         </CommonLayout>
