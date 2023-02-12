@@ -4,9 +4,9 @@ import { Link } from '@inertiajs/inertia-react';
 import route from '/vendor/tightenco/ziggy/src/js';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-export default function Section({ landingProducts, heading, subTitle }) {
-    let lastIndex = landingProducts.length - 1
-    let sectionTitle = heading.split("-")
+export default function Section({ eventProducts, heading, subTitle }) {
+    let lastIndex = eventProducts.length - 1
+    let sectionTitle = heading.split(" ")
     let coloredTitle = sectionTitle.pop()
     let subTitleArray = subTitle.split(" ")
     let sectionName = subTitleArray.join("-").toLowerCase()
@@ -16,7 +16,7 @@ export default function Section({ landingProducts, heading, subTitle }) {
             <div className="container-lg px-10">
                 <div className='w-full carousel carousel-center'>
                     {
-                        landingProducts.map((product, index) => (
+                        eventProducts.map((product, index) => (
                             <div id={sectionName + index} key={index} className="carousel-item w-full mt-10 flex items-center justify-between lg:grid lg:grid-cols-7 lg:place-items-center ">
                                 <h3 className='col-span-7 mr-auto font-medium xl:text-2xl md:text-xl tracking-wide mt-4 lg:mt-8 text-white'>{subTitleArray[0] + " "}<span className='text-primary'>{subTitleArray[1]}</span></h3>
                                 <a className='lg:col-span-1'

@@ -32,7 +32,4 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'index')->name("dashboard");
         Route::get('profile', 'profile')->name('profile');
     });
-        Route::name('admin.')->controller(AdminAuthenticationController::class)->group(function () {
-            Route::post('logout', 'destroy')->name("logout");
-        });
 });
