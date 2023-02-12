@@ -37,7 +37,7 @@ export default function NavBar({ auth, categories }) {
                         </li>
                     </ul>
                 </div>
-                <a className=""><img src="assets/DreamMart.svg" alt="" /></a>
+                <a className=""><img src='assets/img/logo/DreamMart.svg' alt="" /></a>
             </div>
             <div className="lg:nav-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -40,7 +40,7 @@ Route::get('/orders', function () {
 
 //route for linking all the assets
 Route::get('assets/{path}', function ($path) {
-    return response()->file(resource_path("assets/$path"));
+    return response()->file(public_path("assets/$path"));
 });
 
 Route::get('/dashboard', function () {
