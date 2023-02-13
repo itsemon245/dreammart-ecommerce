@@ -5,10 +5,10 @@ import CommonLayout from '@/Layouts/CommonLayout'
 
 export default function App({ auth, landingProducts, categories }) {
     const carouselImages = [
-        { name: "controller", src: "assets/img/hero/carousel-img-controller.png" },
-        { name: "watch", src: "assets/img/hero/carousel-img-watch.png" },
-        { name: "shoe", src: "assets/img/hero/carousel-img-shoe.png" },
-        { name: "watch2", src: "assets/img/hero/carousel-img-watch-2.png" }
+        { name: "controller", src: "/assets/img/hero/carousel-img-controller.png" },
+        { name: "watch", src: "/assets/img/hero/carousel-img-watch.png" },
+        { name: "shoe", src: "/assets/img/hero/carousel-img-shoe.png" },
+        { name: "watch2", src: "/assets/img/hero/carousel-img-watch-2.png" }
     ]
 
     return (
