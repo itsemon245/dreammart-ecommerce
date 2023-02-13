@@ -11,7 +11,7 @@ class ProductPageController extends Controller
 {
     public function viewProduct($id)
     {
-        $product = Product::find($id);
+        $product = Product::with(['category', 'brand'])->find($id);
         return Inertia::render('Product/Product', [
             'product' => $product
         ]);
