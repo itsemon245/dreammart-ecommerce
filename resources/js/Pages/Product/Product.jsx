@@ -3,15 +3,17 @@ import ProductImage from '@/Components/Products/ProductImage'
 import AddToFavourite from '@/Components/Products/AddToFavourite'
 import AddToCart from '@/Components/Products/AddToCart'
 import Counter from '@/Components/Products/Counter'
+import { Link } from '@inertiajs/inertia-react'
 import { BsBag } from 'react-icons/bs'
 import React from 'react'
 import { useState } from 'react'
+import route from '/vendor/tightenco/ziggy/src/js'
 
-export default function Product({ auth, product, categories }) {
+export default function Product({ auth, product, categories, isFavorite }) {
 
   const [count, setCount] = useState(0)
   const [cart, setCart] = useState(false)
-  const [like, setLike] = useState(false)
+  const [like, setLike] = useState(isFavorite)
   const [src, setSrc] = useState('/storage/' + product.image)
 
   //handler for counter
@@ -27,8 +29,8 @@ export default function Product({ auth, product, categories }) {
 
   const onLikeHandler = (e) => {
     e.preventDefault();
+    sendRequest(route('favorite.add', product.id))
     setLike(prev => !prev)
-    //TODO send request to endpoint to cahnge like state
   }
   const onCartHandler = (e) => {
     e.preventDefault();
@@ -43,6 +45,11 @@ export default function Product({ auth, product, categories }) {
 
   const onThumbnailClick = (e) => {
     setSrc(e.target.src)
+  }
+
+  async function sendRequest(url) {
+    const response = await fetch(url);
+    const data = await response.json();
   }
   return (
     <CommonLayout categories={categories} pageTitle={product.name} auth={auth} >
@@ -120,6 +127,7 @@ export default function Product({ auth, product, categories }) {
         </div>
       </div>
     </CommonLayout>
+
   )
 
 }

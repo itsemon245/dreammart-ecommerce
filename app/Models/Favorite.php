@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     use HasFactory;
-    
+
     public function product()
     {
         $this->hasOne(Product::class);
@@ -17,4 +17,14 @@ class Favorite extends Model
     {
         $this->belongsTo(User::class);
     }
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int>
+     */
+    protected $fillable = [
+        'user_id',
+        'product_id',
+    ];
 }
