@@ -47,21 +47,21 @@ export default function Product({ auth, product, categories }) {
   return (
     <CommonLayout categories={categories} pageTitle={product.name} auth={auth} >
 
-      {/* container */}
+      {/* product section container */}
       <div className="flex justify-center mt-5 px-8">
 
         {/* wrapper */}
-        <div className="flex justify-center font-sans gap-x-4">
+        <div className="lg:flex-row flex flex-col justify-center font-sans gap-4 items-center">
 
           {/* product images */}
-         <ProductImage   src={src} product={product} onThumbnailClick={onThumbnailClick}  />
+          <ProductImage src={src} product={product} onThumbnailClick={onThumbnailClick} />
 
           {/* product info */}
-          <form className="p-6">
+          <form className="p-6 max-w-[350px]">
 
             {/* product heading  */}
             <div className="mb-2">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-start">
                 <h1 className='text-2xl font-semibold'>{product.name}</h1>
 
                 {/* favorite btn  */}
@@ -98,20 +98,23 @@ export default function Product({ auth, product, categories }) {
             </div>
 
             {/* CTA */}
-            <div className="grid grid-cols-6 gap-2">
+            <div className="">
 
-              {/* Quantity counter CTA  */}
-              <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
-              {/* add to cart btn  */}
-              <AddToCart onCartHandler={onCartHandler} cart={cart} />
-
-              <div className='col-span-3'></div>
-
-              {/* buy btn */}
-              <button className='col-span-3 flex gap-1 items-center btn btn-primary'>
-                <span className='text-lg'>Buy</span>
-                <BsBag className='w-5 h-5'></BsBag>
-              </button>
+              <div className="max-w-[200px]">
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
+                    {/* Quantity counter CTA  */}
+                    <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
+                    {/* add to cart btn  */}
+                    <AddToCart onCartHandler={onCartHandler} cart={cart} />
+                    {/* buy btn */}
+                  </div>
+                  <button className='flex gap-1 items-center btn btn-primary shadow-md '>
+                    <span className='text-lg'>Buy</span>
+                    <BsBag className='w-5 h-4'></BsBag>
+                  </button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -119,4 +122,4 @@ export default function Product({ auth, product, categories }) {
     </CommonLayout>
   )
 
-  }
+}
