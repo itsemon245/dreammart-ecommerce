@@ -11,19 +11,22 @@ use Inertia\Inertia;
 
 class ProductPageController extends Controller
 {
-    public function viewProduct($id)
+    public function generateLikeState($product_id)
     {
-        $product = Product::with(['category', 'brand'])->find($id);
-        $prod = Product::find($id);
+        $prod = Product::find($product_id);
 
         if ($prod->isFavorited()) {
             $isFavorite = true;
         } else {
             $isFavorite = false;
         }
+    }
+    public function viewProduct($id)
+    {
+        $product = Product::with(['category', 'brand'])->find($id);
         return Inertia::render('Product/Product', [
             'product' => $product,
-            'isFavorite' => $isFavorite
+            'isFavorite' => $this->generateLikeState($id)
         ]);
     }
 
@@ -45,10 +48,11 @@ class ProductPageController extends Controller
         }
     }
 
-    public function viewFavorites($user_id)
+    public function viewFavorites()
     {
-        $user = User::find($user_id);
-        $favorites = $user->favorites;
+        $user = User::find(auth()->id());
+        $favorites = $user->products()->with(['category', 'brand'])->get();
+
         return Inertia::render('Product/Favorites', [
             'favorites' => $favorites
         ]);

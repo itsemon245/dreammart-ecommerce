@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
 use App\Http\Controllers\Products\CategoryPageController;
 
@@ -20,6 +21,12 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
     });
     Route::prefix('favorite')->name('favorite.')->group(function () {
         Route::get('toggle/{id}', 'toggleFavorite')->name('toggle');
-        Route::get('all/{user_id}', 'viewFavorites')->name('all');
+        Route::get('all', 'viewFavorites')->name('all');
+    });
+});
+//routes for profile
+Route::prefix('profile')->controller(ProfilePageController::class)->group(function () {
+    Route::name('profile.')->group(function () {
+        Route::get('view', 'viewProfile')->name('view');
     });
 });

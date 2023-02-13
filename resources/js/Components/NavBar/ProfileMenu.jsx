@@ -13,9 +13,9 @@ export default function ProfileMenu() {
                 </label>
                 <ul tabIndex={0} className="dropdown-content mt-2 menu shadow-lg p-2 bg-base-200 rounded-box w-48">
                     <li className='transition-all group font-normal hover:text-primary'>
-                        <Link> <UserIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></UserIcon> Account</Link>
+                        <Link href={route('profile.view')}> <UserIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></UserIcon> Account</Link>
                     </li>
-                    
+
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link href={route('cart')}> <ShoppingCartIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ShoppingCartIcon> Cart</Link>
                     </li>

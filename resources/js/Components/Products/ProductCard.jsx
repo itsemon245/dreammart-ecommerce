@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
+import AddToCart from './AddToCart'
 import { HeartIcon, ShoppingCartIcon, PlusSmallIcon, MinusSmallIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
@@ -48,7 +49,7 @@ export default function ProductCard({ product }) {
           </div>
         </div>
       </div>
-      <div className='bg-slate-800 rounded-b-lg flex justify-between gap-3 border-t-2 border-primary'>
+      <div className='bg-slate-800 rounded-b-lg flex justify-between border-t-2 border-primary'>
         <div className='pl-4 mt-1'>
           <Link href={route('browse.product', product.id)}>
             <h3 className='font-medium'>{product.name}</h3>
@@ -58,16 +59,8 @@ export default function ProductCard({ product }) {
             <p className='text-slate-500 text-sm line-through'>{'$' + price}</p>
           </div>
         </div>
-        <div onClick={addToCart} className='cursor-pointer bg-gray-900 h-full p-4 rounded-br-lg flex items-center justify-center'>
-          <button className='relative'>
-            <div>
-              <ShoppingCartIcon className='w-6 h-6'></ShoppingCartIcon>
-              {cartState ?
-                <MinusSmallIcon className='w-5 h-5 absolute -top-3 -right-1.5'></MinusSmallIcon>
-                :
-                <PlusSmallIcon className='w-5 h-5 absolute -top-3 -right-1.5'></PlusSmallIcon>}
-            </div>
-          </button>
+        <div className='h-full rounded-br-lg flex items-center justify-center'>
+          <AddToCart></AddToCart>
         </div>
       </div>
     </div>

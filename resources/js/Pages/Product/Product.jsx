@@ -12,8 +12,6 @@ import route from '/vendor/tightenco/ziggy/src/js'
 export default function Product({ auth, product, categories, isFavorite }) {
 
   const [count, setCount] = useState(0)
-  const [cart, setCart] = useState(false)
-  const [like, setLike] = useState(isFavorite)
   const [src, setSrc] = useState('/storage/' + product.image)
 
   //handler for counter
@@ -26,17 +24,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
       setCount(prev => prev - 1)
     }
   }
-
-  const onLikeHandler = (e) => {
-    e.preventDefault();
-    sendRequest(route('favorite.toggle', product.id))
-    setLike(prev => !prev)
-  }
-  const onCartHandler = (e) => {
-    e.preventDefault();
-    setCart(prev => !prev)
-    //TODO send request to endpoint to cahnge cart state
-  }
+  
   const onBuyHandler = (e) => {
     e.preventDefault();
     console.log('Buy')
@@ -73,7 +61,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
                 <h1 className='text-2xl font-semibold'>{product.name}</h1>
 
                 {/* favorite btn  */}
-                <AddToFavourite onLikeHandler={onLikeHandler} like={like} />
+                <AddToFavourite productId={product.id} isFavorite={isFavorite} />
               </div>
               {/* brand */}
               <span className='font-semibold'>Brand : </span><div className="badge badge-primary font-semibold uppercase">{product.brand.name}</div>
