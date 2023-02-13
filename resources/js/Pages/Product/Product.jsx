@@ -50,6 +50,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
   async function sendRequest(url) {
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data)
   }
   return (
     <CommonLayout categories={categories} pageTitle={product.name} auth={auth} >

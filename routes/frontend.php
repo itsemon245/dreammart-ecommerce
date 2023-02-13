@@ -20,5 +20,6 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
     });
     Route::prefix('favorite')->name('favorite.')->group(function () {
         Route::get('add/{id}', 'addFavorite')->name('add');
+        Route::get('all/{user_id}', 'viewFavorites')->name('all');
     });
 });

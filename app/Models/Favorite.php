@@ -11,12 +11,16 @@ class Favorite extends Model
 
     public function product()
     {
-        $this->hasOne(Product::class);
+        return $this->belongsTo(Product::class);
     }
-    public function user()
-    {
-        $this->belongsTo(User::class);
-    }
+    // public function product()
+    // {
+    //     return $this->hasOne(Product::class);
+    // }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     /**
      * The attributes that are mass assignable.
@@ -25,6 +29,6 @@ class Favorite extends Model
      */
     protected $fillable = [
         'user_id',
-        'product_id',
+        'product_id'
     ];
 }

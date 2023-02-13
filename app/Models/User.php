@@ -12,9 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function favorites()
+    public function products()
     {
-        $this->hasMany(Favorite::class);
+        return $this->hasManyThrough(Product::class, Favorite::class);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 use App\Models\Favorite;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -12,10 +13,14 @@ class ProductPageController extends Controller
 {
     public function viewProduct($id)
     {
-        $userId = auth()->user()->id;
-        $productId = $id;
-        $isFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->count();
         $product = Product::with(['category', 'brand'])->find($id);
+        $prod = Product::find($id);
+
+        if ($prod->isFavorited()) {
+            $isFavorite = true;
+        } else {
+            $isFavorite = false;
+        }
         return Inertia::render('Product/Product', [
             'product' => $product,
             'isFavorite' => $isFavorite
@@ -24,20 +29,22 @@ class ProductPageController extends Controller
 
     public function addFavorite($id)
     {
-        $userId = auth()->user()->id;
-        $productId = $id;
-        $isFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->get();
+        $favorite = Favorite::create([
+            'user_id' => auth()->user()->id,
+            'product_id' => $id,
+        ]);
+        $product = Product::find($id);
+        $product->favorite_id = $favorite->id;
+        $product->save();
+        return json_encode(auth()->id());
+    }
 
-        if ($isFavorite->count() > 0) {
-            $deleted = $isFavorite->first()->delete();
-            $success = "deleted";
-        } else {
-            $favorite = Favorite::create([
-                'user_id' => $userId,
-                'product_id' => $productId
-            ]);
-            $success = 'added';
-        }
-        return json_encode($success);
+    public function viewFavorites($user_id)
+    {
+        $user = User::find($user_id);
+        $favorites = $user->favorites;
+        return Inertia::render('Product/Favorites', [
+            'favorites' => $favorites
+        ]);
     }
 }

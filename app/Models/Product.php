@@ -35,11 +35,21 @@ class Product extends Model
 
     public function brand()
     {
-       return $this->belongsTo(Brand::class);
+        return $this->belongsTo(Brand::class);
     }
 
     public function event()
     {
-       return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class);
+    }
+
+    // favorites
+    public function isFavorited()
+    {
+        return $this->favorites()->where('user_id', auth()->id())->count();
+    }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }
