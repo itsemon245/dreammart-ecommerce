@@ -29,14 +29,20 @@ class ProductPageController extends Controller
 
     public function addFavorite($id)
     {
-        $favorite = Favorite::create([
-            'user_id' => auth()->user()->id,
-            'product_id' => $id,
-        ]);
+
         $product = Product::find($id);
-        $product->favorite_id = $favorite->id;
-        $product->save();
-        return json_encode(auth()->id());
+        if ($product->isFavorited()) {
+            $delete = Favorite::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
+            return json_encode('deleted');
+        } else {
+            $favorite = Favorite::create([
+                'user_id' => auth()->user()->id,
+                'product_id' => $id,
+            ]);
+            $product->favorite_id = $favorite->id;
+            $product->save();
+            return json_encode('added');
+        }
     }
 
     public function viewFavorites($user_id)
