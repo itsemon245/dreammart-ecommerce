@@ -29,7 +29,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
 
   const onLikeHandler = (e) => {
     e.preventDefault();
-    sendRequest(route('favorite.add', product.id))
+    sendRequest(route('favorite.toggle', product.id))
     setLike(prev => !prev)
   }
   const onCartHandler = (e) => {

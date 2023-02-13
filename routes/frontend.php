@@ -19,7 +19,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
         Route::get('view/{id}', 'viewProduct')->name('product');
     });
     Route::prefix('favorite')->name('favorite.')->group(function () {
-        Route::get('add/{id}', 'addFavorite')->name('add');
+        Route::get('toggle/{id}', 'toggleFavorite')->name('toggle');
         Route::get('all/{user_id}', 'viewFavorites')->name('all');
     });
 });

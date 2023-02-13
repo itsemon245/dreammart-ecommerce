@@ -27,7 +27,7 @@ class ProductPageController extends Controller
         ]);
     }
 
-    public function addFavorite($id)
+    public function toggleFavorite($id)
     {
 
         $product = Product::find($id);
