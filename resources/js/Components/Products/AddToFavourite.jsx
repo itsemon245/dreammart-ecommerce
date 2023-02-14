@@ -17,7 +17,7 @@ export default function AddToFavourite({ isFavorite, productId, className = 'w-6
     }
 
     return (
-        <button title={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'} onClick={onLikeHandler} className={` btn bg-transparent h-min min-h-6 hover:bg-transparent border-0 p-0 m-0`}>
+        <button title={like ? 'Remove from Favorites' : 'Add to Favorites'} onClick={onLikeHandler} className={` btn bg-transparent h-min min-h-6 hover:bg-transparent border-0 p-0 m-0`}>
             {like ? <AiFillHeart className={`${className} text-pink-600 transition-all`}></AiFillHeart> : <AiOutlineHeart className={`${className}`}></AiOutlineHeart>}
         </button>
     );

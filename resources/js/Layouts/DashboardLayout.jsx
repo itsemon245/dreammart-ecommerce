@@ -9,7 +9,7 @@ export default function DashboardLayout({ categories, auth, pageTitle, children 
                 <aside className='col-span-2'>
                     <Sidebar></Sidebar>
                 </aside>
-                <main className='col-span-10 bg-slate-900 rounded-lg rounded-l-none'>
+                <main className='col-span-10 bg-slate-900 rounded-lg rounded-l-none p-10'>
                     {children}
                 </main>
             </div>

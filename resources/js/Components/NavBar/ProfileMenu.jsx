@@ -21,7 +21,7 @@ export default function ProfileMenu() {
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>
-                        <Link href={route('orders')}> <CubeIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></CubeIcon> Orders</Link>
+                        <Link href={route('orders.view')}> <CubeIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></CubeIcon> Orders</Link>
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>
