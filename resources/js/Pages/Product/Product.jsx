@@ -4,6 +4,7 @@ import AddToFavourite from '@/Components/Products/AddToFavourite'
 import AddToCart from '@/Components/Products/AddToCart'
 import Counter from '@/Components/Products/Counter'
 import { Link } from '@inertiajs/inertia-react'
+import Rating from '@/Components/Products/Rating'
 import { BsBag } from 'react-icons/bs'
 import React from 'react'
 import { useState } from 'react'
@@ -70,15 +71,7 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
             <h2 className='text-2xl font-semibold'>${product.price}</h2>
 
             {/* product rating */}
-            <div className='flex items-center mb-5'>
-              <div className="rating">
-                <div className="w-5 h-5 mask mask-star-2 bg-yellow-400" ></div>
-                <div className="w-5 h-5 mask mask-star-2 bg-yellow-400" ></div>
-                <div className="w-5 h-5 mask mask-star-2 bg-yellow-400" ></div>
-                <div className="w-5 h-5 mask mask-star-2 bg-yellow-400" ></div>
-                <div className="w-5 h-5 mask mask-star-2 bg-yellow-400" ></div>
-              </div> <span>(8 Reviews)</span>
-            </div>
+            <Rating     />
 
             {/* Description */}
             <div className='text-lg mb-8'>
@@ -121,4 +114,6 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
 
   )
 
-}
+
+    
+  }

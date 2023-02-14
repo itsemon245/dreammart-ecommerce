@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from '@inertiajs/inertia-react';
 import route from '/vendor/tightenco/ziggy/src/js';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import NavAuthOption from './NavAuthOption';
-import CartProduct from '../Cart/CartProduct';
 
 
 export default function NavBar({ auth, categories }) {
@@ -14,7 +12,7 @@ export default function NavBar({ auth, categories }) {
         { name: "About us", route: "aboutUs" }
     ]
     return (
-        <nav className="navbar lg:px-10 md:px-5 ">
+        <nav className="navbar lg:px-10 md:px-5 shadow-slate-900 shadow-md">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-sm btn-ghost lg:hidden">

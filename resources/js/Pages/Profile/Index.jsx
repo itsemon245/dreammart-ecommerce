@@ -1,12 +1,9 @@
 import React from 'react'
-import CommonLayout from '@/Layouts/CommonLayout'
-import { Link } from '@inertiajs/inertia-react'
-import route from '/vendor/tightenco/ziggy/src/js'
+import DashboardLayout from '@/Layouts/DashboardLayout'
 export default function Index({ categories, auth }) {
     return (
-        <CommonLayout categories={categories} pageTitle="Account" auth={auth} >
+        <DashboardLayout pageTitle="Profile" categories={categories} auth={auth}>
 
-            <Link href={route('favorite.all')}>Favorites</Link>
-        </CommonLayout>
+        </DashboardLayout>
     )
 }

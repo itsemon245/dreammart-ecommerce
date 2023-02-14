@@ -16,7 +16,7 @@ export default function AddToCart({ productId, isCarted, qty }) {
         console.log(data)
     }
     return (
-        <button onClick={onCartHandler} className='btn'>
+        <button onClick={onCartHandler} className='hover:scale-110 cursor-pointer'>
             {cart ? <BsCartCheck className='w-6 h-6'></BsCartCheck> : <BsCartPlus className='w-6 h-6'></BsCartPlus>}
         </button>
     );

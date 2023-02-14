@@ -17,7 +17,7 @@ export default function AddToFavourite({isFavorite, productId }) {
     }
     
     return (
-        <button onClick={onLikeHandler} className='btn bg-transparent border-0 '>
+        <button onClick={onLikeHandler} className='cursor-pointer hover:scale-110'>
             {like ? <AiFillHeart className='w-6 h-6 text-pink-600 transition-all'></AiFillHeart> : <AiOutlineHeart className='w-6 h-6 '></AiOutlineHeart>}
         </button>
     );
