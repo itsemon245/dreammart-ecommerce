@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 
-export default function AddToCart({ productId, isCarted, qty }) {
+export default function AddToCart({ productId, isCarted, qty, className = 'w-6 h-6' }) {
     const [cart, setCart] = useState(isCarted)
 
     const onCartHandler = (e) => {
@@ -16,8 +16,8 @@ export default function AddToCart({ productId, isCarted, qty }) {
         console.log(data)
     }
     return (
-        <button onClick={onCartHandler} className='hover:scale-110 cursor-pointer'>
-            {cart ? <BsCartCheck className='w-6 h-6'></BsCartCheck> : <BsCartPlus className='w-6 h-6'></BsCartPlus>}
+        <button title={isCarted ? 'Remove from Cart' : 'Add to Cart'} onClick={onCartHandler} className={` btn bg-transparent h-min min-h-6  hover:bg-transparent border-0 p-0 m-0`}>
+            {cart ? <BsCartCheck className={`${className}`}></BsCartCheck> : <BsCartPlus className={`${className}`}></BsCartPlus>}
         </button>
     );
 }

@@ -58,7 +58,7 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
 
             {/* product heading  */}
             <div className="mb-2">
-              <div className="flex justify-between items-start">
+              <div className="flex justify-between items-center">
                 <h1 className='text-2xl font-semibold'>{product.name}</h1>
 
                 {/* favorite btn  */}
@@ -71,7 +71,7 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
             <h2 className='text-2xl font-semibold'>${product.price}</h2>
 
             {/* product rating */}
-            <Rating     />
+            <Rating />
 
             {/* Description */}
             <div className='text-lg mb-8'>
@@ -91,11 +91,11 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
 
               <div className="max-w-[200px]">
                 <div className="flex flex-col gap-2">
-                  <div className="flex gap-2">
+                  <div className="flex justify-between items-center">
                     {/* Quantity counter CTA  */}
                     <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
                     {/* add to cart btn  */}
-                    <AddToCart qty={count} isCarted={isCarted} productId={product.id} />
+                    <AddToCart className='w-8 h-8 mr-1' qty={count} isCarted={isCarted} productId={product.id} />
 
 
                     {/* buy btn */}
@@ -115,5 +115,5 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
   )
 
 
-    
-  }
+
+}

@@ -50,14 +50,19 @@ export default function ProductCard({ product }) {
           <p className=' text-lg font-semibold'>{'$' + offerPrice}</p>
           <p className='text-slate-500 text-sm line-through'>{'$' + price}</p>
         </div>
-        <div className='flex justify-between items-end'>
+        <div className='flex justify-between items-end px-2 -mt-2'>
           <div>
             <div className="badge badge-sm badge-secondary font-semibold uppercase">{product.category.name}</div>
             <Rating></Rating>
           </div>
-          <div className='flex flex-col items-end gap-1'>
-            <AddToCart qty={1} productId={product.id}></AddToCart>
-            <AddToFavourite productId={product.id} />
+          <div className='flex flex-col items-end'>
+            <div className="hover:scale-110 transition-all">
+              <AddToCart qty={1} productId={product.id}></AddToCart>
+            </div>
+            <div className="hover:scale-110 transition-all">
+              <AddToFavourite productId={product.id} />
+            </div>
+
           </div>
         </div>
       </div>
