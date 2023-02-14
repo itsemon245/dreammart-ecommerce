@@ -17,7 +17,7 @@ export default function ProfileMenu() {
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>
-                        <Link href={route('cart')}> <ShoppingCartIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ShoppingCartIcon> Cart</Link>
+                        <Link href={route('cart.all')}> <ShoppingCartIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></ShoppingCartIcon> Cart</Link>
                     </li>
 
                     <li className='transition-all group font-normal hover:text-primary'>

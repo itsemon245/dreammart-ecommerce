@@ -52,4 +52,13 @@ class Product extends Model
     {
         return $this->hasMany(Favorite::class);
     }
+    // favorites
+    public function isCarted()
+    {
+        return $this->carts()->where('user_id', auth()->id())->count();
+    }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

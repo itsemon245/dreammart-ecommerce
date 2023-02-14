@@ -1,10 +1,10 @@
 import CommonLayout from '@/Layouts/CommonLayout'
 import React from 'react'
 
-export default function Track({auth}) {
+export default function Track({ categories, auth }) {
   return (
-    <CommonLayout pageTitle='Track Order' auth={auth} >
-    
+    <CommonLayout categories={categories} pageTitle='Track Order' auth={auth} >
+
     </CommonLayout>
   )
 }

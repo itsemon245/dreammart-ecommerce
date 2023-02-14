@@ -30,6 +30,7 @@ export default function NavBar({ auth, categories }) {
                                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
                             </a>
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
+                                <li className='hover:text-primary block transition-all'><Link href={route('browse.all')}>All Products</Link></li>
                                 {categories.map((category, index) => (
                                     <li className='hover:text-primary' key={index}><Link href={route('browse.category', category.id)}>{category.name}</Link></li>
                                 ))}
@@ -52,6 +53,7 @@ export default function NavBar({ auth, categories }) {
                             </label>
 
                             <ul tabIndex={0} className="dropdown-content menu p-2 bg-base-200 rounded-box transition-all z-10 overflow-visible">
+                                <li className='hover:text-primary block transition-all'><Link href={route('browse.all')}>All Products</Link></li>
                                 {categories.map((category, index) => (
                                     <li className='hover:text-primary block transition-all' key={index}><Link href={route('browse.category', category.id)}>{category.name}</Link></li>
                                 ))}
