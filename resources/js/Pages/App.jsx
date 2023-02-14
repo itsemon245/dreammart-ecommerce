@@ -14,6 +14,9 @@ export default function App({ auth, landingProducts, categories }) {
     return (
         <CommonLayout pageTitle="Home" auth={auth} categories={categories}>
             <Hero carouselImages={carouselImages}></Hero>
+            {/* {categories.map(category=>(
+                <div key={category.id} className="m-1 bg-primary">{category.name}</div>
+            ))} */}
             {landingProducts.map((products, index) => (
                 <Section key={index} eventProducts={products} heading={products[0].event.tagline} subTitle={products[0].event.name}></Section>
             ))}

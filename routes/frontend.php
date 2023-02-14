@@ -24,7 +24,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
         Route::get('all', 'viewFavorites')->name('all');
     });
     Route::prefix('cart')->name('cart.')->group(function () {
-        Route::get('toggle/{id}', 'toggleCart')->name('toggle');
+        Route::get('toggle/{id}/{qty}', 'toggleCart')->name('toggle');
         Route::get('all', 'viewCarts')->name('all');
     });
 });

@@ -11,7 +11,7 @@ import route from '/vendor/tightenco/ziggy/src/js'
 
 export default function Product({ auth, product, categories, isFavorite, isCarted }) {
 
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(1)
   const [src, setSrc] = useState('/storage/' + product.image)
 
   //handler for counter
@@ -102,7 +102,7 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
                     {/* Quantity counter CTA  */}
                     <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
                     {/* add to cart btn  */}
-                    <AddToCart isCarted={isCarted} productId={product.id} />
+                    <AddToCart qty={count} isCarted={isCarted} productId={product.id} />
 
 
                     {/* buy btn */}

@@ -2,12 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 
-export default function AddToCart({ productId, isCarted }) {
+export default function AddToCart({ productId, isCarted, qty }) {
     const [cart, setCart] = useState(isCarted)
 
     const onCartHandler = (e) => {
         e.preventDefault();
-        sendRequest(route('cart.toggle', productId))
+        sendRequest(route('cart.toggle', [productId, qty]))
         setCart(prev => !prev)
     }
     async function sendRequest(url) {

@@ -60,7 +60,7 @@ export default function ProductCard({ product }) {
           </div>
         </div>
         <div className='h-full rounded-br-lg flex items-center justify-center'>
-          <AddToCart></AddToCart>
+          <AddToCart qty={1} productId={product.id}></AddToCart>
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ class ProductPageController extends Controller
             return json_encode('added');
         }
     }
-    public function toggleCart($id)
+    public function toggleCart($id, $qty)
     {
 
         $product = Product::find($id);
@@ -65,6 +65,7 @@ class ProductPageController extends Controller
             $cart = Cart::create([
                 'user_id' => auth()->user()->id,
                 'product_id' => $id,
+                'qty' => $qty
             ]);
             $product->cart_id = $cart->id;
             $product->save();
@@ -79,6 +80,15 @@ class ProductPageController extends Controller
 
         return Inertia::render('Product/Favorites', [
             'favorites' => $favorites
+        ]);
+    }
+    public function viewCarts()
+    {
+        $user = User::find(auth()->id());
+        $carts = $user->cartProducts()->with(['category', 'brand'])->get();
+
+        return Inertia::render('Orders/Cart', [
+            'carts' => $carts
         ]);
     }
 }

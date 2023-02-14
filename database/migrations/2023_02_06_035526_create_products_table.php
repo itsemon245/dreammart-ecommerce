@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable();
             $table->foreignId('brand_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('favorite_id')->nullable();
+            $table->foreignId('cart_id')->nullable();
             $table->foreignId('event_id')->nullable();
             $table->float('price');
             $table->string('image');
