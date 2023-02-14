@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
-import { BsCartPlus, BsCartCheck} from 'react-icons/bs'
+import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 
-export default function AddToCart({}) {
+export default function AddToCart({ productId }) {
     const [cart, setCart] = useState(false)
 
     const onCartHandler = (e) => {

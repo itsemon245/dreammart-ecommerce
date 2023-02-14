@@ -24,7 +24,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
       setCount(prev => prev - 1)
     }
   }
-  
+
   const onBuyHandler = (e) => {
     e.preventDefault();
     console.log('Buy')
@@ -102,7 +102,7 @@ export default function Product({ auth, product, categories, isFavorite }) {
                     {/* Quantity counter CTA  */}
                     <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
                     {/* add to cart btn  */}
-                    <AddToCart onCartHandler={onCartHandler} cart={cart} />
+                    <AddToCart productId={product.id} />
                     {/* buy btn */}
                   </div>
                   <button className='flex gap-1 items-center btn btn-primary shadow-md '>

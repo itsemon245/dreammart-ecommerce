@@ -23,10 +23,17 @@ class ProductPageController extends Controller
     }
     public function viewProduct($id)
     {
+        $prod = Product::find($id);
+
+        if ($prod->isFavorited()) {
+            $isFavorite = true;
+        } else {
+            $isFavorite = false;
+        }
         $product = Product::with(['category', 'brand'])->find($id);
         return Inertia::render('Product/Product', [
             'product' => $product,
-            'isFavorite' => $this->generateLikeState($id)
+            'isFavorite' => $isFavorite
         ]);
     }
 
