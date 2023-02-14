@@ -34,6 +34,7 @@
         "daisyui": "^2.46.1",
         "jquery": "^3.6.3",
         "pexxalert": "^2.0.0",
+        "react-hot-toast": "^2.4.0",
         "react-icons": "^4.7.1",
         "react-toastify": "^9.1.1"
     }
