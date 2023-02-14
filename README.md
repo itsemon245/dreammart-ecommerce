@@ -40,6 +40,10 @@ php artisan key:generate
 ``` bash
 npm run dev 
 ``` 
+Start your xampp servers & Migrate database
+```
+php artisan migrate:fresh --seed
+```
 Open a new teminal and enter:
 ``` bash
 php artisan ser
