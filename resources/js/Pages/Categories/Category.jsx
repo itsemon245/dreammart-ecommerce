@@ -3,11 +3,17 @@ import CommonLayout from '@/Layouts/CommonLayout';
 import ProductPageLayout from '@/Layouts/ProductPageLayout';
 import { usePage } from '@inertiajs/inertia-react';
 
-export default function Category({products, auth, categories}) {
+export default function Category({ products, auth, categories }) {
     const { messages } = usePage().props
+    let categoriesFound = []
+    products.forEach(product => {
+        categoriesFound.push(product.category)
+    });
+    const uniqueArr = categoriesFound.filter((obj, index, self) => index === self.findIndex((o) => o.id === obj.id));
+    const hasAllProducts = uniqueArr.length > 1
     return (
-        <CommonLayout categories={categories} messages={messages} pageTitle="Brands" auth={auth}>
-            <ProductPageLayout categories={categories} heading={products.length ?  products[0].category.name : ''} products={products} />
+        <CommonLayout categories={categories} messages={messages} pageTitle="Products" auth={auth}>
+            <ProductPageLayout categories={categories} heading={hasAllProducts ? 'All Products' : products[0].category.name} products={products} />
         </CommonLayout>
     )
 }

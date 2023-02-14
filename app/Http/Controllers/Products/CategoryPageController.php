@@ -15,7 +15,7 @@ class CategoryPageController extends Controller
     {
 
         $products = Product::with('category', 'brand')->where('status', 1)->get();
-        return inertia('Categories/All',[
+        return inertia('Categories/Category', [
             'products' => $products
         ]);
     }
@@ -24,9 +24,8 @@ class CategoryPageController extends Controller
 
         $products = Product::with(['category', 'brand'])->where('category_id', $id)->get();
 
-        return inertia('Categories/Category',[
+        return inertia('Categories/Category', [
             'products' => $products
         ]);
     }
-
 }
