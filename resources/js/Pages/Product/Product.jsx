@@ -9,7 +9,7 @@ import React from 'react'
 import { useState } from 'react'
 import route from '/vendor/tightenco/ziggy/src/js'
 
-export default function Product({ auth, product, categories, isFavorite, isCart }) {
+export default function Product({ auth, product, categories, isFavorite, isCarted }) {
 
   const [count, setCount] = useState(0)
   const [src, setSrc] = useState('/storage/' + product.image)
@@ -102,9 +102,9 @@ export default function Product({ auth, product, categories, isFavorite, isCart 
                     {/* Quantity counter CTA  */}
                     <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
                     {/* add to cart btn  */}
-                    {/* <AddToCart isCart={isCart} productId={product.id} /> */}
+                    <AddToCart isCarted={isCarted} productId={product.id} />
 
-                    
+
                     {/* buy btn */}
                   </div>
                   <button className='flex gap-1 items-center btn btn-primary shadow-md '>
