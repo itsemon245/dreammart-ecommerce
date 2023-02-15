@@ -3,10 +3,11 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,21 +22,19 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/new-arrivals', function () {
-    return inertia('NewArrivals');
-})->name('newArrivals');
-Route::get('/exclusive', function () {
-    return inertia('Exclusive');
-})->name('exclusive');
-Route::get('/about-us', function () {
-    return inertia('AboutUs');
-})->name('aboutUs');
-Route::get('/cart', function () {
-    return inertia('Orders/Cart');
-})->name('cart');
-Route::get('/orders', function () {
-    return inertia('Orders/Track');
-})->name('orders');
+
+Route::prefix('page')->controller(PageController::class)->group(function () {
+    Route::name('page.')->group(function () {
+        Route::get('/new-arrivals/{id}', 'arrivalsPage')->name('newArrivals');
+        Route::get('/popular/{id}', 'popularPage')->name('popular');
+        Route::get('/special/{id}', 'spacialPage')->name('spacial');
+        Route::get('/about-us/{id}', 'aboutPage')->name('about');
+    });
+});
+
+
+
+
 
 
 //route for linking all the assets
@@ -47,7 +46,7 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('logout');
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware(['auth', 'verified'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
