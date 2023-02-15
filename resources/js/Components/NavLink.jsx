@@ -1,4 +1,4 @@
-import { Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/inertia-react';
 
 export default function NavLink({ href, active, children }) {
     return (

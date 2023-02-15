@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderPageController;
 use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
 use App\Http\Controllers\Products\CategoryPageController;
@@ -32,5 +33,11 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
 Route::prefix('profile')->controller(ProfilePageController::class)->group(function () {
     Route::name('profile.')->group(function () {
         Route::get('view', 'viewProfile')->name('view');
+    });
+});
+//route for orders
+Route::prefix('orders')->controller(OrderPageController::class)->group(function () {
+    Route::name('orders.')->group(function () {
+        Route::get('view', 'viewOrders')->name('view');
     });
 });

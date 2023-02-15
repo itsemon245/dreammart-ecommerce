@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from '@inertiajs/inertia-react'
 import AddToCart from './AddToCart'
-import { HeartIcon, ShoppingCartIcon, PlusSmallIcon, MinusSmallIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import AddToFavourite from './AddToFavourite'
+import Rating from './Rating'
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import route from '/vendor/tightenco/ziggy/src/js'
 
 export default function ProductCard({ product }) {
   const offerPrice = product.price
-  const price = offerPrice + (product.discount / 100)
+  let price = offerPrice + (offerPrice * (product.discount / 100))
+  price = price.toFixed(2)
 
   const [cartState, setCartState] = useState(false);
   const addToCart = () => {
@@ -31,36 +34,36 @@ export default function ProductCard({ product }) {
         </div>
         <div className='w-0 h-0 opacity-0 bg-slate-800 p-3 absolute top-0 right-0 peer-hover:w-full peer-hover:h-full peer-hover:opacity-100' style={{ transition: 'all 500ms cubic-bezier(0.4, 0, 0.2, 1), color 2000ms ease' }}>
           <div className=''>
-            <div className='mb-2'>
+            <div className='mt-5'>
               <h4 className='font-semibold text-sm'>Description:</h4>
-              <p className='text-sm max-w-[15ch]'>{product.detail}</p>
-            </div>
-            <div className='mb-2'>
-              <h4 className='font-semibold text-sm'>Category: <span className='font-normal'>{product.category.name}</span></h4>
-              <h4 className='font-semibold text-sm'>Brand: <span className='font-normal'>{product.brand.name}</span></h4>
-              <div className='flex gap-2 font-semibold text-sm'>Rating:
-                <div className="flex items-center">
-                  <div className='font-medium'>4.3</div>
-                  <div className='mask mask-star-2 bg-yellow-500 rounded w-4 h-4'></div>
-                  <span className='ml-1 text-sm text-primary'>(1225)</span>
-                </div>
-              </div>
+              <p className='text-sm'>{product.detail}</p>
             </div>
           </div>
         </div>
       </div>
-      <div className='bg-slate-800 rounded-b-lg flex justify-between border-t-2 border-primary'>
-        <div className='pl-4 mt-1'>
-          <Link href={route('browse.product', product.id)}>
-            <h3 className='font-medium'>{product.name}</h3>
-          </Link>
-          <div className='flex gap-2 items-center'>
-            <p className='font-semibold'>{'$' + offerPrice}</p>
-            <p className='text-slate-500 text-sm line-through'>{'$' + price}</p>
-          </div>
+      <div className='bg-slate-800 rounded-b-lg flex flex-col border-t-2 border-primary px-3 py-2'>
+        <Link href={route('browse.product', product.id)}>
+          <h3 className='font-medium'>{product.name}</h3>
+        </Link>
+
+        <div className='flex gap-1 items-baseline'>
+          <p className=' text-lg font-semibold'>{'$' + offerPrice}</p>
+          <p className='text-slate-500 text-sm line-through'>{'$' + price}</p>
         </div>
-        <div className='h-full rounded-br-lg flex items-center justify-center'>
-          <AddToCart qty={1} productId={product.id}></AddToCart>
+        <div className='flex justify-between items-end px-2 -mt-2'>
+          <div>
+            <div className="badge badge-sm badge-secondary font-semibold uppercase">{product.category.name}</div>
+            <Rating></Rating>
+          </div>
+          <div className='flex flex-col items-end'>
+            <div className="hover:scale-110 transition-all">
+              <AddToCart qty={1} productId={product.id}></AddToCart>
+            </div>
+            <div className="hover:scale-110 transition-all">
+              <AddToFavourite productId={product.id} />
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
