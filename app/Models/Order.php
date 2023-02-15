@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -14,14 +14,9 @@ class Cart extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
-    }
-
-    public function order()
-    {
-        return $this->belongsTo(Order::class);
+        return $this->belongsToMany(Product::class)->withPivot('quantity');
     }
 
     /**
@@ -31,7 +26,6 @@ class Cart extends Model
      */
     protected $fillable = [
         'user_id',
-        'product_id',
-        'qty',
+        'status',
     ];
 }
