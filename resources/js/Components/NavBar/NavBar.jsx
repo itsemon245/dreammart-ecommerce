@@ -6,10 +6,9 @@ import NavAuthOption from './NavAuthOption';
 
 export default function NavBar({ auth, categories }) {
     const navLinks = [
-        { name: "Home", route: "home" },
-        { name: "New Arrivals", route: "newArrivals" },
-        { name: "Exclusive", route: "exclusive" },
-        { name: "About us", route: "aboutUs" }
+        { name: "New Arrivals", route: "page.newArrivals", id: 1 },
+        { name: "Popular", route: "page.popular", id: 2 },
+        { name: "About us", route: "page.about", id: 4 }
     ]
     return (
         <nav className="navbar lg:px-10 md:px-5 shadow-slate-900 shadow-md">
@@ -19,8 +18,9 @@ export default function NavBar({ auth, categories }) {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <li className='hover:text-primary'><Link href={route('home')}>Home</Link></li>
                         {navLinks.map((link, index) => (
-                            <li className='hover:text-primary' key={index}><Link href={route(link.route)}>{link.name}</Link></li>
+                            <li className='hover:text-primary' key={index}><Link href={route(link.route, link.id)}>{link.name}</Link></li>
                         ))}
                         <li tabIndex={0}>
                             <a className="justify-between hover:text-primary">
@@ -40,8 +40,9 @@ export default function NavBar({ auth, categories }) {
             </div>
             <div className="lg:nav-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
+                    <li className='hover:text-primary'><Link href={route('home')}>Home</Link></li>
                     {navLinks.map((link, index) => (
-                        <li className='hover:text-primary' key={index}><Link href={route(link.route)}>{link.name}</Link></li>
+                        <li className='hover:text-primary' key={index}><Link href={route(link.route, link.id)}>{link.name}</Link></li>
                     ))}
                     <li>
                         <div className="dropdown dropdown-bottom dropdown-end">
