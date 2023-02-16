@@ -85,7 +85,7 @@ class ProductPageController extends Controller
     public function viewCarts()
     {
         $user = User::find(auth()->id());
-        $carts = $user->cartProducts()->with(['category', 'brand'])->get();
+        $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
 
         return Inertia::render('Product/Cart', [
             'carts' => $carts
