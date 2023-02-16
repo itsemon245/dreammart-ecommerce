@@ -75,11 +75,19 @@ class ProductPageController extends Controller
 
     public function viewFavorites()
     {
-        $user = User::find(auth()->id());
+        if (auth()->user()) {
+            $user = User::find(auth()->id());
+            $favorites = $user->products()->with(['category', 'brand'])->get();
+            $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
+        }else{
+            $carts = false;
+            $favorites = false;
+        }
         $favorites = $user->products()->with(['category', 'brand'])->get();
 
         return Inertia::render('Product/Favorites', [
-            'favorites' => $favorites
+            'favorites' => $favorites,
+            'carts' => $carts
         ]);
     }
     public function viewCarts()

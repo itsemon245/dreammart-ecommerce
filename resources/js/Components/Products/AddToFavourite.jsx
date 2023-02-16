@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 
 export default function AddToFavourite({ isFavorite, productId, className = 'w-6 h-6', auth }) {
     const [like, setLike] = useState(isFavorite)
+    console.log(auth)
     const onLikeHandler = (e) => {
         e.preventDefault();
         if (auth) {
