@@ -8,7 +8,7 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react'
 import route from '/vendor/tightenco/ziggy/src/js'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, auth }) {
   const offerPrice = product.price
   let price = offerPrice + (offerPrice * (product.discount / 100))
   price = price.toFixed(2)
@@ -57,10 +57,10 @@ export default function ProductCard({ product }) {
           </div>
           <div className='flex flex-col items-end'>
             <div className="hover:scale-110 transition-all">
-              <AddToCart qty={1} productId={product.id}></AddToCart>
+              <AddToCart auth={auth} qty={1} productId={product.id}></AddToCart>
             </div>
             <div className="hover:scale-110 transition-all">
-              <AddToFavourite productId={product.id} />
+              <AddToFavourite auth={auth} productId={product.id} />
             </div>
 
           </div>

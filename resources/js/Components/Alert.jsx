@@ -3,32 +3,21 @@ import { usePage } from '@inertiajs/inertia-react'
 import toast, { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 
-export function Alert({ type, message }) {
+export default function Alert({ type, message }) {
+    const { success, error } = usePage().props
+    console.log(success)
     const notify = () => {
-        type === 'success' ? toast.success(message) :
-            type === "error" ? toast.error(message) : ''
+        success.message ? toast.success(success.message) :
+            error.message ? toast.error(error.message) : ''
     }
     useEffect(notify, [])
     return (
         <div>
             <Toaster
-                position="bottom-center"
-                 />
+                position="top-center"
+            />
         </div>
     )
 }
 
-export default function Alerts(props) {
-    const { success, error } = usePage().props
-    const messages = { success, error }
-
-    return (
-        <>
-            {Object.entries(messages).map(([type, value]) => (
-                value.message && <Alert type={type} message={value.message} key={Math.random() * (100 - 10) + 10} />
-            ))}
-        </>
-    )
-
-}
 

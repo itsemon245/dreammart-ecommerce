@@ -1,5 +1,5 @@
 import { Head, usePage } from '@inertiajs/inertia-react';
-import { NavBar, Alerts, Footer } from '@/Components/';
+import { NavBar, Alert, Footer } from '@/Components/';
 
 export default function CommonLayout({ pageTitle, auth, messages, children, categories }) {
     return (
@@ -10,7 +10,7 @@ export default function CommonLayout({ pageTitle, auth, messages, children, cate
             <main>
                 <header>
                     <NavBar categories={categories} auth={auth}></NavBar>
-                    <Alerts messages={messages}></Alerts>
+                    <Alert messages={messages}></Alert>
                 </header>
                 <article>{children}</article>
                 {/* <Footer></Footer> */}
