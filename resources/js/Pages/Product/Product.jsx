@@ -100,10 +100,10 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
 
                     {/* buy btn */}
                   </div>
-                  <button className='flex gap-1 items-center btn btn-primary shadow-md '>
+                  <Link href={route('checkout.product', product.id)} data={{qty:count}} as="button" method='POST' className='flex gap-1 items-center btn btn-primary shadow-md '>
                     <span className='text-lg'>Buy</span>
                     <BsBag className='w-5 h-4'></BsBag>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

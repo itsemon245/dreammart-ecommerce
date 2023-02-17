@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderPageController;
 use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
@@ -41,4 +42,8 @@ Route::prefix('orders')->controller(OrderPageController::class)->group(function 
     Route::name('orders.')->group(function () {
         Route::get('view', 'viewOrders')->name('view');
     });
+});
+
+Route::prefix('checkout')->name('checkout.')->controller(CheckoutController::class)->group(function () {
+    Route::post('product/{id}', 'product')->name('product');
 });
