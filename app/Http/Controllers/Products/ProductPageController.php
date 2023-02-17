@@ -72,18 +72,21 @@ class ProductPageController extends Controller
             return json_encode(true);
         }
     }
-
+    public function destroyCart($id)
+    {
+        $delete = Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
+        return back()->with('success', 'Removed from cart');
+    }
     public function viewFavorites()
     {
         if (auth()->user()) {
             $user = User::find(auth()->id());
             $favorites = $user->products()->with(['category', 'brand'])->get();
             $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
-        }else{
+        } else {
             $carts = false;
             $favorites = false;
         }
-        $favorites = $user->products()->with(['category', 'brand'])->get();
 
         return Inertia::render('Product/Favorites', [
             'favorites' => $favorites,

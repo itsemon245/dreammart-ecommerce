@@ -5,7 +5,6 @@ import { BsCartPlus, BsCartCheck } from 'react-icons/bs'
 
 export default function AddToCart({ productId, isCarted, qty, className = 'w-6 h-6', auth }) {
     const [cart, setCart] = useState(isCarted)
-
     const onCartHandler = (e) => {
         e.preventDefault();
         if (auth) {

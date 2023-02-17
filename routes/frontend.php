@@ -26,6 +26,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
     });
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('toggle/{id}/{qty}', 'toggleCart')->name('toggle');
+        Route::delete('destroy/{id}', 'destroyCart')->name('destroy');
         Route::get('all', 'viewCarts')->name('all');
     });
 });

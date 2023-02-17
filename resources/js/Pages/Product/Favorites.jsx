@@ -3,7 +3,7 @@ import DashboardLayout from '@/Layouts/DashboardLayout'
 import ProductCard from '@/Components/Products/ProductCard'
 
 export default function Favorites({ categories, auth, favorites, carts }) {
-    console.log(favorites)
+    
     return (
         <DashboardLayout pageTitle="Favorites" categories={categories} auth={auth}>
             <div >
