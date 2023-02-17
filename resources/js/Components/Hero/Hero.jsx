@@ -31,7 +31,7 @@ export default function Hero({ carouselImages }) {
                         <Link href={route('browse.all')} className="btn sm:btn-md btn-sm capitalize 2xl:btn-lg btn-primary flex sm:gap-x-3 gap-x-1 items-center justify-center">
                            <BiCategory className='w-6 h-6'></BiCategory> Explore
                         </Link>
-                        <SearchBox></SearchBox>
+                        {/* <SearchBox></SearchBox> */}
                     </div>
                 </div>
             </div>
