@@ -13,7 +13,7 @@ function Checkout({ userId, items }) {
             <div>
                 <div className="flex items-center justify-center py-8">
                     <button onClick={() => setShow(!show)} className="py-2 px-10 rounded bg-primary hover:bg-indigo-700 text-slate-900 hover:text-white transition-all">
-                        Checkout
+                        Checkout All
                     </button>
                 </div>
                 {show && (
@@ -46,7 +46,7 @@ function Checkout({ userId, items }) {
                                                 <p className="text-xs leading-3 text-gray-600 py-4">Brand: {item.brand.name}</p>
 
                                                 <div className="flex items-center justify-between pt-5 pr-6">
-                                                    
+
                                                     <p className="ml-auto text-base font-semibold leading-none ">
                                                         {`$${item.price} x ${getQty(item)}`}
                                                         <span className="text-primary"> = ${item.price * getQty(item)}</span></p>
