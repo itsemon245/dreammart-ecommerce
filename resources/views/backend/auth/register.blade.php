@@ -22,14 +22,14 @@
                 <strong>Using</strong>
               </div>
               
-              <div class="d-flex justify-content-center gap-5 mb-3 socials">
-                  <a href={{route('google.login')}}><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-google form-text"></i>
-                  </a>
-                  <a href={{route('google.login')}}><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-facebook form-text"></i>
-                  </a>
-                  <a href={{route('google.login')}}><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-twitter form-text"></i>
-                  </a>
-              </div>
+              
+                  <div>
+                    <a href={{route('google.login')}} class="d-flex justify-content-center align-items-center gap-2"><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-google form-text"></i>
+                      <span class="form-text">
+                      <strong>Google</strong>
+                    </span>
+                    </a>
+                  </div>
               <div class="row justify-content-center align-items-center mb-3">
                 <div class="col-lg-3">
                   <div class="bg-secondary" style="width: 100%; height:2px; border-radius: 50px"></div>

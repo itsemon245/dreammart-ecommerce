@@ -35,6 +35,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
 Route::prefix('profile')->controller(ProfilePageController::class)->group(function () {
     Route::name('profile.')->group(function () {
         Route::get('view', 'viewProfile')->name('view');
+        Route::get('settings', 'viewSettings')->name('settings');
     });
 });
 //route for orders
