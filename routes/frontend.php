@@ -47,4 +47,5 @@ Route::prefix('orders')->controller(OrderPageController::class)->group(function 
 
 Route::prefix('checkout')->name('checkout.')->controller(CheckoutController::class)->group(function () {
     Route::post('product/{id}', 'product')->name('product');
+    Route::post('prodcut/confirm', 'confirmProduct')->name('product.confirm');
 });

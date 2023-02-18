@@ -97,7 +97,6 @@ class ProductPageController extends Controller
     {
         $user = User::find(auth()->id());
         $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
-
         return Inertia::render('Product/Cart', [
             'carts' => $carts
         ]);

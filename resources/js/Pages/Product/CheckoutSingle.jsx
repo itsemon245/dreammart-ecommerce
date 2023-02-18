@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/inertia-react";
 import React, { useState } from "react";
+import route from "/vendor/tightenco/ziggy/src/js";
 export default function CheckoutSingle({ categories, brands, cart, auth }) {
     console.log(cart)
     const userId = auth.user.id
@@ -66,9 +67,14 @@ export default function CheckoutSingle({ categories, brands, cart, auth }) {
                                             <p className="text-2xl leading-normal ">Total</p>
                                             <p className="text-2xl font-bold leading-normal text-right ">${subTotal + shipping}</p>
                                         </div>
-                                        <button className="btn btn-primary w-full rounded">
+                                        <Link href={route('checkout.product.confirm')}
+                                            as="button"
+                                            method="POST"
+                                            data={{cartItem: cart,
+                                            shipping: shipping}} 
+                                            className="btn btn-primary w-full rounded">
                                             Checkout
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
