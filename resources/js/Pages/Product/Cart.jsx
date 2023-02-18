@@ -9,7 +9,6 @@ console.log(carts)
 
 
       <TableWithCheck userId={auth.user.id} items={carts} />
-      {carts.length !== 0 && <Checkout userId={auth.user.id} items={carts}></Checkout>}
     </DashboardLayout>
   )
 }
