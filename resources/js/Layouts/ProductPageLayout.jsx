@@ -7,7 +7,6 @@ export default function ProductPageLayout({ products, heading, categories, auth,
     const onClickHandler = () => {
         let toggle = !showMenu
         setShowMenu(toggle)
-        console.log(showMenu);
     }
     const closeFilterMenuToggler = () => {
         if (showMenu === true) {

@@ -7,9 +7,8 @@ export default function AddToCart({ productId, isCarted, qty, className = 'w-6 h
     const [cart, setCart] = useState(isCarted)
     const onCartHandler = (e) => {
         e.preventDefault();
-        if (auth) {
+        if (auth.user) {
             sendRequest(route('cart.toggle', [productId, qty]))
-
             setCart(prev => !prev)
         } else {
             toast.error('Please log in to add items to your cart.')
