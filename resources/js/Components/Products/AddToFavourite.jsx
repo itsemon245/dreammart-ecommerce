@@ -12,7 +12,7 @@ export default function AddToFavourite({ isFavorite, productId, className = 'w-6
             sendRequest(route('favorite.toggle', productId))
             setLike(prev => !prev)
         } else {
-            toast.error('Please log in to add items to favorites.')
+            toast.error('Please log in first')
         }
     }
     async function sendRequest(url) {

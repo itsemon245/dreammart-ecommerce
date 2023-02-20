@@ -11,7 +11,7 @@ export default function AddToCart({ productId, isCarted, qty, className = 'w-6 h
             sendRequest(route('cart.toggle', [productId, qty]))
             setCart(prev => !prev)
         } else {
-            toast.error('Please log in to add items to your cart.')
+            toast.error('Please log in first')
 
         }
     }
