@@ -5,7 +5,6 @@ import route from '/vendor/tightenco/ziggy/src/js';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function Section({ eventProducts, heading, subTitle }) {
-    console.log(eventProducts[0].event.slug)
     let lastIndex = eventProducts.length - 1
     let sectionTitle = heading.split(" ")
     let coloredTitle = sectionTitle.pop()

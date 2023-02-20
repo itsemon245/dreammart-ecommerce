@@ -4,6 +4,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderPageController;
+use App\Http\Controllers\Products\SearchController;
 use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
 use App\Http\Controllers\Products\CategoryPageController;
@@ -49,3 +50,4 @@ Route::prefix('checkout')->name('checkout.')->controller(CheckoutController::cla
     Route::post('product/{id}', 'product')->name('product');
     Route::post('prodcut/confirm', 'confirmProduct')->name('product.confirm');
 });
+Route::get('/search-product/{slug}', [SearchController::class, 'searchProduct'])->name('product.search');

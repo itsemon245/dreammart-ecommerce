@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 
 export default function Alert({ type, message }) {
     const { success, error } = usePage().props
-    console.log(success)
     const notify = () => {
         success.message ? toast.success(success.message) :
             error.message ? toast.error(error.message) : ''
