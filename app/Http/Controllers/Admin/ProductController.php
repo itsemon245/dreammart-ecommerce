@@ -49,7 +49,6 @@ class ProductController extends Controller
             'product_brand' => 'required',
             'product_detail' => 'required',
             'product_in_stock' => 'required',
-            'product_image' => 'bail|required|image|max:1024',
         ]);
         $slug = $this->uniSlug($request->product_name);
         $ext = $request->product_image->extension();
@@ -66,7 +65,7 @@ class ProductController extends Controller
             'detail' => $request->product_detail,
             'image' => $path,
         ]);
-        return back()->with('success', 'New Product Added');
+        return redirect(route('product.view'))->with('success', 'New Product Added');
     }
 
     public function updateProductView($id)

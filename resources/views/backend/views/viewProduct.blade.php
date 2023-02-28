@@ -54,7 +54,7 @@
                 <td>
                     <div style="max-width: 100px;">
                        
-                        <img src="{{asset('storage/'.$product->brand->logo)}}" alt="{{$product->brand->name}}" class="mt-5 rounded-3 w-100">
+                        <img src="{{asset('storage/'.$product->brand->image)}}" alt="{{$product->brand->name}}" class="mt-5 rounded-3 w-100">
                         <h6 class="mt-1 text-center"><strong>{{$product->brand->name}}</strong></h6>
                     </div>
                 </td>
