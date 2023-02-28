@@ -4,7 +4,7 @@ import Section from './Landing/Section'
 import SearchBox from './SearchBox/SearchBox'
 import ArrowLeft from './Icons/arrowLeft'
 import ArrowRight from './Icons/arrowRight';
-import Alerts from './Alert';
+import Alert from './Alert';
 import Footer from './Footer/Footer';
 import ProductCard from './Products/ProductCard';
 import FilterBtn from './Filter/FilterBtn';
@@ -12,6 +12,6 @@ import FilterMenu from './Filter/FilterMenu';
 import SortByBtn from './Filter/SortByBtn';
 import SocialMedia from './Form/SocialMedia';
 export {
-    NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight, Alerts, Footer,
+    NavBar, Hero, Section, SearchBox, ArrowLeft, ArrowRight, Alert, Footer,
     ProductCard, FilterBtn, FilterMenu, SortByBtn, SocialMedia
 }

@@ -12,4 +12,8 @@ class ProfilePageController extends Controller
     {
         return inertia('Profile/Index');
     }
+    public function viewSettings()
+    {
+        return inertia('Settings/Settings');
+    }
 }

@@ -1,19 +1,24 @@
 import React from 'react'
 import { useState } from 'react'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import toast from 'react-hot-toast'
 
-export default function AddToFavourite({ isFavorite, productId, className = 'w-6 h-6' }) {
+
+export default function AddToFavourite({ isFavorite, productId, className = 'w-6 h-6', auth }) {
     const [like, setLike] = useState(isFavorite)
-
     const onLikeHandler = (e) => {
         e.preventDefault();
-        sendRequest(route('favorite.toggle', productId))
-        setLike(prev => !prev)
+        if (auth.user) {
+            sendRequest(route('favorite.toggle', productId))
+            setLike(prev => !prev)
+        } else {
+            toast.error('Please log in first')
+        }
     }
     async function sendRequest(url) {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data)
+        data ? toast.success('Added to Favorite') : toast.success('Removed from Favorite')
     }
 
     return (

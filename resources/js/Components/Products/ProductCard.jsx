@@ -4,20 +4,15 @@ import AddToCart from './AddToCart'
 import AddToFavourite from './AddToFavourite'
 import Rating from './Rating'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
-import { StarIcon } from '@heroicons/react/24/solid'
-import { useState } from 'react'
 import route from '/vendor/tightenco/ziggy/src/js'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, auth, carts, favorites }) {
   const offerPrice = product.price
   let price = offerPrice + (offerPrice * (product.discount / 100))
   price = price.toFixed(2)
 
-  const [cartState, setCartState] = useState(false);
-  const addToCart = () => {
-    let toggle = !cartState
-    setCartState(toggle)
-  }
+
+
   return (
     <div className='rounded-lg bg-slate-900 hover:scale-105 transition-all shadow-lg shadow-gray-900 hover:shadow-gray-700 flex flex-col justify-between'>
       <div className='relative'>
@@ -57,10 +52,12 @@ export default function ProductCard({ product }) {
           </div>
           <div className='flex flex-col items-end'>
             <div className="hover:scale-110 transition-all">
-              <AddToCart qty={1} productId={product.id}></AddToCart>
+              <AddToCart isCarted={carts ? carts.find(cart => cart.id === product.id) : ''} auth={auth} qty={1} productId={
+                product.id
+              }></AddToCart>
             </div>
             <div className="hover:scale-110 transition-all">
-              <AddToFavourite productId={product.id} />
+              <AddToFavourite isFavorite={favorites ? favorites.find(favorite => favorite.id === product.id) : ''} auth={auth} productId={product.id} />
             </div>
 
           </div>

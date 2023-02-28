@@ -42,6 +42,7 @@
                 <div data-i18n="Analytics">View Categories</div>
               </a>
           </li>
+          
       
           <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pages</span>

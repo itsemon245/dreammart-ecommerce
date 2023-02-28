@@ -28,7 +28,7 @@ export default function ProfileMenu() {
                         <Link> <MapPinIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></MapPinIcon> Addresses</Link>
                     </li>
                     <li className='transition-all group font-normal hover:text-primary'>
-                        <Link> <Cog6ToothIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></Cog6ToothIcon> Settings</Link>
+                        <Link href={route('profile.settings')}> <Cog6ToothIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></Cog6ToothIcon> Settings</Link>
                     </li>
                     <li className='transition-all group font-normal hover:text-primary'>
                         <Link> <InformationCircleIcon className='w-6 h-6 group-hover:text-primary transition-all font-medium text-white'></InformationCircleIcon> Help Center</Link>

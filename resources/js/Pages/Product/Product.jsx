@@ -62,7 +62,7 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
                 <h1 className='text-2xl font-semibold'>{product.name}</h1>
 
                 {/* favorite btn  */}
-                <AddToFavourite productId={product.id} isFavorite={isFavorite} />
+                <AddToFavourite auth={auth} productId={product.id} isFavorite={isFavorite} />
               </div>
               {/* brand */}
               <span className='font-semibold'>Brand : </span><div className="badge badge-primary font-semibold uppercase">{product.brand.name}</div>
@@ -95,15 +95,15 @@ export default function Product({ auth, product, categories, isFavorite, isCarte
                     {/* Quantity counter CTA  */}
                     <Counter onCounterClickHandler={onCounterClickHandler} count={count} />
                     {/* add to cart btn  */}
-                    <AddToCart className='w-8 h-8 mr-1' qty={count} isCarted={isCarted} productId={product.id} />
+                    <AddToCart auth={auth} className='w-8 h-8 mr-1' qty={count} isCarted={isCarted} productId={product.id} />
 
 
                     {/* buy btn */}
                   </div>
-                  <button className='flex gap-1 items-center btn btn-primary shadow-md '>
+                  <Link href={route('checkout.product', product.id)} data={{qty:count}} as="button" method='POST' className='flex gap-1 items-center btn btn-primary shadow-md '>
                     <span className='text-lg'>Buy</span>
                     <BsBag className='w-5 h-4'></BsBag>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -2,7 +2,9 @@
 
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderPageController;
+use App\Http\Controllers\Products\SearchController;
 use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
 use App\Http\Controllers\Products\CategoryPageController;
@@ -26,6 +28,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
     });
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('toggle/{id}/{qty}', 'toggleCart')->name('toggle');
+        Route::delete('destroy/{id}', 'destroyCart')->name('destroy');
         Route::get('all', 'viewCarts')->name('all');
     });
 });
@@ -33,6 +36,7 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
 Route::prefix('profile')->controller(ProfilePageController::class)->group(function () {
     Route::name('profile.')->group(function () {
         Route::get('view', 'viewProfile')->name('view');
+        Route::get('settings', 'viewSettings')->name('settings');
     });
 });
 //route for orders
@@ -41,3 +45,13 @@ Route::prefix('orders')->controller(OrderPageController::class)->group(function 
         Route::get('view', 'viewOrders')->name('view');
     });
 });
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('checkout')->name('checkout.')->controller(CheckoutController::class)->group(function () {
+        Route::post('product/{id}', 'product')->name('product');
+        Route::post('prodcut/confirm', 'confirmProduct')->name('product.confirm');
+    });
+});
+
+
+Route::get('/search-product/{slug}', [SearchController::class, 'searchProduct'])->name('product.search');

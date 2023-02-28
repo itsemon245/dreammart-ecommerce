@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoriesController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
 
@@ -32,4 +33,5 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'index')->name("dashboard");
         Route::get('profile', 'profile')->name('profile');
     });
+   
 });

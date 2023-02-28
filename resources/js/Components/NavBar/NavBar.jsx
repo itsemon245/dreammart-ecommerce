@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from '@inertiajs/inertia-react';
 import route from '/vendor/tightenco/ziggy/src/js';
 import NavAuthOption from './NavAuthOption';
+import { BiSearch } from 'react-icons/bi';
 
-
-export default function NavBar({ auth, categories }) {
+export default function NavBar({ auth, categories, onSearchClickHandler }) {
     const navLinks = [
         { name: "New Arrivals", route: "page.newArrivals", id: 1 },
         { name: "Popular", route: "page.popular", id: 2 },
@@ -61,7 +61,8 @@ export default function NavBar({ auth, categories }) {
                     </li>
                 </ul>
             </div>
-            <div className="navbar-end flex lg:gap-x-10 md:gap-x-5 ml-auto gap-x-3">
+            <div className="navbar-end flex lg:gap-x-5 md:gap-x-5 ml-auto gap-x-3">
+                <BiSearch onClick={onSearchClickHandler} className='w-6 h-6 text-slate-300'></BiSearch>
                 {auth.user !== null ? (
                     <NavAuthOption></NavAuthOption>
                 ) : (

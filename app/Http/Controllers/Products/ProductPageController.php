@@ -43,7 +43,7 @@ class ProductPageController extends Controller
         $product = Product::find($id);
         if ($product->isFavorited()) {
             $delete = Favorite::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
-            return json_encode('deleted');
+            return json_encode(false);
         } else {
             $favorite = Favorite::create([
                 'user_id' => auth()->user()->id,
@@ -51,7 +51,7 @@ class ProductPageController extends Controller
             ]);
             $product->favorite_id = $favorite->id;
             $product->save();
-            return json_encode('added');
+            return json_encode(true);
         }
     }
     public function toggleCart($id, $qty)
@@ -60,7 +60,7 @@ class ProductPageController extends Controller
         $product = Product::find($id);
         if ($product->isCarted()) {
             $delete = Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
-            return json_encode('deleted');
+            return json_encode(false);
         } else {
             $cart = Cart::create([
                 'user_id' => auth()->user()->id,
@@ -69,24 +69,34 @@ class ProductPageController extends Controller
             ]);
             $product->cart_id = $cart->id;
             $product->save();
-            return json_encode($cart);
+            return json_encode(true);
         }
     }
-
+    public function destroyCart($id)
+    {
+        $delete = Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
+        return back()->with('success', 'Removed from cart');
+    }
     public function viewFavorites()
     {
-        $user = User::find(auth()->id());
-        $favorites = $user->products()->with(['category', 'brand'])->get();
+        if (auth()->user()) {
+            $user = User::find(auth()->id());
+            $favorites = $user->products()->with(['category', 'brand'])->get();
+            $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
+        } else {
+            $carts = false;
+            $favorites = false;
+        }
 
         return Inertia::render('Product/Favorites', [
-            'favorites' => $favorites
+            'favorites' => $favorites,
+            'carts' => $carts
         ]);
     }
     public function viewCarts()
     {
         $user = User::find(auth()->id());
         $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
-
         return Inertia::render('Product/Cart', [
             'carts' => $carts
         ]);
