@@ -4,7 +4,7 @@ namespace App\View\Components\backend\form;
 
 use Illuminate\View\Component;
 
-class input extends Component
+class Input extends Component
 {
     /**
      * The input type.

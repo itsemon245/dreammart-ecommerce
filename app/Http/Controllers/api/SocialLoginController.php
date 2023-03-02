@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\api;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
-use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 
-class SocialAuthController extends Controller
+class SocialLoginController extends Controller
 {
-    public function redirectToProvider()
+    public function redirectToProvider(string $provider)
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
 
-    public function handleCallback()
+    public function handleCallback(string $provider)
     {
         try {
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver($provider)->stateless()->user();
 
             //extract username
             $username = explode('@', $googleUser->email)[0];
@@ -42,7 +41,7 @@ class SocialAuthController extends Controller
             event(new Registered($user));
 
             Auth::login($user, true);
-    
+
             return redirect()->intended('/')->with('success', "Registered Successfully");
         } catch (\Exception $e) {
             dd($e);

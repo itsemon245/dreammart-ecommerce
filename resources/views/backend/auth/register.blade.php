@@ -18,18 +18,18 @@
               <h5 class="mb-0">Register</h5>
             </div>
             <div class="card-body">
-              {{-- <div class="text-center try">
+              <div class="text-center try">
                 <strong>Using</strong>
               </div>
               
               
                   <div>
-                    <a href={{route('google.login')}} class="d-flex justify-content-center align-items-center gap-2"><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-google form-text"></i>
+                    <a href={{route('login.social', 'google')}} class="d-flex justify-content-center align-items-center gap-2"><i style="scale:2; transition: all 250ms ease-in;" class="bx bxl-google form-text"></i>
                       <span class="form-text">
                       <strong>Google</strong>
                     </span>
                     </a>
-                  </div> --}}
+                  </div>
               <div class="row justify-content-center align-items-center mb-3">
                 <div class="col-lg-3">
                   <div class="bg-secondary" style="width: 100%; height:2px; border-radius: 50px"></div>
