@@ -20,8 +20,8 @@ class SocialLoginController extends Controller
     public function handleCallback(string $provider)
     {
         try {
-            $googleUser = Socialite::driver($provider)->stateless()->user();
-
+            $googleUser = Socialite::driver($provider)->user();
+            dd($googleUser);
             //extract username
             $username = explode('@', $googleUser->email)[0];
             // dd($username);

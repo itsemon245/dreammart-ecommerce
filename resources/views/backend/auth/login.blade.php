@@ -89,10 +89,19 @@
 
                         {{-- social login btns --}}
                         <div class="d-flex gap-5 align-items-center justify-content-center mt-5">
-                            <a href="{{ route('login.social', 'google') }}" class="btn btn-secondary"><img class="me-3" width="20px"
-                                src="https://img.freepik.com/free-icon/google_318-278809.jpg" alt="">Google</a>
-                            <a href="{{ route('login.social', 'facebook') }}" class="btn btn-secondary"><img class="me-3" width="30px"
-                                src="https://1000logos.net/wp-content/uploads/2021/04/Facebook-logo-500x313.png" alt="">Facebook</a>
+                            <a href="{{ route('login.social', 'google') }}" class="btn btn-secondary">
+                                <div class="d-flex gap-2 align-items-center justify-content-cetner">
+                                <img style="scale:90%;"
+                                src="{{asset('assets/img/icons/brands/google.png')}}" alt="">
+                                <strong>Google</strong>
+                              </div>
+                            <a href="{{ route('login.social', 'facebook') }}" class="btn btn-secondary">
+                                <div class="d-flex gap-2 align-items-center justify-content-cetner">
+                                    <img
+                                    src="{{asset('assets/img/icons/brands/facebook.png')}}" alt="">
+                                    <strong>Facebook</strong>
+                                </div>
+                            </a>
                         </div>
                     </form>
                     <div class="intro-x mt-10 mt-xl-24 text-gray-700 dark-text-gray-600 text-center text-xl-start">

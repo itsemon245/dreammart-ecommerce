@@ -148,15 +148,15 @@
 
                       {{-- input field for password --}}
                       <div class="mb-3">
-                        <label class="form-label" for="{{"confirm_password"}}">Confirm Password</label>
+                        <label class="form-label" for="{{"password_confirmation"}}">Confirm Password</label>
                         <input 
-                        type="confirm_password"
+                        type="password"
                         class="form-control"
-                        name="confirm_password"
-                        value="{{old("confirm_password")}}"
-                        id="confirm_password" 
+                        name="password_confirmation"
+                        value="{{old("password_confirmation")}}"
+                        id="password_confirmation" 
                         placeholder="Confirm Password"/>
-                        @error("confirm_password")
+                        @error("password_confirmation")
                         <div id="{{"confirm-error"}}" class="text-danger form-text ms-1">
                           {{$message}}
                         </div>

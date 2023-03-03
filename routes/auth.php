@@ -43,6 +43,8 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
+
+
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
@@ -61,4 +63,5 @@ Route::middleware('auth')->group(function () {
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
