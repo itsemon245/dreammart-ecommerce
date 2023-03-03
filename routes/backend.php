@@ -23,6 +23,8 @@ Route::prefix('admin')->group(function () {
     Route::prefix('role')->name('role.')->controller(RoleController::class)->group(function () {
         Route::get('view', 'viewRoles')->name('view');
         Route::get('add', 'addRoleView')->name('add');
+        Route::post('create', 'createRole')->name('create');
+        Route::delete('delete/{id}', 'deleteRole')->name('delete');
     });
 
 

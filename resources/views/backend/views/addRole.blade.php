@@ -31,7 +31,7 @@
                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                          </div>
                                          <div class="modal-body">
-                                             <form class="flex-grow-1" action="" method="post">
+                                             <form class="flex-grow-1" action="{{route('role.create')}}" method="post">
                                                  @csrf
                                                  <x-backend.form.input-with-symbol name='role' label="New Role" type='text' symbol="<i class='bx bx-role-alt'></i>" placeholder='role name' />
                                              
@@ -64,20 +64,36 @@
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-              <tr>
-                <td>1</td>
-                <td>
-                    <strong class="text-primary"> Admin</strong>
-                </td>
-                <td>
-                    <a class="btn btn-danger" href="javascript:void(0);">
-                      <div class="d-flex align-items-center gap-1">
-                        <i class="bx bx-trash me-1"></i>
-                         <span>Delete</span>
-                      </div>
-                    </a>
-                </td>
-              </tr>
+            @if (count($roles))
+            @foreach ($roles as $key=>$role)
+            <tr>
+             <td>{{++$key}}</td>
+             <td>
+                 <strong class="text-primary">{{Str::headline($role->name)}}</strong>
+             </td>
+             <td>
+                 <form action="{{route('role.delete', $role->id)}}" method="post">
+                   @csrf
+                   @method('DELETE')
+                   <button type="submit" class="btn btn-danger" >
+                     <div class="d-flex align-items-center gap-1">
+                       <i class="bx bx-trash me-1"></i>
+                        <span>Delete</span>
+                     </div>
+                   </button>
+                 </form>
+             </td>
+            </tr>
+            @endforeach
+            @else
+                <tr>
+                  <td colspan="3">
+                    <div class="text-center mt-2">
+                      Nothing to show
+                    </div>
+                  </td>
+                </tr>
+            @endif
               
             </tbody>
           </table>
