@@ -4,7 +4,7 @@
           elseif (auth()->user()->role == 2) $role ='Moderator';
           elseif (auth()->user()->role == 3) $role ='User';
    $name = auth()->user()->name;
-   $avater = Str::is('*dicebear*', auth()->user()->avater)
+   $avater = Str::is('*https*', auth()->user()->avater)
               ? auth()->user()->avater
               : asset("storage/". auth()->user()->avater);  
 @endphp
@@ -63,39 +63,16 @@ id="layout-navbar">
             </div>
           </a>
         </li>
+        
         <li>
           <div class="dropdown-divider"></div>
         </li>
         <li>
-          <a class="dropdown-item" href="{{route('admin.profile')}}">
-            <i class="bx bx-user me-2"></i>
-            <span class="align-middle">My Profile</span>
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">
-            <i class="bx bx-cog me-2"></i>
-            <span class="align-middle">Settings</span>
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item" href="#">
-            <span class="d-flex align-items-center align-middle">
-              <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-              <span class="flex-grow-1 align-middle">Billing</span>
-              <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-            </span>
-          </a>
-        </li>
-        <li>
-          <div class="dropdown-divider"></div>
-        </li>
-        <li>
-          <form class="dropdown-item" method="post" action="{{route('logout')}}">
+          <a  class="dropdown-item d-flex gap-1 align-items-center" href="{{route('logout')}}">
             @csrf
             <i class="bx bx-power-off me-2"></i>
-            <button type="submit" class="align-middle border-0" style="background:none;">Log Out</button>
-          </form>
+            <div class="align-middle border-0" style="background:none;">Log Out</div>
+          </a>
         </li>
       </ul>
     </li>

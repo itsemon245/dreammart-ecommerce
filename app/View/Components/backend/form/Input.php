@@ -4,7 +4,7 @@ namespace App\View\Components\backend\form;
 
 use Illuminate\View\Component;
 
-class input extends Component
+class Input extends Component
 {
     /**
      * The input type.
@@ -59,7 +59,7 @@ class input extends Component
      * @param  string  $value
      * @return void
      */
-    public function __construct($type, $name, $label, $note = '', $placeholder = '', $value = '')
+    public function __construct($type, $name, $label, $note = "", $placeholder = "", $value = "")
     {
 
         $this->type = $type;

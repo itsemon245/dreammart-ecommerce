@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\API\SocialAuthController;
+use App\Http\Controllers\api\SocialLoginController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -22,10 +22,13 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('user.login');
 
-    //routes for google log in
-    Route::get('/auth/redirect', [SocialAuthController::class, 'redirectToProvider'])->name('google.login');
 
-    Route::get('/auth/google/callback', [SocialAuthController::class, 'handleCallback'])->name('google.auth.login');
+    //routes for socail login redirect
+    Route::get('login/social/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('login.social');
+
+    //routes for socail login callback handle
+    Route::get('auth/callback/{provider}', [SocialLoginController::class, 'handleCallback']);
+
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -39,6 +42,8 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.store');
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
@@ -58,5 +63,5 @@ Route::middleware('auth')->group(function () {
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
- 
+    Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });

@@ -2,8 +2,8 @@ import NavBar from './NavBar/NavBar';
 import Hero from './Hero/Hero';
 import Section from './Landing/Section'
 import SearchBox from './SearchBox/SearchBox'
-import ArrowLeft from './Icons/arrowLeft'
-import ArrowRight from './Icons/arrowRight';
+import ArrowLeft from './Icons/ArrowLeft'
+import ArrowRight from './Icons/ArrowRight';
 import Alert from './Alert';
 import Footer from './Footer/Footer';
 import ProductCard from './Products/ProductCard';

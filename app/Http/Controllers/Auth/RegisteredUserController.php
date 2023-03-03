@@ -38,16 +38,13 @@ class RegisteredUserController extends Controller
             $fileName = "$request->username.$ext";
             $path = $request->profile_image->storeAs('uploads/avaters/admin', $fileName, 'public');
             $avater = $request->input('avater', $path);
-        } else {
-            $avater = $request->avater;
         }
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:' . User::class,
-            'password' => ['required', Password::defaults()],
+            'password' => 'required|confirmed|min:6',
             'username' => 'bail|required|string|max:255|unique:users,username',
-            'confirm_password' => 'bail|required|same:password',
-            'profile_image' => 'bail|required_without:avater|image|max:1024',
+            'profile_image' => 'bail|image',
         ]);
 
         $user = User::create([
@@ -59,9 +56,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-        // $authAttempt = Auth::attempt(['email' => $user->email, 'password' => $user->password]);
+        
         Auth::login($user);
-        // dd($authAttempt);
         return redirect(RouteServiceProvider::HOME)->with('success', "Registered Successfully");
     }
 }
