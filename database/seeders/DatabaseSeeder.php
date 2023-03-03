@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             AddressSeeder::class,
             RoleSeeder::class,
+            PermissionSeeder::class,
+            AssignRoleSeeder::class,
         ]);
     }
 }

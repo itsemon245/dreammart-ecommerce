@@ -17,18 +17,18 @@ class UserSeeder extends Seeder
     public function run()
     {
         $users = [
-            'emon' => [
+            'admin' => [
                 'name' => 'Mojahidul Islam',
-                'email' => 'bdemon245@gmail.com',
-                'username' => 'bdemon245',
+                'email' => 'admin@gmail.com',
+                'username' => 'admin',
                 'password' => 'admin',
                 'role' => 1,
                 'avater' => 'uploads/avaters/admin/bdemon245.svg'
             ],
-            'joynal' => [
-                'name' => 'Joynal',
-                'email' => 'joynal@gmail.com',
-                'username' => 'joynal',
+            'admin2' => [
+                'name' => 'admin2',
+                'email' => 'admin2@gmail.com',
+                'username' => 'admin2',
                 'password' => 'admin',
                 'role' => 1,
                 'avater' => 'uploads/avaters/admin/joynal.svg'
