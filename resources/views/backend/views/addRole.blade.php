@@ -60,6 +60,7 @@
               <tr>
                 <th>#</th>
                 <th>Role Name</th>
+                <th>Permissions</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -72,16 +73,15 @@
                  <strong class="text-primary">{{Str::headline($role->name)}}</strong>
              </td>
              <td>
-                 <form action="{{route('role.delete', $role->id)}}" method="post">
-                   @csrf
-                   @method('DELETE')
-                   <button type="submit" class="btn btn-danger" >
+                 {{count($role->permissions)}}
+             </td>
+             <td>
+                   <a href="{{route('role.edit', $role->id)}}" class="btn btn-primary" >
                      <div class="d-flex align-items-center gap-1">
-                       <i class="bx bx-trash me-1"></i>
-                        <span>Delete</span>
+                       <i class="bx bx-edit me-1"></i>
+                        <span>Edit</span>
                      </div>
-                   </button>
-                 </form>
+                   </a>
              </td>
             </tr>
             @endforeach
