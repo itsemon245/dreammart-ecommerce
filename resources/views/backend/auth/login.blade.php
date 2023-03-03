@@ -103,7 +103,6 @@
                                 </div>
                             </a>
                         </div>
-                        test
                     </form>
                     <div class="intro-x mt-10 mt-xl-24 text-gray-700 dark-text-gray-600 text-center text-xl-start">
                         By signin up, you agree to our
