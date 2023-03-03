@@ -19,27 +19,27 @@
                 
                                 <!-- Modal -->
                                 <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel1">Add Category</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Add Category</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="flex-grow-1" action="{{route('categories.store')}}" method="post">
+                                                    @csrf
+                                                    <x-backend.form.input-with-symbol name='category' label="New Category" type='text' symbol="<i class='bx bx-category-alt'></i>" placeholder='category name' />
+                                                
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                                Close
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                            </div>
+                                                </form>
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
-                                        <form class="flex-grow-1" action="{{route('categories.store')}}" method="post">
-                                            @csrf
-                                            <x-backend.form.input-with-symbol name='category' label="New Category" type='text' symbol="<i class='bx bx-category-alt'></i>" placeholder='category name' />
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                        Close
-                                        </button>
-                                        <button type="submit" class="btn btn-primary">Add</button>
-                                    </div>
-                                    </form>
-                                    </div>
-                                </div>
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
                                 <strong class="">Categories List</strong>
                             </div>
                         </div>
-                        <div class="table-responsive text-nowrap">
+                    <div class="table-responsive text-nowrap">
                             
                             <table class="table">
                             <thead>

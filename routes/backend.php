@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -17,6 +18,15 @@ Route::prefix('admin')->group(function () {
         Route::get('update-product/{id}', [ProductController::class, 'updateProductView'])->name('update.view');
         Route::put('update-product/{id}/', [ProductController::class, 'updateProduct'])->name('update');
     });
+
+
+    Route::prefix('role')->name('role.')->controller(RoleController::class)->group(function () {
+        Route::get('view', 'viewRoles')->name('view');
+        Route::get('add', 'addRoleView')->name('add');
+    });
+
+
+
     Route::name('categories.')->group(function () {
         //routes for category
         Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
@@ -33,5 +43,4 @@ Route::prefix('admin')->group(function () {
         Route::get('/', 'index')->name("dashboard");
         Route::get('profile', 'profile')->name('profile');
     });
-   
 });
