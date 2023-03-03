@@ -19,8 +19,7 @@ class SocialLoginController extends Controller
 
     public function handleCallback(string $provider)
     {
-        try {
-            $googleUser = Socialite::driver($provider)->user();
+            $googleUser = Socialite::driver($provider)->stateless()->user();
             dd($googleUser);
             //extract username
             $username = explode('@', $googleUser->email)[0];
@@ -42,9 +41,7 @@ class SocialLoginController extends Controller
 
             Auth::login($user, true);
 
-            return redirect()->intended('/')->with('success', "Registered Successfully");
-        } catch (\Exception $e) {
-            dd($e);
-        }
+            return redirect('/')->with('success', "Registered Successfully");
+        
     }
 }

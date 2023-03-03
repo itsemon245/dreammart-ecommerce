@@ -13,6 +13,7 @@
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
+        "spatie/laravel-permission": "^5.9",
         "tightenco/ziggy": "^1.0",
         "twbs/bootstrap": "5.3.0-alpha1"
     },

@@ -126,6 +126,6 @@ class CategoriesController extends Controller
             File::delete($file_path);
         }
         $brand->delete();
-        return back()->with('info', 'Brand Deleted');
+        return back()->with('success', 'Brand Deleted');
     }
 }
