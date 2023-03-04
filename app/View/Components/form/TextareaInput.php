@@ -1,19 +1,25 @@
 <?php
 
-namespace App\View\Components\backend\form;
+namespace App\View\Components\form;
 
 use Illuminate\View\Component;
 
-class selectAvater extends Component
+class TextareaInput extends Component
 {
+    /**
+     * The input label.
+     *
+     * @var string
+     */
+    public $label;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($label)
     {
-        //
+        $this->label = $label;
     }
 
     /**
@@ -23,6 +29,6 @@ class selectAvater extends Component
      */
     public function render()
     {
-        return view('components.backend.form.select-avater');
+        return view('components.form.textarea-input');
     }
 }
