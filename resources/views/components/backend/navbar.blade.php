@@ -1,8 +1,4 @@
 @php
-    // collect user info
-   if(auth()->user()->role == 1) $role = "Admin" ;
-          elseif (auth()->user()->role == 2) $role ='Moderator';
-          elseif (auth()->user()->role == 3) $role ='User';
    $name = auth()->user()->name;
    $avater = Str::is('*https*', auth()->user()->avater)
               ? auth()->user()->avater
@@ -58,7 +54,7 @@ id="layout-navbar">
                 
                 <span class="fw-semibold d-block">
                   {{$name}}</span>
-                <small class="text-muted">{{$role}}</small>
+                <small class="text-muted">{{str()->headline($role)}}</small>
               </div>
             </div>
           </a>

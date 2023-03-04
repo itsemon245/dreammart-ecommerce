@@ -13,85 +13,49 @@
                 <th>Name</th>
                 <th>Role</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th>Toggle Status</th>
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-              <tr>
-                <td>1</td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        
-                    <div class="avatar avatar-md me-1">
-                        <img src="{{asset("assets/img/avatars/5.png")}}" alt="Avatar" class="rounded-circle ">
-                       <strong> Albert Cook</strong>
-                    </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="badge bg-primary me-1 uppercase">admin</span>
-                 
-                </td>
-                <td>
-                    <div class="d-flex align-items-center gap-3">
-                        <span class="badge bg-label-success me-1">Active</span>
-                    <!-- Default switch -->
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked/>
-                    </div>
-                    </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+             @foreach ($users as $key=>$user)
+             <tr>
+              <td>{{++$key}}</td>
+              <td>
+                  <div class="d-flex align-items-center">
                       
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                    </div>
+                  <div class="avatar avatar-md me-1">
+                      <img src="{{asset("storage/".$user->avater)}}" alt="{{$user->name.'-avater'}}" class="rounded-circle ">
+                     <strong>{{$user->name}}</strong>
                   </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>1</td>
-                <td>
-                    <div class="d-flex align-items-center">
-                        
-                    <div class="avatar avatar-md me-1">
-                        <img src="{{asset("assets/img/avatars/6.png")}}" alt="Avatar" class="rounded-circle ">
-                       <strong>Merry Jane</strong>
-                    </div>
-                    </div>
-                </td>
-                <td>
-                    <span class="badge bg-primary me-1 uppercase">user</span>
-                 
-                </td>
-                <td>
-                    <div class="d-flex align-items-center gap-3">
-                        <span class="badge bg-label-danger me-1">inactive</span>
-                    <!-- Default switch -->
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                    </div>
-                    </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                      <i class="bx bx-dots-vertical-rounded"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                      
-                      <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                    </div>
                   </div>
-                </td>
-              </tr>
+              </td>
+              <td>
+                  <span class="badge bg-primary me-1 uppercase">{{isset($user->roles[0]->name)? $user->roles[0]->name : 'user'}}</span>
+               
+              </td>
+              <td>
+                  <div class="d-flex align-items-center gap-3">
+                      <span class="badge {{$user->status? 'bg-label-success': 'bg-label-danger'}} me-1">{{$user->status? 'active': 'inactive'}}</span>
+                  <!-- Default switch -->
+                    
+                  </div>
+              </td>
+              <td>
+                <form method="POST" action="{{route('toggle.userStatus', $user->id)}}" >
+                  @csrf
+                  @method('PUT')
+                  <button type="submit" class="text-secondary" style="background: none; border:none; ">
+                    @if ($user->status)
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgba(105, 108, 255, 1);transform: ;msFilter:;"><path d="M16 6H8c-3.296 0-5.982 2.682-6 5.986v.042A6.01 6.01 0 0 0 8 18h8c3.309 0 6-2.691 6-6s-2.691-6-6-6zm0 9c-1.627 0-3-1.373-3-3s1.373-3 3-3 3 1.373 3 3-1.373 3-3 3z"></path></svg>
+                    @else
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" style="fill: rgba(111, 111, 111, 0.688);transform: ;msFilter:;"><path d="M8 9c-1.628 0-3 1.372-3 3s1.372 3 3 3 3-1.372 3-3-1.372-3-3-3z"></path><path d="M16 6H8c-3.3 0-5.989 2.689-6 6v.016A6.01 6.01 0 0 0 8 18h8a6.01 6.01 0 0 0 6-5.994V12c-.009-3.309-2.699-6-6-6zm0 10H8a4.006 4.006 0 0 1-4-3.99C4.004 9.799 5.798 8 8 8h8c2.202 0 3.996 1.799 4 4.006A4.007 4.007 0 0 1 16 16zm4-3.984.443-.004.557.004h-1z"></path></svg>
+                    @endif
+                  </button>
+                </form>
+              </td>
+              
+            </tr>
+             @endforeach
               
             </tbody>
           </table>

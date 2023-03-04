@@ -3,7 +3,6 @@
 @section('title', "Dashboard")
 @section('content')
 
-
 <div class="container px-5 mt-5">
 
    
@@ -65,7 +64,7 @@
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-            @if (count($roles))
+            @if (count($roles)>0)
             @foreach ($roles as $key=>$role)
             <tr>
              <td>{{++$key}}</td>

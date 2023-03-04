@@ -18,16 +18,44 @@ class AssignRoleSeeder extends Seeder
     public function run()
     {
         //retrive all permissions
-        $permissions = Permission::get();
+        $all = Permission::get();
 
-        //retrive admin role
-        $adminRole = Role::where('name', 'admin')->first(); //admin role
+        //only create permissions for editor
+        $create = Permission::where('name', 'LIKE', "%create%")
+            ->where('name', 'not like', "%role%")
+            ->where('name', 'not like', "%user%")->get();
+
+        //only read permissions
+        $read = Permission::where('name', 'LIKE', "%read%")->get();
+
+        //only update permissions
+        $update = Permission::where('name', 'LIKE', "%update%")->get();
+
+        //only delete permissions
+        $delete = Permission::where('name', 'LIKE', "%delete%")->get();
+
+        //retrive roles
+        $admin = Role::where('name', 'admin')->first(); //admin role
+
+        $editor = Role::where('name', 'editor')->first(); //editor role
+
+        $user = Role::where('name', 'user')->first(); //user role
 
         //give all permissions to admin
-        $adminRole->syncPermissions($permissions);
+        $admin->syncPermissions($all);
 
-        //assign the admin role to user 
-        $user = User::first(); //admin user
-        $user->assignRole('admin');
+        //give permissions to editor
+        $editor->syncPermissions([...$read, ...$update, ...$create]);
+
+
+        //give permissions to user
+        $user->syncPermissions($read);
+        
+
+        $users = User::get();
+
+        foreach ($users as $key => $user) {
+            $user->assignRole('admin');
+        }
     }
 }

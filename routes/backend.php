@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoriesController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\Admin\auth\AdminAuthenticationController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::prefix('admin')->group(function () {
     Route::name('product.')->group(function () {
@@ -27,6 +28,7 @@ Route::prefix('admin')->group(function () {
         Route::post('create', 'createRole')->name('create');
         Route::put('update/{id}', 'updateRole')->name('update');
     });
+    Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
 
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Using view composer to set following variables globally
+        view()->composer('*', function ($view) {
+            $view->with('role', User::with('roles')->where('id', auth()->id())->first()->roles[0]['name']);
+        });
     }
 }

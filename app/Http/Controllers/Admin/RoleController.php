@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
     public function viewRoles()
     {
-        return view('backend.views.viewRoles');
+        $users = User::with('roles')->get();
+        return view('backend.views.viewRoles', compact('users'));
     }
     public function addRoleView()
     {
@@ -22,8 +24,11 @@ class RoleController extends Controller
     }
     public function createRole(Request $request)
     {
+        $request->validate([
+            'role' => 'required|unique:roles,name'
+        ]);
         $role = Role::create([
-            'name' => $request->role,
+            'name' => strtolower($request->role),
         ]);
 
         return redirect()->route('role.add')->with('success', 'Role Created');

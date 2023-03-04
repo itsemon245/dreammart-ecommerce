@@ -14,6 +14,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Permission;
 
 class RegisteredUserController extends Controller
 {
@@ -54,9 +55,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'avater' => $avater
         ]);
-
+        $user->assignRole('user');
         event(new Registered($user));
-        
+
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME)->with('success', "Registered Successfully");
     }

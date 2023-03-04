@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use App\Models\Brand;
-use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
+use App\Models\Category;
 use Tightenco\Ziggy\Ziggy;
+use Illuminate\Http\Request;
 
 use function PHPSTORM_META\type;
 

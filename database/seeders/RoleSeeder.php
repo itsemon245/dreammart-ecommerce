@@ -20,10 +20,10 @@ class RoleSeeder extends Seeder
                 'name' => 'admin',
             ],
             [
-                'name' => 'user',
+                'name' => 'editor',
             ],
             [
-                'name' => 'editor',
+                'name' => 'user',
             ],
         ];
         foreach ($roles as $role) {

@@ -50,26 +50,20 @@
 
          
           <!-- Role Managment -->
-          <li class="menu-item {{ request()->routeIs('role.*') ? 'active' : ''}}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div data-i18n="Roles">Manage Roles</div>
+          <li class="menu-item {{ request()->routeIs('role.add') ? 'active' : ''}}">
+            <a href="{{route('role.add')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
+                <div data-i18n="Analytics">Role Management</div>
               </a>
-      
-              <ul class="menu-sub">
-                <li class="menu-item {{ request()->routeIs('role.view') ? 'active' : ''}}">
-                  <a href="{{route('role.view')}}" class="menu-link">
-                      <div data-i18n="View Role">View Roles</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ request()->routeIs('role.add') ? 'active' : ''}}">
-                  <a href="{{route('role.add')}}" class="menu-link">
-                      <div data-i18n="Add Role">Add Role</div>
-                    </a>
-                </li>
-                
-              </ul>
           </li>
+          <!-- User Managment -->
+          <li class="menu-item {{ request()->routeIs('role.view') ? 'active' : ''}}">
+            <a href="{{route('role.view')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div data-i18n="Analytics">User Management</div>
+              </a>
+          </li>
+         
           
       
           

@@ -18,31 +18,37 @@ class PermissionSeeder extends Seeder
         $permissions = [
             'role' => [
                 'create',
+                'read',
                 'update',
-                'delete'
+                'edit'
             ],
             'category' => [
                 'create',
+                'read',
                 'update',
                 'delete'
             ],
             'brand' => [
                 'create',
+                'read',
                 'update',
                 'delete'
             ],
             'event' => [
                 'create',
+                'read',
                 'update',
                 'delete'
             ],
             'product' => [
                 'create',
+                'read',
                 'update',
                 'delete'
             ],
             'user' => [
                 'create',
+                'read',
                 'update',
                 'status'
             ],

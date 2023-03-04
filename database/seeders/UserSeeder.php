@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'username' => 'admin',
                 'password' => 'admin',
-                'role' => 1,
+                'status' => 1,
                 'avater' => 'uploads/avaters/admin/bdemon245.svg'
             ],
             'admin2' => [
@@ -30,19 +30,21 @@ class UserSeeder extends Seeder
                 'email' => 'admin2@gmail.com',
                 'username' => 'admin2',
                 'password' => 'admin',
-                'role' => 1,
+                'status' => 1,
                 'avater' => 'uploads/avaters/admin/joynal.svg'
             ]
         ];
         foreach ($users as $user) {
-            User::create([
+            $user = User::create([
                 'name' => $user['name'],
                 'email' => $user['email'],
                 'username' => $user['username'],
                 'password' => Hash::make($user['password']),
                 'avater' => $user['avater'],
-                'role' => $user['role'],
+                'status' => $user['status'],
             ]);
+            
         }
+
     }
 }
