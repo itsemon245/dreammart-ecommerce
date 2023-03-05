@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {
-    public function searchProduct($slug)
+    public function searchProduct($name)
     {
-        $products = Product::where('slug', 'LIKE', "%$slug%")->get();
+        $products = Product::where('name', 'LIKE', "%$name%")->get();
 
         return response()->json([
             'products'=> $products

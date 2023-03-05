@@ -14,7 +14,8 @@
                             <th>Profile</th>
                             <th>Role</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            <th>Toggle Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -71,7 +72,9 @@
                                             @endif
                                         </button>
                                     </form>
-
+                                </td>
+                                <td>
+                                    
                                 </td>
 
                             </tr>

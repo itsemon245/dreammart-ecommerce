@@ -10,49 +10,34 @@
                     <div class="card flex-grow-1">
 
                         <div class="d-flex align-items-center card-header">
-                            {{-- modal for add categories --}}
-                            <div class="">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#brandModal">
-                                    Add New
-                                </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="brandModal" tabindex="-1" aria-hidden="true"
-                                    style="display: none;">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel1">Add Brand</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="flex-grow-1" action="{{ route('categories.brand.store') }}"
-                                                    method="post" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <x-form.input-with-symbol name='brand' label="New brand"
-                                                        type='text' symbol="bx-git-branch" placeholder='brand name' />
-                                                    <x-form.input-with-symbol name='logo' label="brand logo"
-                                                        type='file' symbol="bx-landscape" />
+                            {{-- modal for add brand --}}
+                            <x-ui.modal action="{{ route('categories.brand.store') }}" method="post"
+                                enctype="multipart/form-data" title='Add Brand' submit='Submit' id="addBrand">
+                                <x-slot name="button">
+                                    <!-- Button trigger modal -->
+                                    <x-ui.modal-button id="addBrand" class='btn btn-primary'>
+                                        Add Brand
+                                    </x-ui.modal-button>
+                                </x-slot>
+                                <x-form.input-with-symbol name='brand' label="New brand" type='text' value=""
+                                    symbol="bx-git-branch" placeholder='brand name' />
+                                <x-form.input-with-symbol name='logo' label="brand logo" type='file'
+                                    symbol="bx-landscape" />
+                            </x-ui.modal>
 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary"
-                                                    data-bs-dismiss="modal">
-                                                    Close
-                                                </button>
-                                                <button type="submit" class="btn btn-primary">Add</button>
-                                            </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{-- <x-ui.modal action="{{ route('categories.brand.update', $brand->id) }}" method="put"
+                                enctype="multipart/form-data" title='Edit Brand' submit='Save Changes'
+                                id="{{ 'brand' . $brand->id }}">
+                                <x-slot name="button">
 
-
-
+                                </x-slot>
+                                <input type="hidden" name="old_logo" value="{{ asset('storage/' . $brand->logo) }}">
+                                <x-form.input-with-symbol name='brand' label="New brand" type='text'
+                                    value="{{ $brand->name }}" symbol="bx-git-branch" placeholder='brand name' />
+                                <x-form.input-with-symbol name='logo' label="brand logo" type='file'
+                                    symbol="bx-landscape" />
+                            </x-ui.modal> --}}
 
                             <div class="flex-grow-1 text-center">
                                 <strong class="">Brands List</strong>
@@ -72,43 +57,21 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($brands as $key => $brand)
-                                        <!-- edit modal -->
-                                        <div class="modal fade" id="{{ 'brand' . $brand->id }}" tabindex="-1"
-                                            aria-hidden="true" style="display: none;">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel1">Edit Brand
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form class="flex-grow-1"
-                                                            action="{{ route('categories.brand.update', $brand->id) }}"
-                                                            method="post" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <input type="hidden" name="old_logo"
-                                                                value="{{ asset('storage/' . $brand->logo) }}">
-                                                            <x-form.input-with-symbol name='brand' label="New brand"
-                                                                type='text' value="{{ $brand->name }}"
-                                                                symbol="bx-git-branch" placeholder='brand name' />
-                                                            <x-form.input-with-symbol name='logo' label="brand logo"
-                                                                type='file' symbol="bx-landscape" />
+                                        {{-- modal for edit brand --}}
+                                        <x-ui.modal action="{{ route('categories.brand.update', $brand->id) }}"
+                                            method="put" enctype="multipart/form-data" title='Edit Brand'
+                                            submit='Save Changes' id="{{ 'brand' . $brand->id }}">
+                                            <x-slot name="button">
 
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-bs-dismiss="modal">
-                                                            Close
-                                                        </button>
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </x-slot>
+                                            <input type="hidden" name="old_logo"
+                                                value="{{ asset('storage/' . $brand->logo) }}">
+                                            <x-form.input-with-symbol name='brand' label="New brand" type='text'
+                                                value="{{ $brand->name }}" symbol="bx-git-branch"
+                                                placeholder='brand name' />
+                                            <x-form.input-with-symbol name='logo' label="brand logo" type='file'
+                                                symbol="bx-landscape" />
+                                        </x-ui.modal>
                                         <tr>
                                             <td>
                                                 <i class="fab fa-angular fa-lg text-danger me-3"></i>
@@ -130,12 +93,12 @@
                                                         {{-- modal for add categories --}}
                                                         <div class="">
                                                             <!-- Button trigger modal -->
-                                                            <button class="dropdown-item"
-                                                                style="border: none; background: none;" type="button"
-                                                                class="btn btn-primary" data-bs-toggle="modal"
-                                                                data-bs-target="{{ '#brand' . $brand->id }}">
+                                                            <x-ui.modal-button id="{{ 'brand' . $brand->id }}"
+                                                                class='dropdown-item'
+                                                                style="border: none; background: none;">
                                                                 <i class="bx bx-edit-alt me-1"></i>Edit
-                                                            </button>
+                                                            </x-ui.modal-button>
+
                                                         </div>
 
                                                         <a class="dropdown-item"

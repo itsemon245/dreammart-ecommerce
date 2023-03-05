@@ -54,4 +54,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/search-product/{slug}', [SearchController::class, 'searchProduct'])->name('product.search');
+
+//route for search
+Route::get('/search-product/{name}', [SearchController::class, 'searchProduct'])->name('product.search');
