@@ -13,7 +13,8 @@ class RoleController extends Controller
     public function viewRoles()
     {
         $users = User::with('roles')->get();
-        return view('backend.views.viewRoles', compact('users'));
+        $roles = Role::get();
+        return view('backend.views.viewRoles', compact('users', 'roles'));
     }
     public function addRoleView()
     {

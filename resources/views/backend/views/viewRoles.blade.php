@@ -20,6 +20,12 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($users as $key => $user)
+                            {{-- modal for edit brand --}}
+                            <x-ui.modal action="" method="put" title='Assign Role To {{ $user->name }}' submit='Assign'
+                                id="{{ 'user' . $user->id }}">
+                                <x-form.select name='role' label='Assign Role' :options="$roles"
+                                    placeholder="Select role" value='' />
+                            </x-ui.modal>
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>
@@ -27,8 +33,8 @@
                                 </td>
                                 <td>
                                     <div class="avatar avatar-md">
-                                        <img src="{{ asset('storage/' . $user->avater) }}" alt="{{ $user->name . '-avater' }}"
-                                            class="rounded-circle ">
+                                        <img src="{{ asset('storage/' . $user->avater) }}"
+                                            alt="{{ $user->name . '-avater' }}" class="rounded-circle ">
                                     </div>
                                 </td>
                                 <td>
@@ -74,7 +80,12 @@
                                     </form>
                                 </td>
                                 <td>
-                                    
+                                    <!-- Button trigger modal -->
+                                    <x-ui.modal-button id="{{ 'user' . $user->id }}" class='btn btn-primary'>
+                                        <strong>
+                                            Assign To
+                                        </strong>
+                                    </x-ui.modal-button>
                                 </td>
 
                             </tr>
