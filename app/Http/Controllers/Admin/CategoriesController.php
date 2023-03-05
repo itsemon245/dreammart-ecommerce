@@ -33,7 +33,12 @@ class CategoriesController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('backend.views.viewCategories', compact('categories', 'brands'));
+        return view('backend.views.viewCategories', compact('categories'));
+    }
+    public function viewBrands()
+    {
+        $brands = Brand::all();
+        return view('backend.views.viewBrands', compact('brands'));
     }
 
     public function storeCategory(Request $request)

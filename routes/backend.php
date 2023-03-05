@@ -38,6 +38,7 @@ Route::prefix('admin')->group(function () {
         Route::get('destroy-category/{id}', [CategoriesController::class, 'destroyCategory'])->name('destroy');
         Route::put('update-category/', [CategoriesController::class, 'updateCategory'])->name('update');
         Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
+        Route::get('brands', [CategoriesController::class, 'viewBrands'])->name('viewBrands');
 
         //routes for brand
         Route::get('destroy-brand/{id}', [CategoriesController::class, 'destroyBrand'])->name('brand.destroy');

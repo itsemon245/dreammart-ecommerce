@@ -55,9 +55,9 @@
                             <div data-i18n="View Categories">View Categories</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ request()->routeIs('product.view') ? 'active' : '' }}">
-                        <a href="{{ route('product.view') }}" class="menu-link">
-                            <div data-i18n="View Product">View Product</div>
+                    <li class="menu-item {{ request()->routeIs('categories.viewBrands') ? 'active' : '' }}">
+                        <a href="{{ route('categories.viewBrands') }}" class="menu-link">
+                            <div data-i18n="View Brands">View Brands</div>
                         </a>
                     </li>
                 </ul>
