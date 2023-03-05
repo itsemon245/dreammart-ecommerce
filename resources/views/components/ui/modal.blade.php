@@ -1,6 +1,7 @@
 @php
     $id = $attributes->get('id');
     $title = $attributes->get('title');
+    $method = $attributes->get('method');
 @endphp
 <div class="mt-3">
     @isset($button)
@@ -18,7 +19,7 @@
 
 
                 <div class="modal-body">
-                    <form class="" method="post"
+                    <form method="post"
                         {{ $attributes->merge()->filter(fn($value, $key) => !in_array($key, ['title', 'id', 'method'])) }}>
                         @csrf
                         @method($method)

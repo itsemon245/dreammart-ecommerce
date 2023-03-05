@@ -12,12 +12,13 @@
                         <div class="d-flex align-items-center card-header">
 
                             {{-- modal for add categories --}}
-                            <x-ui.modal action="{{ route('categories.store') }}" method="post" title='Add Category'
+
+                            <x-ui.modal action="{{ route('categories.store') }}" mmethod="post" title='Add Category'
                                 submit='Submit' id="addCategory">
                                 <x-slot name="button">
                                     <!-- Button trigger modal -->
                                     <x-ui.modal-button id="addCategory" class='btn btn-primary'>
-                                        Add Category
+                                        Add Brand
                                     </x-ui.modal-button>
                                 </x-slot>
                                 <x-form.input-with-symbol name='category' label="New Category" type='text'
@@ -45,7 +46,7 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                     @foreach ($categories as $key => $category)
-                                        <!-- Edit category modal -->
+                                        {{-- <!-- Edit category modal -->
                                         <div class="modal fade" id="{{ 'category' . $category->id }}" tabindex="-1"
                                             aria-hidden="true" style="display: none;">
                                             <div class="modal-dialog" role="document">
@@ -61,8 +62,7 @@
                                                             method="post">
                                                             @csrf
                                                             @method('PUT')
-                                                            <input type="hidden" name="id"
-                                                                value="{{ $category->id }}">
+
                                                             <x-form.input-with-symbol name='category' label="New Category"
                                                                 type='text' value="{{ $category->name }}"
                                                                 symbol="bx-category-alt" placeholder='category name' />
@@ -78,13 +78,18 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
-                                        <x-ui.modal action="{{ route('categories.store') }}" method="post"
-                                            title='Add Category' submit='Submit' id="{{ 'category' . $category->id }}">
+                                        {{-- modal for edit category --}}
+                                        <x-ui.modal action="{{ route('categories.update', $category->id) }}" method="put"
+                                            enctype="multipart/form-data" title='Edit Category' submit='Save Changes'
+                                            id="{{ 'category' . $category->id }}">
+                                            <x-slot name="button">
 
+                                            </x-slot>
                                             <x-form.input-with-symbol name='category' label="New Category" type='text'
-                                                symbol="bx-category-alt" placeholder='category name' />
+                                                value="{{ $category->name }}" symbol="bx-category-alt"
+                                                placeholder='category name' />
                                         </x-ui.modal>
                                         <tr>
                                             <td>
@@ -107,18 +112,12 @@
                                                         {{-- modal for add categories --}}
                                                         <div class="">
                                                             <x-ui.modal-button class="dropdown-item"
-                                                                style="border: none; background: none;" type="button"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="{{ '#brand' . $category->id }}">
-                                                                <i class="bx bx-edit-alt me-1"></i>Edit
+                                                                style="border: none; background: none;"
+                                                                id="{{ 'category' . $category->id }}">
+                                                                <i class="bx
+                                                                bx-edit-alt me-1"></i>Edit
                                                             </x-ui.modal-button>
-                                                            <!-- Button trigger modal -->
-                                                            <button class="dropdown-item"
-                                                                style="border: none; background: none;" type="button"
-                                                                class="btn btn-primary" data-bs-toggle="modal"
-                                                                data-bs-target="{{ '#category' . $category->id }}">
-                                                                <i class="bx bx-edit-alt me-1"></i>Edit
-                                                            </button>
+                                                            
                                                         </div>
 
                                                         <a class="dropdown-item"

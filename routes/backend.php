@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
         //routes for category
         Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
         Route::get('destroy-category/{id}', [CategoriesController::class, 'destroyCategory'])->name('destroy');
-        Route::put('update-category/', [CategoriesController::class, 'updateCategory'])->name('update');
+        Route::put('update-category/{id}', [CategoriesController::class, 'updateCategory'])->name('update');
         Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
         Route::get('brands', [CategoriesController::class, 'viewBrands'])->name('viewBrands');
 

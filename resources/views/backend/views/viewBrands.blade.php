@@ -26,18 +26,6 @@
                                     symbol="bx-landscape" />
                             </x-ui.modal>
 
-                            {{-- <x-ui.modal action="{{ route('categories.brand.update', $brand->id) }}" method="put"
-                                enctype="multipart/form-data" title='Edit Brand' submit='Save Changes'
-                                id="{{ 'brand' . $brand->id }}">
-                                <x-slot name="button">
-
-                                </x-slot>
-                                <input type="hidden" name="old_logo" value="{{ asset('storage/' . $brand->logo) }}">
-                                <x-form.input-with-symbol name='brand' label="New brand" type='text'
-                                    value="{{ $brand->name }}" symbol="bx-git-branch" placeholder='brand name' />
-                                <x-form.input-with-symbol name='logo' label="brand logo" type='file'
-                                    symbol="bx-landscape" />
-                            </x-ui.modal> --}}
 
                             <div class="flex-grow-1 text-center">
                                 <strong class="">Brands List</strong>

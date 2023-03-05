@@ -58,12 +58,12 @@ class CategoriesController extends Controller
             return back()->with('error', 'Category already exists');
         }
     }
-    public function updateCategory(Request $request)
+    public function updateCategory(Request $request, $id)
     {
         $request->validate([
             'category' => 'required|max:20'
         ]);
-        $category = Category::where('id', $request->id)->first();
+        $category = Category::find($id);
         $category->name = $request->category;
         $category->slug = $this->uniSlug($request->category);
         $category->update();
@@ -78,7 +78,7 @@ class CategoriesController extends Controller
     {
         $category = Category::find($id)->delete();
 
-        return back()->with('info', 'Category Deleted');
+        return back()->with('success', 'Category Deleted');
     }
 
 
