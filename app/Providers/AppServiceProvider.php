@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Using view composer to set following variables globally
         view()->composer('*', function ($view) {
-            $view->with('role', auth()->user() ? User::with('roles')->where('id', auth()->id())->first()->roles[0]['name'] : 'none');
+            $view->with('userRole', auth()->user() ? User::with('roles')->where('id', auth()->id())->first()->roles[0]['name'] : 'none');
         });
     }
 }
