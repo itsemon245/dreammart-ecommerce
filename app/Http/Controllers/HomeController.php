@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
@@ -29,5 +30,17 @@ class HomeController extends Controller
             'phpVersion' => PHP_VERSION,
             'landingProducts' => $landingProducts
         ]);
+    }
+    public function artisanCall()
+    {
+        Artisan::call('migrate:fresh');
+        sleep(0.5);
+        Artisan::call('db:seed');
+        sleep(0.5);
+        Artisan::call('optimize');
+        sleep(0.5);
+        Artisan::call('optimize:clear');
+        sleep(0.5);
+        Artisan::call('storage:link');
     }
 }
