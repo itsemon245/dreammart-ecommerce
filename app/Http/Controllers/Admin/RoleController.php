@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -34,6 +35,21 @@ class RoleController extends Controller
 
         return redirect()->route('role.add')->with('success', 'Role Created');
     }
+
+    public function assignRole(Request $request, $id)
+    {
+        $request->validate([
+            'role' => 'required'
+        ]);
+        $user = User::find($id);
+        $role = Role::find($request->id);
+        $user->assignRole($role->name);
+
+        $msg = Str::headline($role->name) . " assigned to $user->name";
+        dd($msg);
+        return back()->with('success', $msg);
+    }
+
     public function editRoleView($id)
     {
         $role = Role::find($id);

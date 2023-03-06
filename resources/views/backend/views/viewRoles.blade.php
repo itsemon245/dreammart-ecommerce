@@ -12,7 +12,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Profile</th>
-                            <th>Role</th>
+                            <th>Roles</th>
                             <th>Status</th>
                             <th>Toggle Status</th>
                             <th>Action</th>
@@ -21,10 +21,10 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($users as $key => $user)
                             {{-- modal for edit brand --}}
-                            <x-ui.modal action="" method="put" title='Assign Role To {{ $user->name }}' submit='Assign'
-                                id="{{ 'user' . $user->id }}">
+                            <x-ui.modal action="{{ route('role.assign', $user->id) }}" method="post"
+                                title='Assign Role To {{ $user->name }}' submit='Assign' id="{{ 'user' . $user->id }}">
                                 <x-form.select name='role' label='Assign Role' :options="$roles"
-                                    placeholder="Select role" value='' />
+                                    placeholder="Select role" value='{{ $user->roles[0]->id }}' />
                             </x-ui.modal>
                             <tr>
                                 <td>{{ ++$key }}</td>
@@ -38,9 +38,11 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <span
-                                        class="badge bg-primary me-1 uppercase">{{ isset($user->roles[0]->name) ? $user->roles[0]->name : 'user' }}</span>
-
+                                    @foreach ($user->roles as $userRole)
+                                        <span class="badge bg-primary me-1 uppercase">
+                                            {{ $userRole->name }}
+                                        </span>
+                                    @endforeach
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center gap-3">
