@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('title', 'Completed Orders')
+@section('title', 'Pending Orders')
 @section('content')
     {{-- {{dd($orders[0]->category->name)}} --}}
     <div class="container-md">
         <div class="card mt-3">
-            <h5 class="card-header text-center">Completed Orders</h5>
+            <h5 class="card-header text-center">Pending Orders</h5>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
@@ -37,7 +37,7 @@
                                             </strong>
                                         </div>
                                         <div>
-                                            <strong>Order Placed:
+                                            <strong>Ordered Placed:
                                                 <span>{{ Carbon\Carbon::parse($order->created_at)->format('d M Y') }}</span>
                                             </strong>
                                         </div>

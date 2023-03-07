@@ -81,7 +81,31 @@
 
 
 
+            <!-- Orders -->
+
+            <!-- Categories & Brands -->
+            <li class="menu-item {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-package"></i>
+                    <div data-i18n="Categories & Brands">View Orders</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->routeIs('admin.orders.view') ? 'active' : '' }}">
+                        <a href="{{ route('admin.orders.view') }}" class="menu-link">
+                            <div data-i18n="View pending">Pending Orders</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->routeIs('admin.orders.viewCompleted') ? 'active' : '' }}">
+                        <a href="{{ route('admin.orders.viewCompleted') }}" class="menu-link">
+                            <div data-i18n="View completed">Completed Orders</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
 
         </ul>
+
     </aside>
 </div>

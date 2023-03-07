@@ -30,7 +30,8 @@ class CheckoutController extends Controller
         $order = new Order();
         $order->user_id = auth()->id();
         $order->status = 'pending';
-        $order->total_price = $request->cartItem['product']['price'] * $request->cartItem['qty'] + $request->shipping;
+        $totlPrice = $request->cartItem['product']['price'] * $request->cartItem['qty'] + $request->shipping;
+        $order->total_price = $totlPrice;
         $order->save();
         // dd($order);
         $orderItem = new OrderItems();

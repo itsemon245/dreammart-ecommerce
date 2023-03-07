@@ -30,7 +30,11 @@ Route::prefix('admin')->group(function () {
     });
     Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
 
-
+    Route::prefix('orders')->name('admin.orders.')->controller(OrderController::class)->group(function () {
+        Route::get('view', 'viewOrders')->name('view');
+        Route::get('view-completed', 'viewCompletedOrders')->name('viewCompleted');
+        Route::put('change-status/{id}', 'changeStatus')->name('status');
+    });
 
     Route::name('categories.')->group(function () {
         //routes for category

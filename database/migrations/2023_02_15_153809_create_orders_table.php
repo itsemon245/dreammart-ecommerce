@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->decimal('total_price');
+            $table->decimal('ammount_paid')->default(0.00);
             $table->string('status');
             $table->timestamps();
         });
