@@ -37,17 +37,7 @@
 
     <!-- Page CSS -->
 
-    <!-- Helpers -->
-    <script src="{{asset('backend/assets/vendor/js/helpers.js')}}"></script>
-{{-- jquery-3 --}}
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-    
-    {{-- sweetalert2 --}}
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{asset('backend/assets/js/config.js')}}"></script>
+   
     <style>
       .unselectable {
     -webkit-touch-callout: none;
