@@ -16,11 +16,17 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'user' => [
+                'create',
+                'read',
+                'update',
+                'toggle'
+            ],
             'role' => [
                 'create',
                 'read',
                 'update',
-                'edit'
+                'delete'
             ],
             'category' => [
                 'create',

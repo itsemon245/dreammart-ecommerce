@@ -32,19 +32,19 @@ Route::middleware(['auth', 'restricted.role:user'])->prefix('admin')->group(func
 
     Route::prefix('role')->name('role.')->controller(RoleController::class)->group(function () {
         Route::middleware('can:role create')->group(function () {
-            Route::get('add', 'addRoleView')->name('add');
             Route::post('create', 'createRole')->name('create');
         });
         Route::middleware('can:role read')->group(function () {
             Route::get('view', 'viewRoles')->name('view');
+            Route::get('add', 'addRoleView')->name('add');
         });
-        Route::middleware('can:role update|role edit')->group(function () {
+        Route::middleware('can:role update')->group(function () {
             Route::get('edit/{id}', 'editRoleView')->name('edit');
             Route::put('assign/{id}', 'assignRole')->name('assign');
             Route::put('update/{id}', 'updateRole')->name('update');
-            Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
         });
     });
+    Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
 
 
 
@@ -56,19 +56,37 @@ Route::middleware(['auth', 'restricted.role:user'])->prefix('admin')->group(func
 
     Route::name('categories.')->group(function () {
         //routes for category
-        Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
-        Route::get('destroy-category/{id}', [CategoriesController::class, 'destroyCategory'])->name('destroy');
-        Route::put('update-category/{id}', [CategoriesController::class, 'updateCategory'])->name('update');
-        Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
-        Route::get('brands', [CategoriesController::class, 'viewBrands'])->name('viewBrands');
+        Route::middleware('can:category create')->group(function () {
+            Route::post('store-category', [CategoriesController::class, 'storeCategory'])->name('store');
+        });
+        Route::middleware('can:category read')->group(function () {
+            Route::get('categories', [CategoriesController::class, 'viewCategories'])->name('view');
+        });
+        Route::middleware('can:category delete')->group(function () {
+            Route::get('destroy-category/{id}', [CategoriesController::class, 'destroyCategory'])->name('destroy');
+        });
+        Route::middleware('can:category update')->group(function () {
+            Route::put('update-category/{id}', [CategoriesController::class, 'updateCategory'])->name('update');
+        });
 
-        //routes for brand
-        Route::get('destroy-brand/{id}', [CategoriesController::class, 'destroyBrand'])->name('brand.destroy');
-        Route::put('update-brand/{id}', [CategoriesController::class, 'updateBrand'])->name('brand.update');
-        Route::post('store-brand', [CategoriesController::class, 'storeBrand'])->name('brand.store');
+
+
+        Route::middleware('can:brand create')->group(function () {
+            Route::post('store-brand', [CategoriesController::class, 'storeBrand'])->name('brand.store');
+        });
+        Route::middleware('can:brand read')->group(function () {
+            Route::get('brands', [CategoriesController::class, 'viewBrands'])->name('viewBrands');
+        });
+        Route::middleware('can:brand update')->group(function () {
+            Route::put('update-brand/{id}', [CategoriesController::class, 'updateBrand'])->name('brand.update');
+        });
+        Route::middleware('can:brand delete')->group(function () {
+            Route::get('destroy-brand/{id}', [CategoriesController::class, 'destroyBrand'])->name('brand.destroy');
+        });
     });
+
+
     Route::name('admin.')->controller(DashboardController::class)->group(function () {
         Route::get('/', 'index')->name("dashboard");
-        Route::get('profile', 'profile')->name('profile');
     });
 });

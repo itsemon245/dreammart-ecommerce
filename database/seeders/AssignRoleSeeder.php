@@ -26,13 +26,19 @@ class AssignRoleSeeder extends Seeder
             ->where('name', 'not like', "%user%")->get();
 
         //only read permissions
-        $read = Permission::where('name', 'LIKE', "%read%")->get();
+        $read = Permission::where('name', 'LIKE', "%read%")
+            ->where('name', 'not like', "%role%")
+            ->where('name', 'not like', "%user%")->get();
 
         //only update permissions
-        $update = Permission::where('name', 'LIKE', "%update%")->get();
+        $update = Permission::where('name', 'LIKE', "%update%")
+            ->where('name', 'not like', "%role%")
+            ->where('name', 'not like', "%user%")->get();
 
         //only delete permissions
-        $delete = Permission::where('name', 'LIKE', "%delete%")->get();
+        $delete = Permission::where('name', 'LIKE', "%delete%")
+            ->where('name', 'not like', "%role%")
+            ->where('name', 'not like', "%user%")->get();
 
         //retrive roles
         $admin = Role::where('name', 'admin')->first(); //admin role
@@ -50,7 +56,7 @@ class AssignRoleSeeder extends Seeder
 
         //give permissions to user
         $user->syncPermissions($read);
-        
+
 
         $users = User::get();
 
