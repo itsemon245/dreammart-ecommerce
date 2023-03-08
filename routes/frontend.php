@@ -24,23 +24,23 @@ Route::prefix('product')->controller(ProductPageController::class)->group(functi
     });
     Route::prefix('favorite')->name('favorite.')->group(function () {
         Route::get('toggle/{id}', 'toggleFavorite')->name('toggle');
-        Route::get('all', 'viewFavorites')->name('all');
+        Route::get('all', 'viewFavorites')->name('all')->middleware('auth');
     });
     Route::prefix('cart')->name('cart.')->group(function () {
         Route::get('toggle/{id}/{qty}', 'toggleCart')->name('toggle');
-        Route::get('destroy/{id}', 'destroyCart')->name('destroy');
-        Route::get('all', 'viewCarts')->name('all');
+        Route::get('destroy/{id}', 'destroyCart')->name('destroy')->middleware('auth');
+        Route::get('all', 'viewCarts')->name('all')->middleware('auth');
     });
 });
 //routes for profile
-Route::prefix('profile')->controller(ProfilePageController::class)->group(function () {
+Route::prefix('profile')->middleware('auth')->controller(ProfilePageController::class)->group(function () {
     Route::name('profile.')->group(function () {
         Route::get('view', 'viewProfile')->name('view');
         Route::get('settings', 'viewSettings')->name('settings');
     });
 });
 //route for orders
-Route::prefix('orders')->controller(OrderPageController::class)->group(function () {
+Route::prefix('orders')->middleware('auth')->controller(OrderPageController::class)->group(function () {
     Route::name('orders.')->group(function () {
         Route::get('view', 'viewOrders')->name('view');
     });
