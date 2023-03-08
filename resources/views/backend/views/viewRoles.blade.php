@@ -4,7 +4,7 @@
     {{-- {{dd($products[0]->category->name)}} --}}
     <div class="container-md">
         <div class="card mt-5">
-
+            <div class="card-header">All Users</div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
@@ -15,7 +15,7 @@
                             <th>Roles</th>
                             <th>Status</th>
                             <th>Toggle Status</th>
-                            <th>Action</th>
+                            <th>Assign Role</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -82,12 +82,21 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <!-- Button trigger modal -->
-                                    <x-ui.modal-button id="{{ 'user' . $user->id }}" class='btn btn-primary'>
-                                        <strong>
-                                            Assign To
-                                        </strong>
-                                    </x-ui.modal-button>
+                                    <div>
+                                        <form action="{{ route('role.assign', $user->id) }}" method="post"
+                                            class="d-flex gap-1">
+                                            @csrf
+                                            @method('put')
+                                            <select class="form-select" name="role" id=""
+                                                style="max-width:max-content;">
+                                                <option selected disabled>Select Role</option>
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button class="btn btn-primary" type='submit'>Assign</button>
+                                        </form>
+                                    </div>
                                 </td>
 
                             </tr>

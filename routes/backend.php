@@ -26,11 +26,11 @@ Route::prefix('admin')->group(function () {
         Route::get('add', 'addRoleView')->name('add');
         Route::get('edit/{id}', 'editRoleView')->name('edit');
         Route::post('create', 'createRole')->name('create');
-        Route::post('assign/{id}', 'assignRole')->name('assign');
+        Route::put('assign/{id}', 'assignRole')->name('assign');
         Route::put('update/{id}', 'updateRole')->name('update');
     });
 
-    
+
     Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
 
 

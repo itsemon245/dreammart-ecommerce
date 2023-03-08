@@ -42,11 +42,10 @@ class RoleController extends Controller
             'role' => 'required'
         ]);
         $user = User::find($id);
-        $role = Role::find($request->id);
-        $user->assignRole($role->name);
+        $user->assignRole($request->role);
 
-        $msg = Str::headline($role->name) . " assigned to $user->name";
-        dd($msg);
+        $msg = Str::headline($request->role) . " role assigned to $user->name";
+        // dd($msg);
         return back()->with('success', $msg);
     }
 
