@@ -13,32 +13,32 @@ use App\Http\Controllers\Admin\UserController;
 Route::middleware(['auth', 'restricted.role:user'])->prefix('admin')->group(function () {
 
     Route::name('product.')->group(function () {
-        Route::middleware('can: product create')->group(function () {
+        Route::middleware('permission: product create')->group(function () {
             Route::get('add-product', [ProductController::class, 'addProduct'])->name('add');
             Route::post('store-product', [ProductController::class, 'storeProduct'])->name('store');
         });
-        Route::middleware('can: product read')->group(function () {
+        Route::middleware('permission: product read')->group(function () {
             Route::get('view-product', [ProductController::class, 'viewProduct'])->name('view');
         });
-        Route::middleware('can: product update')->group(function () {
+        Route::middleware('permission: product update')->group(function () {
             Route::get('update-product/{id}', [ProductController::class, 'updateProductView'])->name('update.view');
             Route::put('update-product/{id}/', [ProductController::class, 'updateProduct'])->name('update');
         });
-        Route::middleware('can: product delete')->group(function () {
+        Route::middleware('permission: product delete')->group(function () {
             Route::delete('delete-product', [ProductController::class, 'deleteProduct'])->name('delete');
         });
     });
 
 
     Route::prefix('role')->name('role.')->controller(RoleController::class)->group(function () {
-        Route::middleware('can: role create')->group(function () {
+        Route::middleware('permission: role create')->group(function () {
             Route::get('add', 'addRoleView')->name('add');
             Route::post('create', 'createRole')->name('create');
         });
-        Route::middleware('can: role read')->group(function () {
+        Route::middleware('permission: role read')->group(function () {
             Route::get('view', 'viewRoles')->name('view');
         });
-        Route::middleware('can: role update|role edit')->group(function () {
+        Route::middleware('permission: role update|role edit')->group(function () {
             Route::get('edit/{id}', 'editRoleView')->name('edit');
             Route::put('assign/{id}', 'assignRole')->name('assign');
             Route::put('update/{id}', 'updateRole')->name('update');
