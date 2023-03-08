@@ -72,9 +72,11 @@ class ProductPageController extends Controller
             return json_encode(true);
         }
     }
+
     public function destroyCart($id)
     {
-        $delete = Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->delete();
+
+        $delete = Cart::find($id)->delete();
         return back()->with('success', 'Removed from cart');
     }
     public function viewFavorites()
@@ -96,7 +98,9 @@ class ProductPageController extends Controller
     public function viewCarts()
     {
         $user = User::find(auth()->id());
-        $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
+        $carts = Cart::with(['product', 'product.brand', 'product.category'])->where('user_id', $user->id)->latest()->get();
+        // dd($carts);
+        // $carts = $user->cartProducts()->with(['category', 'brand', 'carts'])->get();
         return Inertia::render('Product/Cart', [
             'carts' => $carts
         ]);

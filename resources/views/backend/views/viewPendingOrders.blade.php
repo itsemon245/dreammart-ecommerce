@@ -44,7 +44,7 @@
                                         <div>
                                             <strong>Status:
                                                 <span
-                                                    class="badge bg-label-{{ $order->status === 'completed' ? 'success' : 'warning' }} me-1">{{ $order->status }}</span>
+                                                    class="badge bg-{{ $order->status === 'shipped' ? 'primary' : 'warning' }} me-1">{{ $order->status }}</span>
                                             </strong>
                                         </div>
                                     </div>

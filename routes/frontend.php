@@ -44,6 +44,7 @@ Route::prefix('orders')->controller(OrderPageController::class)->group(function 
     Route::name('orders.')->group(function () {
         Route::get('view', 'viewOrders')->name('view');
     });
+    Route::delete('cancel/{id}', 'cancelOrder')->name('order.cancel');
 });
 
 Route::middleware('auth')->group(function () {
