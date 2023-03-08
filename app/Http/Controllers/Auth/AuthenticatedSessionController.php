@@ -40,7 +40,7 @@ class AuthenticatedSessionController extends Controller
 
         if (Hash::check($request->password, $user->password)) {
             Auth::login($user, $remeber);
-            if ($user->hasRole('admin|editor')) {
+            if (!$user->hasRole('user')) {
                 return redirect(route('admin.dashboard'))->with('success', "Logged in Successfully");
             }
             return redirect(RouteServiceProvider::HOME)->with('success', "Logged in Successfully");
