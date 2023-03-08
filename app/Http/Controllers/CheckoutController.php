@@ -21,6 +21,7 @@ class CheckoutController extends Controller
                 'product_id' => $id,
                 'qty' => $request->qty
             ]);
+            $cart = Cart::with(['user', 'product'])->find($cart->id);
         }
 
         return inertia('Product/CheckoutSingle', [

@@ -4,7 +4,7 @@ import route from "/vendor/tightenco/ziggy/src/js";
 export default function CheckoutSingle({ categories, brands, cart, auth }) {
     console.log(cart)
     const userId = auth.user.id
-    const subTotal = cart.product.price
+    const subTotal = cart.product.price * cart.qty
     const category = categories.find(category => category.id === cart.product.category_id).name
     const brand = brands.find(brand => brand.id === cart.product.brand_id).name
     const shipping = 10
@@ -16,7 +16,7 @@ export default function CheckoutSingle({ categories, brands, cart, auth }) {
                     <div className="" id="checkout">
                         <div className="flex md:flex-row flex-col justify-end" id="cart">
                             <div className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 py-8 bg-base-300 overflow-y-auto shadow-md overflow-x-hidden h-screen" id="scroll">
-                                <Link href="" className="flex items-center text-gray-500 hover:text-gray-600 cursor-pointer" >
+                                <Link href={route('browse.product', cart.product_id)} className="flex items-center text-gray-500 hover:text-gray-600 cursor-pointer" >
                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-left" width={16} height={16} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <polyline points="15 6 9 12 15 18" />
@@ -70,8 +70,10 @@ export default function CheckoutSingle({ categories, brands, cart, auth }) {
                                         <Link href={route('checkout.product.confirm')}
                                             as="button"
                                             method="POST"
-                                            data={{cartItem: cart,
-                                            shipping: shipping}} 
+                                            data={{
+                                                cartItem: cart,
+                                                shipping: shipping
+                                            }}
                                             className="btn btn-primary w-full rounded">
                                             Checkout
                                         </Link>

@@ -43,8 +43,8 @@
                                         </div>
                                         <div>
                                             <strong>Status:
-                                                <span
-                                                    class="badge bg-{{ $order->status === 'shipped' ? 'primary' : 'warning' }} me-1">{{ $order->status }}</span>
+                                                <strong
+                                                    class="badge bg-{{ $order->status === 'shipped' ? 'info' : 'warning' }} me-1">{{ $order->status }}</strong>
                                             </strong>
                                         </div>
                                     </div>

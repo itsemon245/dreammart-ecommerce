@@ -29,8 +29,8 @@ class CategorySeeder extends Seeder
                 'slug' => 'toys',
             ],
             [
-                'name' => 'Accessories',
-                'slug' => 'accessories',
+                'name' => 'Electronics',
+                'slug' => 'electronics',
             ],
         ];
         foreach ($categories as $category) {

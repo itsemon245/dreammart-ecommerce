@@ -61,25 +61,6 @@
                         </li>
                     </ul>
                 </li>
-            @endhasanyrole
-
-
-            @hasanyrole('admin')
-                <!-- Role Managment -->
-                <li class="menu-item {{ request()->routeIs('role.add') ? 'active' : '' }}">
-                    <a href="{{ route('role.add') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-user-check"></i>
-                        <div data-i18n="Analytics">Role Management</div>
-                    </a>
-                </li>
-                <!-- User Managment -->
-                <li class="menu-item {{ request()->routeIs('role.view') ? 'active' : '' }}">
-                    <a href="{{ route('role.view') }}" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-group"></i>
-                        <div data-i18n="Analytics">User Management</div>
-                    </a>
-                </li>
-
                 <!-- Orders -->
                 <li class="menu-item {{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -99,6 +80,24 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+            @endhasanyrole
+
+
+            @hasanyrole('admin')
+                <!-- Role Managment -->
+                <li class="menu-item {{ request()->routeIs('role.add') ? 'active' : '' }}">
+                    <a href="{{ route('role.add') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-user-check"></i>
+                        <div data-i18n="Analytics">Role Management</div>
+                    </a>
+                </li>
+                <!-- User Managment -->
+                <li class="menu-item {{ request()->routeIs('role.view') ? 'active' : '' }}">
+                    <a href="{{ route('role.view') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-group"></i>
+                        <div data-i18n="Analytics">User Management</div>
+                    </a>
                 </li>
             @endhasanyrole
 
