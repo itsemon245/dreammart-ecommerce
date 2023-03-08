@@ -60,8 +60,8 @@ class AssignRoleSeeder extends Seeder
 
         $users = User::get();
 
-        foreach ($users as $key => $user) {
-            $user->assignRole('admin');
-        }
+        $users[0]->assignRole('admin');
+        $users[1]->assignRole('editor');
+        $users[2]->assignRole('user');
     }
 }

@@ -20,7 +20,6 @@ class PermissionSeeder extends Seeder
                 'create',
                 'read',
                 'update',
-                'toggle'
             ],
             'role' => [
                 'create',

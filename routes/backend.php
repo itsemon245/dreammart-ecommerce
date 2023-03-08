@@ -44,8 +44,9 @@ Route::middleware(['auth', 'restricted.role:user'])->prefix('admin')->group(func
             Route::put('update/{id}', 'updateRole')->name('update');
         });
     });
-    Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
+    Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus')->middleware('can:user update');
 
+    Route::post('user/create', [UserController::class, 'createUser'])->name('admin.user.create')->middleware('can:user create');
 
 
     Route::prefix('orders')->name('admin.orders.')->controller(OrderController::class)->group(function () {

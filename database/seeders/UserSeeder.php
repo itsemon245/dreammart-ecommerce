@@ -25,14 +25,22 @@ class UserSeeder extends Seeder
                 'status' => 1,
                 'avater' => 'uploads/avaters/admin/bdemon245.svg'
             ],
-            'admin2' => [
-                'name' => 'admin2',
-                'email' => 'admin2@gmail.com',
-                'username' => 'admin2',
-                'password' => 'admin',
+            'editor' => [
+                'name' => 'Ivana Hoffman',
+                'email' => 'editor@gmail.com',
+                'username' => 'editor',
+                'password' => 'password',
                 'status' => 1,
-                'avater' => 'uploads/avaters/admin/joynal.svg'
-            ]
+                'avater' => 'https://api.dicebear.com/5.x/bottts-neutral/svg?seed=Ivana Hoffman&scale=80&radius=5&eyes=bulging,dizzy,eva,frame1,frame2,glow,robocop,round,roundFrame01,roundFrame02,sensor,shade01,happy'
+            ],
+            'user' => [
+                'name' => 'Jolie Price',
+                'email' => 'user@gmail.com',
+                'username' => 'user',
+                'password' => 'password',
+                'status' => 1,
+                'avater' => 'https://api.dicebear.com/5.x/bottts-neutral/svg?seed=Jolie Price&scale=80&radius=5&eyes=bulging,dizzy,eva,frame1,frame2,glow,robocop,round,roundFrame01,roundFrame02,sensor,shade01,happy'
+            ],
         ];
         foreach ($users as $user) {
             $user = User::create([
@@ -43,8 +51,6 @@ class UserSeeder extends Seeder
                 'avater' => $user['avater'],
                 'status' => $user['status'],
             ]);
-            
         }
-
     }
 }

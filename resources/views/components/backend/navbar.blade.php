@@ -1,6 +1,6 @@
 @php
     $name = auth()->user()->name;
-    $avater = Str::is('*https*', auth()->user()->avater) ? auth()->user()->avater : asset('storage/' . auth()->user()->avater);
+    $avater = Str::contains(auth()->user()->avater, 'uploads') ? asset('storage/' . auth()->user()->avater) : auth()->user()->avater;
 @endphp
 <div style="z-index: 1;">
     <!-- Navbar -->

@@ -13,7 +13,7 @@
 
                             {{-- modal for add categories --}}
 
-                            <x-ui.modal action="{{ route('categories.store') }}" mmethod="post" title='Add Category'
+                            <x-ui.modal action="{{ route('categories.store') }}" method="post" title='Add Category'
                                 submit='Submit' id="addCategory">
                                 <x-slot name="button">
                                     <!-- Button trigger modal -->

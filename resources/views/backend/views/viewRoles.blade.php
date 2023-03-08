@@ -4,7 +4,39 @@
     {{-- {{dd($products[0]->category->name)}} --}}
     <div class="container-md">
         <div class="card mt-5">
-            <div class="card-header">All Users</div>
+            <div class="card-header text-center display-6">All Users</div>
+            <div class="ps-5">
+                <x-ui.modal action="{{ route('admin.user.create') }}" method="post" title='Add User' submit='Add'
+                    id="addUser">
+                    <x-slot name="button">
+                        <!-- Button trigger modal -->
+                        <x-ui.modal-button id="addUser" class='btn btn-primary'>
+                            Add User
+                        </x-ui.modal-button>
+                    </x-slot>
+                    <div class="d-flex gap-3">
+                        <x-form.input-with-symbol name='name' label="Full Name" type='text' symbol="Aa"
+                            placeholder='Name' />
+                        <x-form.input-with-symbol name='username' label="Username" type='text' symbol="bx bx-user"
+                            placeholder='johndoe243' />
+                    </div>
+                    <div class="d-flex gap-3">
+                        <x-form.input-with-symbol name='email' label="email" type='email' symbol="bx bx-envelope"
+                            placeholder='example@gamil.com' />
+                        <div class="flex-grow-1">
+                            <x-form.select name='role' label='Role' :options="$roles" placeholder="Select role" />
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <x-form.input-with-symbol name='password' label="password" type='password' symbol="bx bx-shield"
+                            placeholder='min 8, mixed letters & symbol' />
+                        <x-form.input-with-symbol name='confirm_password' label="confirm password" type='password'
+                            symbol="bx bx-shield" placeholder='min 8, mixed letters & symbol' />
+
+                    </div>
+                </x-ui.modal>
+            </div>
+
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
@@ -33,7 +65,7 @@
                                 </td>
                                 <td>
                                     <div class="avatar avatar-md">
-                                        <img src="{{ asset('storage/' . $user->avater) }}"
+                                        <img src="{{ Str::contains($user->avater, 'uploads') ? asset('storage/' . $user->avater) : $user->avater }}"
                                             alt="{{ $user->name . '-avater' }}" class="rounded-circle ">
                                     </div>
                                 </td>

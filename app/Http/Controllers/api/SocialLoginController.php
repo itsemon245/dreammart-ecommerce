@@ -20,7 +20,7 @@ class SocialLoginController extends Controller
     public function handleCallback(string $provider)
     {
         $googleUser = Socialite::driver($provider)->stateless()->user();
-        dd($googleUser);
+        // dd($googleUser);
         //extract username
         $username = explode('@', $googleUser->email)[0];
         // dd($username);
@@ -36,7 +36,9 @@ class SocialLoginController extends Controller
             'google_token' => $googleUser->token,
             'google_refresh_token' => $googleUser->refreshToken,
         ]);
-        $user->assignRole('admin');
+        if (!$user->hasRole('user')) {
+            $user->assignRole('user');
+        }
 
         event(new Registered($user));
 
