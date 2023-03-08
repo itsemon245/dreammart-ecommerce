@@ -4,7 +4,7 @@
     {{-- {{dd($products[0]->category->name)}} --}}
     <div class="container-md">
         <div class="card mt-5">
-
+            <div class="card-header">All Users</div>
             <div class="table-responsive text-nowrap">
                 <table class="table">
                     <thead>
@@ -12,14 +12,20 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Profile</th>
-                            <th>Role</th>
+                            <th>Roles</th>
                             <th>Status</th>
                             <th>Toggle Status</th>
-                            <th>Action</th>
+                            <th>Assign Role</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($users as $key => $user)
+                            {{-- modal for edit brand --}}
+                            <x-ui.modal action="{{ route('role.assign', $user->id) }}" method="post"
+                                title='Assign Role To {{ $user->name }}' submit='Assign' id="{{ 'user' . $user->id }}">
+                                <x-form.select name='role' label='Assign Role' :options="$roles"
+                                    placeholder="Select role" value='{{ $user->roles[0]->id }}' />
+                            </x-ui.modal>
                             <tr>
                                 <td>{{ ++$key }}</td>
                                 <td>
@@ -27,14 +33,16 @@
                                 </td>
                                 <td>
                                     <div class="avatar avatar-md">
-                                        <img src="{{ asset('storage/' . $user->avater) }}" alt="{{ $user->name . '-avater' }}"
-                                            class="rounded-circle ">
+                                        <img src="{{ asset('storage/' . $user->avater) }}"
+                                            alt="{{ $user->name . '-avater' }}" class="rounded-circle ">
                                     </div>
                                 </td>
                                 <td>
-                                    <span
-                                        class="badge bg-primary me-1 uppercase">{{ isset($user->roles[0]->name) ? $user->roles[0]->name : 'user' }}</span>
-
+                                    @foreach ($user->roles as $userRole)
+                                        <span class="badge bg-primary me-1 uppercase">
+                                            {{ $userRole->name }}
+                                        </span>
+                                    @endforeach
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center gap-3">
@@ -74,7 +82,21 @@
                                     </form>
                                 </td>
                                 <td>
-                                    
+                                    <div>
+                                        <form action="{{ route('role.assign', $user->id) }}" method="post"
+                                            class="d-flex gap-1">
+                                            @csrf
+                                            @method('put')
+                                            <select class="form-select" name="role" id=""
+                                                style="max-width:max-content;">
+                                                <option selected disabled>Select Role</option>
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <button class="btn btn-primary" type='submit'>Assign</button>
+                                        </form>
+                                    </div>
                                 </td>
 
                             </tr>

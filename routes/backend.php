@@ -26,8 +26,11 @@ Route::prefix('admin')->group(function () {
         Route::get('add', 'addRoleView')->name('add');
         Route::get('edit/{id}', 'editRoleView')->name('edit');
         Route::post('create', 'createRole')->name('create');
+        Route::put('assign/{id}', 'assignRole')->name('assign');
         Route::put('update/{id}', 'updateRole')->name('update');
     });
+
+
     Route::put('user/status/{id}', [UserController::class, 'toggleStatus'])->name('toggle.userStatus');
 
     Route::prefix('orders')->name('admin.orders.')->controller(OrderController::class)->group(function () {
