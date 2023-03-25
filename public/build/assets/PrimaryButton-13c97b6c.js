@@ -1,0 +1,1 @@
+import{a as e}from"./app-1954d829.js";function n({type:a="submit",className:i="",processing:t,children:r,onClick:b}){return e("button",{type:a,onClick:b,className:`btn btn-primary capitalize text-base-100 ${t&&"opacity-25"} `+i,disabled:t,children:r})}export{n as P};
