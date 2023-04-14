@@ -1,5 +1,4 @@
-import { random } from 'lodash'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Carousel({ carouselImages }) {
     return (
