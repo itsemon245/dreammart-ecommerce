@@ -16,18 +16,18 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $name = fake()->sentence(3);
+        $name = fake()->realText(15);
         return [
             'name' => $name,
             'slug' => slugFor('products', $name),
             'detail' => fake()->paragraph(4),
-            'price' => fake()->randomFloat(2,5,1000),
+            'price' => fake()->randomFloat(2, 5, 1000),
             'discount' => fake()->numberBetween(0, 25),
-            'in_stock' => fake()->numberBetween(2,100),
-            'category_id' => fake()->numberBetween(1,4),
-            'brand_id' => fake()->numberBetween(1,3),
-            'event_id' => fake()->numberBetween(1,3),
-            'image' => "https://picsum.photos/seed/$name/400",
+            'in_stock' => fake()->numberBetween(2, 100),
+            'category_id' => fake()->numberBetween(1, 4),
+            'brand_id' => fake()->numberBetween(1, 3),
+            'event_id' => fake()->numberBetween(1, 3),
+            'image' => "https://picsum.photos/seed/$name/1080/720",
         ];
     }
 }
