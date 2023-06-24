@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'name' => 'Mojahidul Islam',
                 'email' => 'admin@gmail.com',
                 'username' => 'admin',
-                'password' => 'admin',
+                'password' => 'password',
                 'status' => 1,
                 'avater' => 'uploads/avaters/admin/bdemon245.svg'
             ],
