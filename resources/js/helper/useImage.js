@@ -1,3 +1,3 @@
 export default (image) => {
-    return image.indexOf('uploads/') === true ? "/storage/" + image : image
+    return image.indexOf('uploads/') > -1 ? "/storage/" + image : image
 }

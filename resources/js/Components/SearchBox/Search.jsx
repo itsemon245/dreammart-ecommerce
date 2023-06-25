@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import route from '/vendor/tightenco/ziggy/src/js';
 import { Link } from '@inertiajs/inertia-react';
+import useImage from '@/helper/useImage';
 export default function Search({ onSearchClickHandler }) {
     const [data, setData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -49,7 +50,7 @@ export default function Search({ onSearchClickHandler }) {
 
                     {isLoading ?
                         <div
-                            className="flex flex-col px-20 py-4 bg-base-200 border-t border-slate-600 rounded-md shadow "
+                            className="flex flex-col px-20 py-4 bg-base-200 border-t border-slate-600 rounded-md shadow z-20 "
                             id="drop-down-div_search_1"
                         >
                             {isLoading && <>Loading ....</>}
@@ -70,7 +71,7 @@ export default function Search({ onSearchClickHandler }) {
                                         <div key={product.id} >
                                             <Link href={route('browse.product', product.id)} className="flex gap-5 mt-5">
                                                 <div className='w-32 h-32 shadow-md flex gap-5'>
-                                                    <img className='rounded-md' src={`/storage/${product.image}`} alt={product.name} loading="lazy" />
+                                                    <img className='rounded-md' src={useImage(product.image)} alt={product.name} loading="lazy" />
                                                 </div>
                                                 <div>
                                                     <h1 className=' font-semibold text-xl '>{product.name}</h1>

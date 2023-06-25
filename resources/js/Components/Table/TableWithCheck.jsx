@@ -3,6 +3,7 @@ import { Link } from '@inertiajs/inertia-react'
 import { FaMoneyCheckAlt } from 'react-icons/fa'
 import { AiFillDelete } from 'react-icons/ai'
 import route from '/vendor/tightenco/ziggy/src/js'
+import useImage from '@/helper/useImage'
 
 export default function TableWithCheck({ items, userId }) {
     return (
@@ -12,7 +13,7 @@ export default function TableWithCheck({ items, userId }) {
 
                     <thead>
                         <tr>
-                            <th>
+                            <th className='z-reset'>
                                 #
                             </th>
                             <th>Name</th>
@@ -30,14 +31,14 @@ export default function TableWithCheck({ items, userId }) {
                             <>
                                 {items.map((item, i) => (
                                     <tr key={item.id}>
-                                        <th>
+                                        <th className='z-reset'>
                                             {++i}
                                         </th>
                                         <td>
                                             <div className="flex items-center space-x-3">
                                                 <div className="avatar">
                                                     <div className="aspect-square w-32 rounded-md">
-                                                        <img src={`/storage/${item.product.image}`} alt={item.product.name} />
+                                                        <img src={useImage(item.product.image)} alt={item.product.name} loading='lazy' />
                                                     </div>
                                                 </div>
                                                 <div>
