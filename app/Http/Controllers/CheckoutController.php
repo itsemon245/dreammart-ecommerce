@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Stripe\Stripe;
 use App\Models\Cart;
+use App\Models\User;
+use Inertia\Inertia;
 use App\Models\Order;
 use App\Models\OrderItems;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Stripe\Checkout\Session;
 
 class CheckoutController extends Controller
 {
@@ -31,12 +33,13 @@ class CheckoutController extends Controller
 
     public function confirmProduct(Request $request)
     {
-        //creates a new order
+        
+        // creates a new order
         $order = new Order();
         $order->user_id = auth()->id();
         $order->status = 'pending';
-        $totlPrice = $request->cartItem['product']['price'] * $request->cartItem['qty'] + $request->shipping;
-        $order->total_price = $totlPrice;
+        $totalPrice = $request->cartItem['product']['price'] * $request->cartItem['qty'] + $request->shipping;
+        $order->total_price = $totalPrice;
         $order->save();
         // dd($order);
 
