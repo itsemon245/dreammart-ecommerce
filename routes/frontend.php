@@ -56,8 +56,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('stripe')->middleware('auth')->group(function () {
-    Route::get('/product-checkout',[StripeController::class, 'productCheckout'])->name('checkout.product');
-    Route::get('/checkout',[StripeController::class, 'checkout'])->name('checkout');
+    Route::get('/product-checkout',[StripeController::class, 'productCheckout'])->name('checkout.singleProduct');
+    Route::post('/checkout',[StripeController::class, 'checkout'])->name('checkout');
     Route::post('/checkout-success',[StripeController::class, 'success'])->name('checkout.success');
     Route::post('/checkout-cancel',[StripeController::class, 'cancel'])->name('checkout.cancel');
     Route::post('/webhook',[StripeController::class, 'webhook']); 

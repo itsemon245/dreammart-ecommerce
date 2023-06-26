@@ -18,10 +18,11 @@ class Cors
     {
         $response = $next($request);
 
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, X-Auth-Token, Authorization, Origin');
-    
+        $response->header("Access-Control-Allow-Origin","*");
+        $response->header("Access-Control-Allow-Credentials","true ");
+        $response->header("Access-Control-Allow-Methods","OPTIONS, GET, POST");
+        $response->header("Access-Control-Allow-Headers","Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control");
+
         return $response;
     }
 }

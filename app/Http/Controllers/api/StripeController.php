@@ -11,27 +11,41 @@ use App\Http\Controllers\Controller;
 
 class StripeController extends Controller
 {
-    public function __construct() {
+    public function __construct()
+    {
         // Stripe::setApiKey(env('STRIPE_SECRET'));
     }
 
 
-    function productCheckout(Request $request) {
+    function productCheckout(Request $request)
+    {
     }
 
 
-    function checkout(Request $request) {
-        $products = User::where('id', auth()->id())->with('cartProducts', 'cartProducts.carts')->first()->cartProducts;
-        // dd($products);
+    function checkout(Request $request)
+    {
+        // get products from user cart
+        $products = User::where('id', auth()->id())
+            ->with('cartProducts', 'cartProducts.carts')
+            ->first()->cartProducts;
+        
         $items = [];
+        /** 
+         * set products in key, value pairs of
+         * stripe_price => product->qty
+         * in the items array */
         foreach ($products as $product) {
             $item = ["$product->stripe_price_id" => $product->carts[0]->qty];
             $items = array_merge($items, $item);
         }
-        // dd($items);
+        // return cahier's product checkout method
         return $request->user()->checkout($items);
     }
-    function success() {
+
+
+
+    function success()
+    {
         // $product = $request->cartItem['product'];
         // $session = Session::create([
         //     'line_items' => [[
@@ -49,7 +63,8 @@ class StripeController extends Controller
         //     'cancel_url' => url('/cancel')
         // ]);
     }
-    function cancel() {
+    function cancel()
+    {
         // $product = $request->cartItem['product'];
         // $session = Session::create([
         //     'line_items' => [[
@@ -67,7 +82,8 @@ class StripeController extends Controller
         //     'cancel_url' => url('/cancel')
         // ]);
     }
-    function webhook() {
+    function webhook()
+    {
         // $product = $request->cartItem['product'];
         // $session = Session::create([
         //     'line_items' => [[
