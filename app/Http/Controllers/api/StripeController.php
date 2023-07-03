@@ -24,6 +24,7 @@ class StripeController extends Controller
 
     function checkout(Request $request)
     {
+        // dd($request);
         // get products from user cart
         $products = User::where('id', auth()->id())
             ->with('cartProducts', 'cartProducts.carts')

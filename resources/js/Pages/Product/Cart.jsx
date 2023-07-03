@@ -11,16 +11,13 @@ export default function Cart({ categories, auth, carts }) {
         <DashboardLayout pageTitle="Carts" categories={categories} auth={auth}>
             <TableWithCheck userId={auth.user.id} items={carts} />
             <div className="flex justify-center">
-            <Link
-                href={route("checkout")}
-                as="button"
-                method='post'
-                data={{_token: csrfToken}}
-                className="btn-primary btn rounded mt-2"
-            >
-                Checkout All
-            </Link>
+            <form
+                action={route("checkout")}
+                method='post'>
+                    <input type="text" name='_token' value={csrfToken} hidden/>
+                <button className='btn btn-primary rounded mt-2'>Checkout All</button>
+            </form>
             </div>
         </DashboardLayout>
-    );
+    );  
 }
