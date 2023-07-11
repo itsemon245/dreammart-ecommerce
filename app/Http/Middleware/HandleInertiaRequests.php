@@ -39,7 +39,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => auth()->user(),
             ],
-            'csrfToken' => fn() => csrf_token(),
+            'csrfToken' => csrf_token(),
             'success' => [
                 'message' => session('success')
             ],

@@ -6,19 +6,37 @@ import { FaMoneyCheckAlt } from "react-icons/fa";
 import { BsPlus, BsDash } from "react-icons/bs";
 import { useState } from "react";
 import { useMemo } from "react";
+import axios from "axios";
 export default function ({ item, keyVal }) {
     const [qty, setQty] = useState(item.qty);
 
     const total = useMemo(() => {
         let cost = item.product.price;
-        let total = Math.round(cost * qty);
+        let total = parseFloat((cost * qty).toFixed(2));
+
+        return total;
     }, [qty]);
 
     function increment() {
-        setQty((prev) => prev + 1);
+        updateQty(item.id,qty+1)
     }
     function decrement() {
-        setQty((prev) => prev - 1);
+        if (qty>1) {
+            updateQty(item.id,qty-1)
+        }
+    }
+    function updateQty(id, qty){
+        axios.patch(route('cart.update.qty', id), 
+        {
+            qty: qty
+        },
+        {
+            headers:{
+                'X-CSRF-TOKEN': document.querySelector('[name="csrf_token"]').getAttribute('content')
+            }
+        }).then(response=>{
+            setQty(response.data.data.qty);
+        })
     }
     return (
         <tr>
@@ -43,7 +61,7 @@ export default function ({ item, keyVal }) {
                 </div>
             </td>
             <td>
-                <div className="flex-inline align-center flex gap-3 text-lg font-medium">
+                <div className="flex align-center gap-3 text-lg font-medium">
                     <span>${item.product.price} X </span>
                     <div className="flex-inline align-center flex border border-slate-700 rounded">
                         <div className="rounded-l p-2 bg-primary">
@@ -60,7 +78,7 @@ export default function ({ item, keyVal }) {
                             ></BsPlus>
                         </div>
                     </div>
-                    <span> = </span>
+                    <span>=</span>
                     <span>${total}</span>
                 </div>
             </td>

@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\api\StripeController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderPageController;
+use App\Http\Controllers\api\StripeController;
 use App\Http\Controllers\Products\SearchController;
 use App\Http\Controllers\Profile\ProfilePageController;
 use App\Http\Controllers\Products\ProductPageController;
@@ -56,13 +57,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('stripe')->middleware('auth')->group(function () {
-    Route::get('/product-checkout',[StripeController::class, 'productCheckout'])->name('checkout.singleProduct');
-    Route::post('/checkout',[StripeController::class, 'checkout'])->name('checkout');
-    Route::get('/checkout-success',[StripeController::class, 'success'])->name('checkout.success');
-    Route::get('/checkout-cancel',[StripeController::class, 'cancel'])->name('checkout.cancel');
-    Route::post('/webhook',[StripeController::class, 'webhook']); 
+    Route::get('/product-checkout', [StripeController::class, 'productCheckout'])->name('checkout.singleProduct');
+    Route::post('/checkout', [StripeController::class, 'checkout'])->name('checkout');
+    Route::get('/checkout-success', [StripeController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout-cancel', [StripeController::class, 'cancel'])->name('checkout.cancel');
+    Route::post('/webhook', [StripeController::class, 'webhook']);
 });
 
+//routes for cart
+Route::prefix('cart')->name('cart.')->controller(CartController::class)->group(function () {
+    Route::patch('update/{cart}/qty', 'updateQty')->name('update.qty');
+});
 
 //route for search
 Route::get('/search-product/{name}', [SearchController::class, 'searchProduct'])->name('product.search');

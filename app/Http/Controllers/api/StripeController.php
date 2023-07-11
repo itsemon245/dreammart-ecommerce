@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\api;
 
 use Stripe\Stripe;
+use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use Stripe\StripeClient;
+use App\Models\OrderItems;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Models\OrderItems;
 
 class StripeController extends Controller
 {
@@ -57,6 +58,7 @@ class StripeController extends Controller
                 'price' => $product->price,
                 'qty' => $product->carts[0]->qty,
             ]);
+            $delete = Cart::find($product->carts[0]->id)->delete();
         }
 
         $order->total_price = $totalPrice;
@@ -68,11 +70,6 @@ class StripeController extends Controller
                 'success_url' => route('checkout.success') . "?order_id=$order->id&session_id={CHECKOUT_SESSION_ID}",
                 'cancel_url' => route('checkout.cancel'),
             ],
-            [
-                'metadata' => [
-                    'hello'=> 'world',
-                ]
-            ]
         );
     }
 
