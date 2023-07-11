@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -26,27 +27,15 @@ class AuthenticatedSessionController extends Controller
     /**
      * Login an existing user
      */
-    public function store(Request $request): RedirectResponse
+    public function store(LoginRequest $request): RedirectResponse
     {
-        // dd($request);
-        $request->validate([
-            'email' => 'required|exists:users,email',
-            'password' => 'required'
-        ]);
-        $user = User::where('email', $request->email)
-            ->get()->first();
-        // dd($user->password);
-        $remeber = $request->remember_me ? true : false;
+        $request->authenticate();
 
-        if (Hash::check($request->password, $user->password)) {
-            Auth::login($user, $remeber);
-            if (!$user->hasRole('user')) {
-                return redirect(route('admin.dashboard'))->with('success', "Logged in Successfully");
-            }
-            return redirect(RouteServiceProvider::HOME)->with('success', "Logged in Successfully");
-        } else {
-            return redirect('/')->with('error', 'Credentials didn\'t match');
+        if (!auth()->user()->hasRole('user')) {
+            return redirect(route('admin.dashboard'))->with('success', "Logged in Successfully");
         }
+
+        return redirect(RouteServiceProvider::HOME)->with('success', "Logged in Successfully");
     }
 
     /**

@@ -69,7 +69,7 @@
                         <div class="intro-x d-flex text-gray-700 dark-text-gray-600 fs-xs fs-sm-sm mt-4">
                             <div class="d-flex align-items-center me-auto">
                                 <input id="remember-me" type="checkbox"
-                                name="remember_me" class="form-check-input border me-2">
+                                name="remember" class="form-check-input border me-2">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                             </div>
                             <a href="{{ route('password.request') }}">Forgot Password?</a>
