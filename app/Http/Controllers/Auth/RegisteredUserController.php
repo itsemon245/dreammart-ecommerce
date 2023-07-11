@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Validation\Rules\Password;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Validation\Rules\Password;
 
 class RegisteredUserController extends Controller
 {
@@ -42,10 +42,11 @@ class RegisteredUserController extends Controller
         }
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:' . User::class,
+            'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6',
             'username' => 'bail|required|string|max:255|unique:users,username',
-            'profile_image' => 'bail|image',
+            'profile_image' => 'bail|image|max:5120',
         ]);
 
         $user = User::create([
