@@ -7,6 +7,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# About This Project
+This is a simple single page e-commerce application built using Tailwind CSS, React Js, Laravel & Inertia Js. It Provides a clean and easy to use interface.
+
+### Core Features:
+- Reactive & Server-side state management
+- OAuth for easy authentication (Google, Facebook)
+- Role & permission based administritive panel
+
+### Test Credentials:
+Email: admin@gmail.com
+
+Password: password
+
+**To login with roles like user, editor just replace the rolename with admin in email address**
+
 # Getting started
 -  [Install composer](https://getcomposer.org/download/)
 -  [Install NodeJs](https://nodejs.org/en/download/)
