@@ -1,0 +1,12 @@
+name: Github actions test
+on: [push]
+jobs:
+
+  build:
+    name: Prepare for ssh
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create files and folders
+        run: |
+            whoami
