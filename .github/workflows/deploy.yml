@@ -14,4 +14,4 @@ jobs:
           port: ${{ secrets.PORT }}
           command_timeout: 30m
           script: | 
-            whoami
+            echo "Hello Server" >> hello-world.txt
