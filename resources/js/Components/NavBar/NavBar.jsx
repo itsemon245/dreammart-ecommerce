@@ -6,7 +6,7 @@ import { BiSearch } from 'react-icons/bi';
 
 export default function NavBar({ auth, categories, onSearchClickHandler }) {
     const navLinks = [
-        { name: "New Arrivals", route: "page.newArrivals", id: 1 },
+        { name: "Hello World", route: "page.newArrivals", id: 1 },
         { name: "Popular", route: "page.popular", id: 2 },
         { name: "About us", route: "page.about", id: 4 }
     ]
