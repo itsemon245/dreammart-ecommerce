@@ -6,17 +6,15 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public string $label;
-    public string $symbol;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label, $symbol = '')
+    public function __construct(
+        public string $symbol = ''
+    )
     {
-        $this->label = $label;
-        $this->symbol = $symbol;
     }
 
     /**

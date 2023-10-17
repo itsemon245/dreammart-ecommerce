@@ -6,19 +6,14 @@ use Illuminate\View\Component;
 
 class Select extends Component
 {
-    public $label;
-    public $value;
-    public $options;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label = '', $value = '', $options = [])
-    {
-        $this->label = $label;
-        $this->label = $value;
-        $this->options = $options;
+    public function __construct(
+        public $options = []
+    ) {
     }
 
     /**

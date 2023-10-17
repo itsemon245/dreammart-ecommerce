@@ -1,6 +1,11 @@
 @php
     $name = $attributes['name'];
+    $label = $attributes['label'];
 @endphp
+@props([
+    'name'=> '',
+    'label'=> '',
+])
 <div class="mb-3">
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>
     <input {{ $attributes->class(['form-control'])->merge() }} />

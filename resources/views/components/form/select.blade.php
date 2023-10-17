@@ -1,11 +1,15 @@
 @php
-    $name = $attributes['name'];
+    $name = $attributes->get('name');
     $placeholder = $attributes['placeholder'];
     $options = $attributes->get('options');
     $value = $attributes->get('value');
 @endphp
 @props([
     'options' => [],
+    'name' => '',
+    'label' => '',
+    'value' => '',
+    'placeholder' => '',
 ])
 
 <div class="mb-3">

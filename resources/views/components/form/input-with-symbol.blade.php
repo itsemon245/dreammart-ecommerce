@@ -3,6 +3,8 @@
 @endphp
 @props([
     'symbol' => '',
+    'name' => '',
+    'label'=> ''
 ])
 <div class="mb-3">
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>

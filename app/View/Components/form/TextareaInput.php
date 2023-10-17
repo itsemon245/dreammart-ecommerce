@@ -6,20 +6,14 @@ use Illuminate\View\Component;
 
 class TextareaInput extends Component
 {
-    /**
-     * The input label.
-     *
-     * @var string
-     */
-    public $label;
+ 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label)
+    public function __construct()
     {
-        $this->label = $label;
     }
 
     /**
