@@ -14,10 +14,11 @@ class Select extends Component
      *
      * @return void
      */
-    public function __construct($label = '', $value = '', $options)
+    public function __construct($label = '', $value = '', $options = [])
     {
         $this->label = $label;
         $this->label = $value;
+        $this->options = $options;
     }
 
     /**
