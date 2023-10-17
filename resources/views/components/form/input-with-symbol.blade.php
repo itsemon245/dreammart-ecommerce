@@ -1,6 +1,9 @@
 @php
     $name = $attributes['name'];
 @endphp
+@props([
+    'symbol' => '',
+])
 <div class="mb-3">
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>
     <div class="input-group">

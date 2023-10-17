@@ -6,21 +6,17 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-
-    /**
-     * The input label.
-     *
-     * @var string
-     */
-    public $label;
+    public string $label;
+    public string $symbol;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($label)
+    public function __construct($label, $symbol = '')
     {
         $this->label = $label;
+        $this->symbol = $symbol;
     }
 
     /**

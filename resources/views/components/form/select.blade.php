@@ -4,16 +4,18 @@
     $options = $attributes->get('options');
     $value = $attributes->get('value');
 @endphp
-
+@props([
+    'options' => [],
+])
 
 <div class="mb-3">
     <label class="form-label" for="{{ $name }}">{{ $label }}</label>
-    <select {{ $attributes->class(['form-select'])->merge()->filter(fn($value, $key) => in_array($key, ['class', 'name'])) }}>
+    <select
+        {{ $attributes->class(['form-select'])->merge()->filter(fn($value, $key) => in_array($key, ['class', 'name'])) }}>
 
         <option>{{ Str::headline($placeholder) }}</option>
         @foreach ($options as $option)
-            <option {{ $option->id === $value ? 'selected' : '' }}
-                value="{{ $option->id }}">{{ $option->name }}
+            <option {{ $option->id === $value ? 'selected' : '' }} value="{{ $option->id }}">{{ $option->name }}
             </option>
         @endforeach
     </select>
