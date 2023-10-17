@@ -1,5 +1,5 @@
 @php
-    $name = $attributes['name'];
+    $name = $attributes->get('name');
 @endphp
 @props([
     'symbol' => '',
